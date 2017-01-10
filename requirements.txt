@@ -3,3 +3,4 @@ Django==1.10.5
 gunicorn==19.6.0
 virtualenv==15.1.0
 whitenoise==3.2.3
+psycopg2==2.4.4
