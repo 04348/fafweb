@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta content="text/html; charset=UTF-8" http-equiv="content-type">
+    <title>Fils des Ages Farouches : {% block page-title %}{% endblock %}</title>
+    <style type="text/css">
+      body {
+        text-align: center;
+        font-family: "Candara";
+        width: 100%;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        color: #ecf0f1;
+        background-image: url("http://i.imgur.com/C30CvmH.jpg");
+        background-position: center top;
+        background-attachment: fixed;
+      }
+
+      #content {
+        padding-top: 60px;
+        width: 75%;
+        text-align: center;
+        margin-top: 112px;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        background-color: #ecf0f1 !important;
+        box-shadow: 0px 0px 10px 1px #333333;
+        color: #2c3e50;
+      }
+
+      #top-screen {
+        width: 100%;
+        position: fixed;
+        top: 0px;
+        height: 160px;
+      }
+
+      header {
+        font-size: 50px;
+        background-color: #c0392b;
+        color: #ecf0f1;
+      }
+
+      h1 {
+        font-weight: normal;
+        font-size: 30px;
+        color: #c0392b;
+      }
+
+      #page-title {
+        text-align: left;
+        padding-top: 5px;
+        padding-right: 0px;
+        padding-bottom: 5px;
+        padding-left: 15px;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        color: white !important;
+        background-color: rgba(51, 51, 51, 0.85) !important;
+      }
+
+      /*navbar style*/
+
+      ul.topnav {
+        list-style-type: none;
+        margin-top: 0px;
+        margin-right: 0px;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        padding-top: 0px;
+        padding-right: 0px;
+        padding-bottom: 0px;
+        padding-left: 0px;
+        overflow: hidden;
+        background-color: #333333;
+      }
+
+      ul.topnav li {
+        float: left;
+      }
+
+      ul.topnav li a {
+        display: inline-block;
+        color: #f2f2f2;
+        text-align: center;
+        padding-top: 14px;
+        padding-right: 16px;
+        padding-bottom: 14px;
+        padding-left: 16px;
+        text-decoration: none;
+      transition: all 0.3s ease 0s;
+        font-size: 17px;
+      }
+
+      ul.topnav li a:hover {
+        background-color: #555555;
+      }
+
+      ul.topnav li.icon {
+        display: none;
+      }
+
+      @media screen and (max-width: 680px) {
+        ul.topnav li:not(:first-child) { display: none; }
+        ul.topnav li.icon { float: right; display: inline-block; }
+      }
+
+      @media screen and (max-width: 680px) {
+        ul.topnav.responsive { position: relative; }
+        ul.topnav.responsive li.icon { position: absolute; right: 0px; top: 0px; }
+        ul.topnav.responsive li { float: none; display: inline; }
+        ul.topnav.responsive li a { display: block; text-align: left; }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="top-screen">
+      <header>Les Fils des Ages Farouches</header>
+      <nav>
+        <ul class="topnav" id="Topnav1">
+          <li><a href="/">Accueil</a></li>
+          <li><a href="/build/">Build</a></li>
+          <li><a href="/mission/">Mission</a></li>
+          <li class="icon"> &nbsp;&nbsp;&nbsp; <a href="javascript:void(0);" onclick="myFunction()">☰</a>
+            &nbsp; </li>
+        </ul>
+      </nav>
+      <h1 id="page-title">{% block title %}Accueil{% endblock %}</h1>
+    </div>
+    <section id="content">
+      {% block content %}{% endblock %}
+    </section>
+    <footer>© Fils des Ages Farouches</footer>
+    <script>
+      function myFunction() {
+          var x = document.getElementById("myTopnav");
+          if (x.className === "topnav") {
+              x.className += " responsive";
+          } else {
+              x.className = "topnav";
+          }
+      }
+</script> </body>
+</html>
