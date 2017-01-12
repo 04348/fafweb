@@ -80,14 +80,15 @@ WSGI_APPLICATION = 'fafweb.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/1.9/ref/settings/#databases
 
-
-"""DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+if bool(os.environ.get('LOCAL_DEV', False)):
+    DATABASES = {
+        'default': {
+            'ENGINE': 'django.db.backends.sqlite3',
+            'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        }
     }
-}"""
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+else:
+    DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
