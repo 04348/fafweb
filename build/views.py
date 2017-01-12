@@ -30,6 +30,7 @@ prof_icon = ["http://i.imgur.com/q6yX4m7.png", #elem
 def view_buildSelect(request):
     return render(request, 'build/buildSelect.html', {'prof' : zip(prof_name, prof_icon, prof_url)})
 
+# Heroku can't use static DB
 def view_build(request, prof):
     if prof in prof_url:
         build_list = Build.objects.all()
