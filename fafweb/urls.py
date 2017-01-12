@@ -21,4 +21,5 @@ urlpatterns = [
     url(r'^admin/', admin.site.urls),
     url(r'^$', views.home),
     url(r'^build/', include('build.urls')),
+    url(r'^mission/', include('mission.urls')),
 ]

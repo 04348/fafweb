@@ -50,6 +50,13 @@
         color: #c0392b;
       }
 
+      
+      p{
+          width : 85%;
+          margin : auto;
+          text-align : left;
+      }
+
       #page-title {
         text-align: left;
         padding-top: 5px;
@@ -116,7 +123,9 @@
         ul.topnav.responsive li { float: none; display: inline; }
         ul.topnav.responsive li a { display: block; text-align: left; }
       }
+      {% block css %}{% endblock %}
     </style>
+    {% block header %}{% endblock %}
   </head>
   <body>
     <div id="top-screen">
@@ -136,6 +145,7 @@
       {% block content %}{% endblock %}
     </section>
     <footer>© Fils des Ages Farouches</footer>
+    
     <script>
       function myFunction() {
           var x = document.getElementById("myTopnav");
@@ -145,5 +155,10 @@
               x.className = "topnav";
           }
       }
-</script> </body>
+      
+    </script>
+    <script>
+      {% block js %}{% endblock %}
+    </script>
+  </body>
 </html>

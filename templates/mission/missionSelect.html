@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+{% block content-style %}
+      #content {
+        padding-top: 0px;
+        text-align: center;
+        display: inline-block;
+        margin-top: 162px;
+        margin-right: auto;
+        margin-bottom: auto;
+        margin-left: auto;
+        background-color: rgba(51, 51, 51, 0.85) !important;
+        box-shadow: 0px 0px 10px 1px #333333;
+        color: #2c3e50;
+    }
+    .prof_icon:hover {
+        transform: scale(.9);
+    }
+{% endblock %}
+{% block title %}Builds{% endblock %}
+{% block content %}
+    <table align="center">
+    {% for name, url in missions %}
+        <tr>
+            <td>
+                <a href="/mission/{{ url }}">
+                    <!--<img src="{{ icon }}"  class="prof_icon">-->
+                    {{ name }}
+                </a>
+            </td>
+        </tr>
+    {% endfor %}
+    </table>
+{% endblock %}

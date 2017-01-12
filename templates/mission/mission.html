@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+{% block css %}
+    img {
+        max-width: 100%;
+    }
+{% endblock %}
+{% block title %}Mission{% endblock %}
+
+
+{% block content %}
+    <input type="text" onKeyUP="trackChange(this.value)" id="missionInput">
+    {% for name, place, urls in mission %}
+        <div class="mname" onclick="setInput('{{ name }}')">{{ name }}
+            <img src="file://null" srcset="{{ urls.0 }}" class="mission-item" id="{{ name }}">
+        </div>
+    {% endfor %}
+{% endblock %}
+
+
+{% block js %}
+    var missionitem = document.getElementsByClassName("mission-item");
+    console.log(missionitem)
+
+    for(var i = 0; i < missionitem.length; i++) {
+        missionitem.item(i).style.display = 'none';
+    }
+
+    function trackChange(value){
+        console.log(value);
+        for(var i = 0; i < missionitem.length; i++) {
+            if (value.length > 0 && missionitem.item(i).id.toLowerCase().includes(value)){
+                missionitem.item(i).style.display = 'block';
+                missionitem.item(i).src = missionitem.item(i).srcset;
+            } else {
+                missionitem.item(i).style.display = 'none';
+                missionitem.item(i).src = "file://null";
+            }
+        }
+    }
+
+    function setInput(name){
+        var input = document.getElementById("missionInput");
+        input.value = name;
+        trackChange(name);
+    }
+
+{% endblock %}
