@@ -86,7 +86,7 @@ WSGI_APPLICATION = 'fafweb.wsgi.application'
         }
     }"""
 
-DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
+#DATABASES = {'default': dj_database_url.config(default='postgres://localhost')}
 
 AUTH_PASSWORD_VALIDATORS = [
     {
