@@ -4,7 +4,7 @@
         padding-top: 0px;
         text-align: center;
         display: inline-block;
-        margin-top: 162px;
+        margin-top: 192px;
         margin-right: auto;
         margin-bottom: auto;
         margin-left: auto;
@@ -12,22 +12,37 @@
         box-shadow: 0px 0px 10px 1px #333333;
         color: #2c3e50;
     }
-    .prof_icon:hover {
-        transform: scale(.9);
+    .sul {
+        list-style: none;
+        padding: 0;
+    }
+    .sli {
+            display: inline-block;
+            width: 25%; /* Jouez avec la width ou le zoom ! */
+            min-width: 218px; /* L'image ne débordera pas de la boîte \o/ */
+            margin: 1ex; padding: 1ex;
+            border: 0px;
+    }
+    .sfig {
+            margin: 0;
+            text-align: center;
+            color: #ecf0f1;
+            font-size: 1.25em;
+    }
+    .icon:hover {
+        transform: scale(1.2);
     }
 {% endblock %}
 {% block title %}Builds{% endblock %}
 {% block content %}
-    <table align="center">
-    {% for name, url in missions %}
-        <tr>
-            <td>
-                <a href="/mission/{{ url }}">
-                    <!--<img src="{{ icon }}"  class="prof_icon">-->
-                    {{ name }}
-                </a>
-            </td>
-        </tr>
+    <ul class="sul">
+    {% for name, url, icon in missions %}
+        <li class="sli">
+            <figure class="sfig">
+                <a href="/mission/{{ url }}"><img src="{{ icon }}"  class="icon"></a>
+                <figcaption>{{ name }}</figcaption>
+            </figure>
+        </li>
     {% endfor %}
-    </table>
+    </ul>
 {% endblock %}

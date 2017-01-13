@@ -3,15 +3,34 @@
     img {
         max-width: 100%;
     }
+    .mission-item {
+        background-color: #c0392b;
+        margin-top: 1px;
+        margin-bottom: 1px;
+        color: #ecf0f1;
+        font-size: 1.25em;
+    }
+    #inputdiv {
+        background-color: #c0392b;
+        color: #ecf0f1;
+        padding-bottom: 10px;
+        margin-bottom: 10px;
+        box-shadow: 0px 0px 10px 1px #333333;
+    }
 {% endblock %}
 {% block title %}Mission{% endblock %}
 
 
 {% block content %}
-    <input type="text" onKeyUP="trackChange(this.value)" id="missionInput">
+    <div id="inputdiv">
+        <h2>Entrez le nom de la cible à trouver :</h2>
+        <input type="text" onKeyUP="trackChange(this.value)" id="missionInput">
+    </div>
     {% for name, place, urls in mission %}
-        <div class="mname" onclick="setInput('{{ name }}')">{{ name }}
-            <img src="file://null" srcset="{{ urls.0 }}" class="mission-item" id="{{ name }}">
+        <div class="mission-item" id="{{ name }}" onclick="setInput('{{ name }}')">{{ name }}
+            {% for url in urls %}
+                <img src="file://null" srcset="{{ url }}" class="mission-item" id="{{ name }}">
+            {% endfor %}
         </div>
     {% endfor %}
 {% endblock %}
@@ -26,18 +45,38 @@
     }
 
     function trackChange(value){
+        var nbfound = 0;
         console.log(value);
         for(var i = 0; i < missionitem.length; i++) {
-            if (value.length > 0 && missionitem.item(i).id.toLowerCase().includes(value)){
-                missionitem.item(i).style.display = 'block';
-                missionitem.item(i).src = missionitem.item(i).srcset;
+            if (value.length > 0 && missionitem.item(i).id.toLowerCase().includes(value.toLowerCase())){
+                if ( missionitem.item(i).tagName == "DIV"){
+                    missionitem.item(i).style.display = 'block';
+                    nbfound++;
+                }
             } else {
-                missionitem.item(i).style.display = 'none';
-                missionitem.item(i).src = "file://null";
+                if ( missionitem.item(i).tagName == "DIV"){
+                    missionitem.item(i).style.display = 'none';
+                }
+            }
+        }
+        if (nbfound == 1){
+            for(var i = 0; i < missionitem.length; i++) {
+                if (missionitem.item(i).id.toLowerCase().includes(value.toLowerCase())){
+                    if ( missionitem.item(i).tagName == "IMG"){
+                        missionitem.item(i).style.display = 'block';
+                        missionitem.item(i).src = missionitem.item(i).srcset;
+                    }
+                }
+            }
+        } else {
+            for(var i = 0; i < missionitem.length; i++) {
+                if ( missionitem.item(i).tagName == "IMG"){
+                    missionitem.item(i).style.display = 'none';
+                    missionitem.item(i).src = "file://null";
+                }
             }
         }
     }
-
     function setInput(name){
         var input = document.getElementById("missionInput");
         input.value = name;

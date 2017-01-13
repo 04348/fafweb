@@ -6,39 +6,79 @@ m_url = ["rando", "prime", "defi", "puzzle", "course"]
 
 m_name = ["Randonnés", "Primes", "Défis", "Puzzles", "Courses"]
 
-icon_rando = { "http://i.imgur.com/q6yX4m7.png",
-             "http://i.imgur.com/IHSueKO.png",
-             "http://i.imgur.com/paUelND.png",
-             "http://i.imgur.com/K4F4tgF.png",
-             "http://i.imgur.com/vWzclx5.png",
-             "http://i.imgur.com/UYyvbjD.png",
-             "http://i.imgur.com/er2FpQf.png",
-             "http://i.imgur.com/XMJBCS1.png",
-             "http://i.imgur.com/vo2IGDk.png",
-            }
-name_rando = { "aze",
-             "zer",
-             "ert",
-             "rty",
-             "tyu",
-             "yui",
-             "uio",
-             "iop",
-             "opq",
-            }
+m_icon = ["http://i.imgur.com/UyqQ3Z5.png",
+          "http://i.imgur.com/A51dpIP.png",
+          "http://i.imgur.com/LhkhmhT.png",
+          "http://i.imgur.com/4lC2KDK.png",
+          "http://i.imgur.com/NZSTAXy.png",]
 
 def view_missionSelect(request):
-    return render(request, 'mission/missionSelect.html', {'missions': zip(m_name, m_url)})
+    return render(request, 'mission/missionSelect.html', {'missions': zip(m_name, m_url, m_icon)})
 
 # Heroku can't use static DB
 
 def view_mission(request, mission):
     if mission in m_url:
-        return render(request, 'mission/mission.html', {'mission': listRando})
+        if (mission == "course"):
+            list_mission = list_course
+        elif (mission == "defi"):
+            list_mission = list_defi
+        elif (mission == "prime"):
+            list_mission = list_prime
+        elif (mission == "puzzle"):
+            list_mission = list_puzzle
+        else:
+            list_mission = list_rando
+        return render(request, 'mission/mission.html', {'mission': list_mission})
     raise Http404
 
+list_puzzle = [
+    ["Laboratoire de proxémie", "Terres sauvages de Brisban", ["http://i.imgur.com/zpGFPYz.jpg"], ],
+    ["Domaine de Langmar", "Plaines d’Ashford", ["http://i.imgur.com/z5JGizB.jpg"], ],
+    ["Cache d’Angvar", "Congères d’Antreneige", ["http://i.imgur.com/6BdaLZC.jpg"], ],
+]
 
-listRando = [
+list_defi = [
+    ["Brise-attaque des eaux du Tourment", "Steppes de la Strie Flamboyante", ["http://i.imgur.com/6RXIhCt.jpg"], ],
+    ["Stigmatisation et mise à mort", "Champs de Ruines", ["http://i.imgur.com/4YbgoyP.jpg"], ],
+    ["De gros problèmes", "Mont Maelstrom", ["http://i.imgur.com/Iy4lLT7.jpg"], ],
+    ["Sauvetage de ravitaillement", "Marais de Fer", ["http://i.imgur.com/41zkUP7.jpg"], ],
+    ["Défendez la sentinelle de la brèche", "Chutes de la Canopée", ["http://i.imgur.com/UZK47Fk.jpg"], ],
+    ["Lancer de crabe à Sud-Soleil", "Crique de Sud-Soleil", ["http://i.imgur.com/uFWjmys.jpg"], ],
+]
+
+list_course = [
+    ["Foulée de l'Ourse", "Passage de Lornar", ["http://i.imgur.com/0ETDu4t.jpg"], ],
+    ["Poulet en fuite", "Champs de Ruines", ["http://i.imgur.com/8NjwfW3.jpg"], ],
+    ["Fugue du crabe", "Crique du Sud Soleil", ["http://i.imgur.com/G80N0HD.jpg"], ],
+    ["Terrier du Dévoreur", "Plateau de Diessa", ["http://i.imgur.com/gcyLGct.jpg"], ],
+    ["Fuite du loup fantôme", "Hinterlands Harathis", ["http://i.imgur.com/PIMk8LP.jpg"], ],
+    ["Course arachnide", "Falaises de Hantedraguerre", ["http://i.imgur.com/S8wNxbk.jpg"], ],
+    ["Pagaie quaggan", "Détroit des gorges glacées", ["http://i.imgur.com/u7TtGJq.jpg"], ],
+]
+
+list_prime = [
+    ["\"Adjointe\" Brooke", "Congères Antreneige ", ["http://i.imgur.com/EhzO7wG.jpg?1"],],
+    ["André \"Sauvage\" Douest", "Crique de sud-soleil ", ["http://i.imgur.com/yyEujzb.jpg?1"],],
+    ["Bwiki le Rat de bibiliothèque", "Passage de Lornar ", ["http://i.imgur.com/u4FOC4Y.jpg"],],
+    ["Brekkabek le Skritt", "Hinterlands Harathis ", ["http://i.imgur.com/lqk8y44.jpg"],],
+    ["Chaman Arderus Montée", "Flambecoeur ", ["http://i.imgur.com/NdlIw51.jpg"],],
+    ["Croisée Michèle", "Marais de Lumillule ", ["http://i.imgur.com/1RRKliB.jpg"],],
+    ["Félix Colairik", "Plateau diessa ", ["http://i.imgur.com/07Fkog2.jpg?1"],],
+    ["Komali Micui", "Mont Maelstrom ", ["http://i.imgur.com/KXX9kiI.jpg"],],
+    ["Mayana Imposant", "Marais de Lumillule  ", ["http://i.imgur.com/HqLRN8S.jpg"],],
+    ["Poobadoo", "Colline de Kessex ", ["http://i.imgur.com/i8lKkFh.jpg"],],
+    ["Prisonnier 1411", "Marais de fer ", ["http://i.imgur.com/SVwrG6C.jpg"],],
+    ["6-RUS", "Chutes de la Canopée ", ["http://i.imgur.com/JbfvXpE.jpg"],],
+    ["Sotzz le voyou", "Champs Gendarran ", ["http://i.imgur.com/ceg8i4R.jpg?1"],],
+    ["Tarban le Diplomate", "Terres sauvages de Brisban ", ["http://i.imgur.com/PEqLFe1.jpg"],],
+    ["Teesa la Louche", "Détroit des gorge glacées ", ["http://i.imgur.com/m0YWBFr.jpg"],],
+    ["Trekksa la Rusée", "Steppes Stries Flamboyantes ", ["http://i.imgur.com/kqpufgM.jpg"],],
+    ["Trillia Mylieu", "Champs de ruines ", ["http://i.imgur.com/6q821J8.jpg"],],
+    ["Yanonka, la palefrenière de rats", "Champs de ruines ", ["http://i.imgur.com/9SFufAk.jpg"],],
+]
+
+list_rando = [
 	["Alcôve de Courtilleracine" ,"Le Bosquet, Point de passage : portail asura.",
 	["http://image.noelshack.com/fichiers/2013/16/1366476839-gardenroot-alcove-le-bosquet-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476829-gardenroot-alcove-le-bosquet-1.jpg" ] ],
 	["Alimentation en eau d’Orvanic" ,"Dirigez vous vers le nord et entrez dans la grotte du point de compétence (photo 3). A la sortie, prenez à droite en direction de la cascade.",
@@ -51,7 +91,7 @@ listRando = [
 	["http://image.noelshack.com/fichiers/2013/16/1366544859-saltflood-altar-lumillule-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366544874-saltflood-altar-lumillule-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366544882-saltflood-altar-lumillule-3.jpg", "http://image.noelshack.com/fichiers/2013/16/1366544890-saltflood-altar-lumillule-4.jpg" ] ],
 	["Aveuglement de l'Erudit" ,"Falaise de Hantedraguerre, Point de passage de Steelbrachen.",
 	["http://image.noelshack.com/fichiers/2013/16/1366545043-scholar-s-blind-hantedraguerre-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545055-scholar-s-blind-hantedraguerre-2.jpg" ] ],
-	["Balcon des délices" ,"Saut de Malchor, Point de passage de Pagga.", ["http://image.noelshack.com/minis/2013/16/1366456087-gw2-delights-balcony-guild-trek-2.png", "http://image.noelshack.com/fichiers/2013/16/1366454028-delight-s-balcony-malchor-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454038-delight-s-balcony-malchor-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454049-delight-s-balcony-malchor-3.jpg" ] ],
+	["Balcon des délices" ,"Saut de Malchor, Point de passage de Pagga.", ["http://image.noelshack.com/fichiers/2013/16/1366454028-delight-s-balcony-malchor-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454038-delight-s-balcony-malchor-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454049-delight-s-balcony-malchor-3.jpg" ] ],
 	["Banc de Varech de Malméduse" ,"Congères d'Antreneige, Point de Passage de l'Exil ou de Vaselac.",
 	["http://image.noelshack.com/fichiers/2013/14/1365369175-badjelly-kelpbed-congeres-d-entreneige.jpg", "http://image.noelshack.com/fichiers/2014/23/1402058594-banc-de-varech-malmeduse04.jpg" ] ],
 	["Barrière de Bercebruyère" ,"Forêt de Caledon, Point de passage de la Spirale",
