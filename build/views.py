@@ -40,8 +40,8 @@ def view_build(request, prof):
             if (build.prof == prof):
                 build_title.append(build.titre)
                 build_cont.append(build.contenu)
-        isEmpty = (len(build_title)==0)
-        return render(request, 'build/build.html', {'builds': zip(build_title, build_cont), 'titles':build_title})
+        isEmpty = bool(len(build_title)==0)
+        return render(request, 'build/build.html', {'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty})
     raise Http404
 
 def view_buildCreate(request):

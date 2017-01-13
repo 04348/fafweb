@@ -29,7 +29,7 @@
     {% for name, place, urls in mission %}
         <div class="mission-item" id="{{ name }}" onclick="setInput('{{ name }}')">{{ name }}
             {% for url in urls %}
-                <img src="file://null" srcset="{{ url }}" class="mission-item" id="{{ name }}">
+                <img src="{{ url }}" class="mission-item" id="{{ name }}">
             {% endfor %}
         </div>
     {% endfor %}
@@ -64,7 +64,6 @@
                 if (missionitem.item(i).id.toLowerCase().includes(value.toLowerCase())){
                     if ( missionitem.item(i).tagName == "IMG"){
                         missionitem.item(i).style.display = 'block';
-                        missionitem.item(i).src = missionitem.item(i).srcset;
                     }
                 }
             }
@@ -72,7 +71,6 @@
             for(var i = 0; i < missionitem.length; i++) {
                 if ( missionitem.item(i).tagName == "IMG"){
                     missionitem.item(i).style.display = 'none';
-                    missionitem.item(i).src = "file://null";
                 }
             }
         }
