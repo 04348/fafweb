@@ -4,6 +4,7 @@
 def getRevBuild(build_title, build_cont):
 	build_cont.append(Cdps_support,)
 	build_title.append(Tdps_support,)
+	print("first : " + build_title)
 
 
 Tdps_support = "Hérault DPS/Support"
