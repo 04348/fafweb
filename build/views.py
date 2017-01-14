@@ -36,7 +36,8 @@ def convertToHtml(s):
 def getBuilds(prof, build_title, build_cont):
     if (prof == "revenant"):
         getRevBuild(build_title, build_cont)
-        print("inter : " + build_title)
+        print("inter : ")
+        print(build_title)
         for i in range(0, len(build_cont)):
             build_cont[i] = convertToHtml(build_cont[i])
 
@@ -48,7 +49,8 @@ def view_build(request, prof):
         build_title = []
         build_cont = []
         getBuilds(prof, build_title, build_cont)
-        print("final : " + build_title)
+        print("final : ")
+        print(build_title)
         #getBuildTitle(build_list)
         #build_cont = getBuildText(build_list)
         isEmpty = bool(len(build_title)==0)
