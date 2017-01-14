@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from build.models import Build, BuildForm
+import urllib.request
 # Create your views here.
 
 #Builds code
@@ -53,9 +54,15 @@ def getBuildTitle(files):
 def getBuildText(files):
     texts = []
     for file in files:
-        f = open("build/builds/"+file, 'r')
-        s = convertToHtml(f.read())    
-        texts.append(s)
+        f = open("build_list/"+file, 'r')
+        #f = urlopen("https://raw.githubusercontent.com/04348/fafweb_builds/master/"+file, 'r')
+        #f = urlopen("https://raw.githubusercontent.com/04348/fafweb_builds/master/"+file)
+        #with urllib.request.urlopen('https://raw.githubusercontent.com/04348/fafweb_builds/master/'+file) as response:
+        #    html = response.read().decode("utf-8") 
+        #    s = convertToHtml(html)
+        #    texts.append(s)  
+        s = convertToHtml(f.read())
+        texts.append(s)      
     return texts
 
 def view_buildSelect(request):
