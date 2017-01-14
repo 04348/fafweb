@@ -1,7 +1,7 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from build.models import Build, BuildForm
-import urllib.request
+from build_list.revenant import getRevBuild
 # Create your views here.
 
 #Builds code
@@ -26,10 +26,6 @@ prof_icon = ["http://i.imgur.com/q6yX4m7.png", #elem
              "http://i.imgur.com/XMJBCS1.png", #guard
              "http://i.imgur.com/vo2IGDk.png", #rev
             ]
-
-builds_rev = [
-    "Herault_DPS-Support.txt",
-]
 ###
 
 def convertToHtml(s):
@@ -37,43 +33,23 @@ def convertToHtml(s):
     html = html.replace('\t', '&emsp;&emsp;')
     return html
 
-def getBuilds(prof):
-    builds = []
+def getBuilds(prof, build_title, build_cont):
     if (prof == "revenant"):
-        builds = builds_rev
-    return builds
-
-def getBuildTitle(files):
-    texts = []
-    for file in files:
-        s = file.replace('.txt', '')
-        s = s.replace('_', '&nbsp;')
-        texts.append(s)
-    return texts
-
-def getBuildText(files):
-    texts = []
-    for file in files:
-        f = open("build_list/"+file, 'r')
-        #f = urlopen("https://raw.githubusercontent.com/04348/fafweb_builds/master/"+file, 'r')
-        #f = urlopen("https://raw.githubusercontent.com/04348/fafweb_builds/master/"+file)
-        #with urllib.request.urlopen('https://raw.githubusercontent.com/04348/fafweb_builds/master/'+file) as response:
-        #    html = response.read().decode("utf-8") 
-        #    s = convertToHtml(html)
-        #    texts.append(s)  
-        s = convertToHtml(f.read())
-        texts.append(s)      
-    return texts
+        getRevBuild(build_title, build_cont)
+        for i in range(0, len(build_cont)):
+            build_cont[i] = convertToHtml(build_cont[i])
 
 def view_buildSelect(request):
     return render(request, 'build/buildSelect.html', {'prof' : zip(prof_name, prof_icon, prof_url)})
 
 def view_build(request, prof):
     if prof in prof_url:
-        build_list = getBuilds(prof)
-        build_title = getBuildTitle(build_list)
-        build_cont = getBuildText(build_list)
-        isEmpty = bool(len(build_list)==0)
+        build_title = []
+        build_cont = []
+        getBuilds(prof, build_title, build_cont)
+        #getBuildTitle(build_list)
+        #build_cont = getBuildText(build_list)
+        isEmpty = bool(len(build_title)==0)
         return render(request, 'build/build.html', {'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty})
     raise Http404
 
