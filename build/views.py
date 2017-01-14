@@ -95,9 +95,9 @@ def view_buildSelect(request):
 
 def view_build(request, prof):
     if prof in prof_url:
-        build_title = []
-        build_cont = []
-        getBuilds(prof, build_title, build_cont)
+        build_title = [Tdps_support]
+        build_cont = [Cdps_support]
+        #getBuilds(prof, build_title, build_cont)
         print("final : ")
         print(build_title)
         #getBuildTitle(build_list)
