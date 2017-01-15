@@ -69,7 +69,7 @@ ul.tab li a:focus, .active {
 {% block content %}
     <ul class="tab">
         {% for title in titles %}
-            <li><a href="javascript:void(0)" class="tablinks" onclick="openTab(event, 'tab{{ forloop.counter }}')">{{ title|safe }}</a></li>
+            <li><a href="javascript:void(0)" class="tablinks" id="action{{ forloop.counter }}" onclick="openTab(event, 'tab{{ forloop.counter }}')">{{ title|safe }}</a></li>
         {% endfor %}
     </ul>
     {% for title, content in builds %}
@@ -97,5 +97,14 @@ ul.tab li a:focus, .active {
         }
         document.getElementById(tabName).style.display = "block";
         evt.currentTarget.className += " active";
+
+        var getUrl = window.location;
+        var baseUrl = getUrl.protocol + "//" + getUrl.host + "/" + getUrl.pathname.split('/')[1];
+        console.log(baseUrl)
+        //location.href=baseUrl + 'build/_{{ prof }}/' + tabName.split("tab")[1];
+        window.history.pushState("", "", "/build/_{{ prof }}/"+tabName.split("tab")[1]);
     }
+    {% if buildNum != 0 %}
+        document.getElementById("action{{ buildNum }}").click();
+    {% endif %}
 {% endblock %}

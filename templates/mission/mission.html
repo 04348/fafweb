@@ -2,6 +2,9 @@
 {% block css %}
     img {
         max-width: 100%;
+        max-height: 100vh;
+        margin: auto;
+        align-self: center;
     }
     .mission-item {
         background-color: #c0392b;
@@ -29,7 +32,7 @@
     {% for name, place, urls in mission %}
         <div class="mission-item" id="{{ name }}" onclick="setInput('{{ name }}')">{{ name }}
             {% for url in urls %}
-                <img src="{{ url }}" class="mission-item" id="{{ name }}">
+                <img src="{{ url }}" class="mission-item" onclick="setZoom(this.id)" id="{{ name }}_{{ forloop.counter }}">
             {% endfor %}
         </div>
     {% endfor %}
@@ -38,7 +41,6 @@
 
 {% block js %}
     var missionitem = document.getElementsByClassName("mission-item");
-    console.log(missionitem)
 
     for(var i = 0; i < missionitem.length; i++) {
         missionitem.item(i).style.display = 'none';
@@ -46,9 +48,8 @@
 
     function trackChange(value){
         var nbfound = 0;
-        console.log(value);
         for(var i = 0; i < missionitem.length; i++) {
-            if (value.length > 0 && missionitem.item(i).id.toLowerCase().includes(value.toLowerCase())){
+            if (value.length > 0 && missionitem.item(i).id.toLowerCase().split("_")[0].includes(value.toLowerCase())){
                 if ( missionitem.item(i).tagName == "DIV"){
                     missionitem.item(i).style.display = 'block';
                     nbfound++;
@@ -80,5 +81,14 @@
         input.value = name;
         trackChange(name);
     }
-
+    function setZoom(id){
+        console.log(id)
+        var img = document.getElementById(id);
+        console.log(img.style.maxHeight)
+        if (img.style.maxHeight == '100%'){
+            img.style.maxHeight = '100vh';
+        } else {
+            img.style.maxHeight = '100%';
+        }
+    }
 {% endblock %}

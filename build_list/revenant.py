@@ -1,7 +1,13 @@
 def getRevBuild(build_title, build_cont):
-	build_cont.append(Cdps_support,)
-	build_title.append(Tdps_support,)
+	cont = [Cdps_support, Tsupport]
+	title = [Tdps_support, Csupport]
+	for c in cont:
+		build_cont.append(c)
+	for t in title:
+		build_title.append(t)
 
+Tsupport = "Test build"
+Csupport = "Rien à voir ici !"
 
 Tdps_support = "Hérault DPS/Support"
 Cdps_support = """Cet archétype trés polyvalent est valable aussi bien en raid qu'en fractales haut niveaux.

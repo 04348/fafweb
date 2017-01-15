@@ -40,14 +40,25 @@ def getBuilds(prof, build_title, build_cont):
 def view_buildSelect(request):
     return render(request, 'build/buildSelect.html', {'prof' : zip(prof_name, prof_icon, prof_url)})
 
-def view_build(request, prof):
+def view_build_n(request, prof, n):
     if prof in prof_url:
         build_title = []
         build_cont = []
         getBuilds(prof, build_title, build_cont)
         isEmpty = bool(len(build_title)==0)
-        return render(request, 'build/build.html', {'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty})
+        try:
+            n = int(n)
+        except:
+            raise Http404
+        if (n > 0 and n <= len(build_title)):
+            buildNum = n
+        else:
+            buildNum = 0
+        return render(request, 'build/build.html', {'prof':prof ,'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty, 'buildNum':buildNum})
     raise Http404
+
+def view_build(request, prof):
+    return view_build_n(request, prof, 1)
 
 #Old version, using DB (canceled du to 20 simultaneous connection max on psotgre)
 """
