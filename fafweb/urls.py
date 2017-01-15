@@ -22,4 +22,5 @@ urlpatterns = [
     url(r'^$', views.home),
     url(r'^build/', include('build.urls')),
     url(r'^mission/', include('mission.urls')),
+    url(r'^favicon\.ico$', 'django.views.generic.simple.redirect_to', {'url': '/favicon.ico'}),
 ]
