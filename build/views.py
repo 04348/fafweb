@@ -27,7 +27,8 @@ prof_icon = ["http://i.imgur.com/q6yX4m7.png", #elem
 
 def convertToHtml(s):
     html = s.replace('\n', '<br \>')
-    html = html.replace('\t', '&emsp;&emsp;')
+    html = html.replace('><br \>', '>')
+    #html = html.replace('\t', '&emsp;&emsp;')
     return html
 
 def getBuilds(prof, build_title, build_cont):

@@ -1,54 +1,85 @@
 def getRevBuild(build_title, build_cont):
-	cont = [Cdps_support, Tsupport]
-	title = [Tdps_support, Csupport]
+	cont = [C_dps_support, ]
+	title = [T_dps_support, ]
 	for c in cont:
 		build_cont.append(c)
 	for t in title:
 		build_title.append(t)
 
-Tsupport = "Test build"
-Csupport = "Rien à voir ici !"
+#Titre : <h1>titre</h1>
+#Image : <img src="url" />
+#Liste : <ul>
+#  			<li></li>
+#  			<li>
+#    			<ul>
+#					<li></li>
+#					<li></li>
+#				</ul>
+#			</li>
+#			<li>/li>
+#			</ul>
 
-Tdps_support = "Hérault DPS/Support"
-Cdps_support = """Cet archétype trés polyvalent est valable aussi bien en raid qu'en fractales haut niveaux.
-Il permet d'obtenir un bon DPS, beacoup de contréle et une excellente survivabilité.
-Néanmoins, si votre groupe n'a pas besoin de plus d'avantages ou de contréle, une classe de DPS pur sera plus approprié
+T_dps_support = "Hérault DPS/Support"
+C_dps_support = """
+Cet archétype très polyvalent est valable aussi bien en raid qu'en fractales haut niveaux. Il permet d'obtenir un bon DPS, beacoup de contrôle et une excellente survivabilité.
+Néanmoins, si votre groupe n'a pas besoin de plus d'avantages ou de contréle, une classe de DPS comme l'élémentaliste ou le voleur sera plus approprié.
 
 <h1>Equipement</h1>
-Toutes l'équipement en statistiques berserker
-Armes : Epée/Hache () Baton
-Runes : Runes de l'érudit
-Cachets : Cachet d'éclair + Cachet de fermeté sur les deux sets
 
+Toutes l'équipement en statistiques berserker
+<ul>
+	<li>Armes :<ul>
+			<li>Epée/Hache </li>
+			<li>Baton</li>
+		</ul>
+	<li>Runes : Runes de l'érudit</li>
+	<li>Cachets : Cachet d'éclair + Cachet de fermeté sur les deux sets</li>
+</ul>
 <h1>Compétences</h1>
 Dans la majorité des cas, utilisez les légendes Brill et Jalis.
-Si il faut que vous ayez accés é du debuff, utilisez Mallyx au lieu de Jalis.
-Si votre groupe ne posséde aucun mesmer, vous pouvez utiliser Shiro au lieu de Jalis.
+Si il faut que vous ayez accès à du debuff, utilisez Mallyx au lieu de Jalis.
+Si votre groupe ne possède aucun mesmer, vous pouvez utiliser Shiro au lieu de Jalis.
+
+<img src="http://i.imgur.com/NlMI9qJ.png"/>
 
 <h1>Aptitudes</h1>
 
+<img src="http://i.imgur.com/Qa137HJ.jpg"/>
+
 <h1>Utilisation en combat</h1>
 
-Le cycle de dps repose sur le changement de légende, disponible toutes les 10 secondes.
-En effet, ce changement redonne 50 point d'énergie, ce qui permet de consommer 5pts/sec en permanance.
-On garde la facette de la nature active durant tout le combat. Ensuite, cycle est donc séparé en deux phase:
+Le cycle de dps repose sur le changement de légende, disponible toutes les 10 secondes. En effet, ce changement redonne 50 point d'énergie, ce qui permet de consommer 5pts/sec en permanance.
 
-Brill:
-	-On active la facette de vitesse, fureur et protection
-	-On décharge la facette de vitesse sur la cible
-	-On continu l'auto-attaque en utilisant 'off-cd' la compétence 2 de l'épée et la facette des élements
-Lorsque on redescent bas en énergie (vers 5pts), on change pour l'autre légende de faéon é ne pas tomber é court d'énergie, ce qui annulerai la facette de nature
-Ensuite, selon 2nd légende:
-Jalis :
-	-On active Marteaux vengeur
-Mallyx:
-	-On active Etreindre les ténébres
-Shiro:
-	-On active Probabilité improbable
+<h2>Rotation :</h2>
+<ul>
+  <li>Activez la Facette de la nature et gardez-la active pendant tout la durée du combat (à moins que vous n'utilisiez Shiro)</li>
+  <li>Brill :<ul>
+		<li>Activer Facette des éléments, Facette de l'ombre et Facette du Chaos</li>
+		<li>Décharger la Facette des éléments (Vous pouvez attendre un peu si la cible est en mouvement)</li>
+		<li>Lancez autant que possible le 2 à l'épée (Frappe chirurgicale)</li>
+		<li>Continuez avec l'auto attaque et le 2 jusqu'a arriver à moins de 5 points d'énergie et changez de légende</li>
+    </ul>
+  </li>
+  <li>Jalis<ul>
+		<li>Activez les Marteaux Vengeurs</li>
+		<li>Continuez avec l'auto attaque et le 2 jusqu'a arriver à moins de 5 points d'énergie et changez de légende</li>
+    </ul>
+  </li>
+  <li>Mallyx<ul>
+		<li>Activez Succomber aux ténèbres</li>
+		<li>Continuez avec l'auto attaque et le 2 jusqu'a arriver à moins de 5 points d'énergie et changez de légende</li>
+    </ul>
+  </li>
+  <li>Jalis<ul>
+		<li>Activez Probabilités improbables</li>
+		<li>Continuez avec l'auto attaque jusqu'à arriver à moins de 5 points d'énergie et changez de légende</li>
+    </ul>
+  </li>
+</ul>
 
-Puis de la méme maniére qu'avec Brill, on utilise autant que possible le 1 et le 2 de l'épée, puis on change de légende vers 5pts.
 Les compétences 3, 4 et 5 n'ont aucun intéret dans l'optique d'optimiser vos dégats.
-Lorsque vous utilisez les Marteaux Vengeurs de Jalis, faites trés attention : Ce sont des entités é part entiéres, qui peuvent tomber ou se casser (sur les champignons du Gardien de la Vallée par exemple...)
+Lorsque vous utilisez les Marteaux Vengeurs de Jalis, faites très attention : ils peuvent tomber ou se casser (sur les champignons du Gardien de la Vallée par exemple...)
 
-Lorsque vous devez controler un boss, utilisez le 5 é l'épée, changer d'arme pour le baton, executez le 5 de maniére é toucher le plus de fois possible le boss (5 coup maximum), puis:
-Si le contréle n'est pas critique, finissez avec la chaine d'attaque du 2 au béton, sinon déchargez la facette (A éviter si possible)."""
+
+Lorsque vous devez contrôler un boss, utilisez le 5 à l'épée, changez d'arme pour le baton, executez le 5 après avoir un peu reculé de manière à toucher le plus de fois possible le boss (jusqu'a 5 coup), puis si le contréle n'est pas critique, finissez avec la chaine d'attaque du 2 au bâton, sinon déchargez la Facette du Chaos (A éviter si possible).
+"""
