@@ -4,6 +4,7 @@
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
     <link rel="icon" href="https://i.imgur.com/jeQoh3z.png">
     <title>Fils des Ages Farouches {% block page-title %}{% endblock %}</title>
+    <script src="https://raw.githubusercontent.com/zenorocha/clipboard.js/master/dist/clipboard.min.js"></script>
     <style type="text/css">
       body {
         text-align: center;
@@ -64,6 +65,9 @@
           text-align : left;
       }
 
+      .footer {
+        clear: both;
+      }
       #page-title {
         text-align: left;
         padding-top: 5px;
@@ -148,10 +152,16 @@
       </nav>
       <h1 id="page-title">{% block title %}Accueil{% endblock %}</h1>
     </div>
+
     <section id="content">
       {% block content %}{% endblock %}
     </section>
-    <footer>NCsoft®, le logo NC, le logo ArenaNet, ArenaNet®, Arena.net, Guild Wars®, Guild Wars Prophecies, Guild Wars Factions®, Factions, Guild Wars Nightfall®, Nightfall, Guild Wars: Eye of the North®, Guild Wars Eye of the North®, Guild Wars 2 et tous les logos et designs associés sont des marques de commerce ou des marques déposées de NCsoft Corporation.</footer>
+
+    <div class="clear" style="clear:both"></div>
+    
+    <footer>
+      NCsoft®, le logo NC, le logo ArenaNet, ArenaNet®, Arena.net, Guild Wars®, Guild Wars Prophecies, Guild Wars Factions®, Factions, Guild Wars Nightfall®, Nightfall, Guild Wars: Eye of the North®, Guild Wars Eye of the North®, Guild Wars 2 et tous les logos et designs associés sont des marques de commerce ou des marques déposées de NCsoft Corporation.
+    </footer>
     
     <script>
       function myFunction() {

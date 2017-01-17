@@ -1,95 +1,171 @@
 {% extends "base.html" %}
 {% block css %}
-    img {
-        max-width: 100%;
-        max-height: 100vh;
-        margin: auto;
-        align-self: center;
-    }
-    .mission-item {
-        background-color: #c0392b;
-        margin-top: 1px;
-        margin-bottom: 1px;
-        color: #ecf0f1;
-        font-size: 1.25em;
-        display: none;
-    }
-    #inputdiv {
-        background-color: #c0392b;
-        color: #ecf0f1;
-        padding-bottom: 10px;
-        margin-bottom: 10px;
-        box-shadow: 0px 0px 10px 1px #333333;
-    }
+	img {
+		max-width: 100%;
+		max-height: 100vh;
+		margin: auto;
+		align-self: center;
+	}
+	.missionImg {
+		display: none;
+	}
+    .missionDiv {
+		background-color: #c0392b;
+		margin-top: 1px;
+		margin-bottom: 1px;
+		color: #ecf0f1;
+		font-size: 1.25em;
+	}
+	.missionTp {
+		background-color: #ecf0f1;
+		margin: 0px;
+		color: #2c3e50;
+		height: 1.5em;
+	}
+	#inputdiv {
+		background-color: #c0392b;
+		color: #ecf0f1;
+		font-size: 1.25em;
+		padding-bottom: 10px;
+		margin-bottom: 10px;
+		box-shadow: 0px 0px 10px 1px #333333;
+	}
+	.right{
+		float:right;
+		font-size: 0.5em;
+		margin: auto;
+		display: inline-block;
+		vertical-align: middle;
+		line-height: normal;
+	}
+
+	.left{
+		float:left;
+	}
+	.icontitle {
+		font-size: 1.15em
+	}
+	.tpicon {
+		max-width: 1.5em;
+    	max-height: 1.5em;
+	}
+	.tpbutton{
+		vertical-align: top;
+		height: 1.25;
+		margin-top: 0.30em;
+	}
+	.tpinput{
+		vertical-align: top;
+		height: 1.25;
+		margin-top: 0.30em;
+	}
 {% endblock %}
 {% block title %}Mission{% endblock %}
 
 
 {% block content %}
-    <div id="inputdiv">
-        <h2>Entrez le nom de la cible à trouver :</h2>
-        <input type="text" onKeyUP="trackChange(this.value)" id="missionInput">
-    </div>
-    {% for name, place, urls in mission %}
-        <div class="mission-item" id="{{ name }}" onclick="setInput('{{ name }}')">{{ name }}
-            {% for url in urls %}
-                <img src="{{ url }}" class="mission-item" onclick="setZoom(this.id)" id="{{ name }}_{{ forloop.counter }}">
-            {% endfor %}
-        </div>
-    {% endfor %}
+	<div id="inputdiv">
+		<h2>Entrez le nom de la cible à trouver :</h2>
+		<input type="text" onKeyUP="trackChange(this.value)" id="missionInput">
+	</div>
+	{% for mission, tp in mission %}
+		<div onclick="setInput('{{ mission.0 }}')">
+			<div class="missionDiv" id="{{ mission.0 }}">
+				{{ mission.0 }}
+				{% if tp != "" %}
+					<div class="missionImg missionTp">
+						<div class = "missionTpDiv">
+							<img class="tpicon" src="http://i.imgur.com/Kl5xcZB.png">
+							<input class="tpinput" type="text" id="TP{{ forloop.counter }}" value="{{ tp }}" />
+							<button class="tpbutton" data-copytarget="#TP{{ forloop.counter }}">Copier</button>
+						</div>
+					</div>
+				{% endif %}
+				<div>
+					{% for url in mission.2 %}
+						<img src="{{ url }}" onclick="setZoom(this.id)" class="missionImg" id="{{ mission.0 }}_{{ forloop.counter }}">
+					{% endfor %}
+				</div>
+			</div>
+		</div>
+	{% endfor %}
 {% endblock %}
 
 
 {% block js %}
-    var missionitem = document.getElementsByClassName("mission-item");
+	var missiondiv = document.getElementsByClassName("missionDiv");
+	var nbfound = 0;
+    var lastFound;
+    var imgList;
 
-    for(var i = 0; i < missionitem.length; i++) {
-        missionitem.item(i).style.display = 'none';
-    }
+	function trackChange(value){
+		nbfound = 0;
+		for(var i = 0; i < missiondiv.length; i++) {
+			if (missiondiv.item(i).id.toLowerCase().includes(value.toLowerCase())){
+				lastFound = missiondiv.item(i);
+				nbfound++;
+                missiondiv.item(i).style.display = 'block';
+			} else {
+				missiondiv.item(i).style.display = 'none';
+			}
+			displayImgIn(missiondiv.item(i), 'none');
+		}
+		if (nbfound == 1){
+			imgList = lastFound.getElementsByClassName("missionImg");
+			for(var i = 0; i < imgList.length; i++) {
+				displayImgIn(lastFound, 'block');
+			}
+		}
+	}
 
-    function trackChange(value){
-        var nbfound = 0;
-        for(var i = 0; i < missionitem.length; i++) {
-            if (value.length > 0 && missionitem.item(i).id.toLowerCase().split("_")[0].includes(value.toLowerCase())){
-                if ( missionitem.item(i).tagName == "DIV"){
-                    missionitem.item(i).style.display = 'block';
-                    nbfound++;
-                }
-            } else {
-                if ( missionitem.item(i).tagName == "DIV"){
-                    missionitem.item(i).style.display = 'none';
-                }
-            }
-        }
-        if (nbfound == 1){
-            for(var i = 0; i < missionitem.length; i++) {
-                if (missionitem.item(i).id.toLowerCase().includes(value.toLowerCase())){
-                    if ( missionitem.item(i).tagName == "IMG"){
-                        missionitem.item(i).style.display = 'block';
-                    }
-                }
-            }
-        } else {
-            for(var i = 0; i < missionitem.length; i++) {
-                if ( missionitem.item(i).tagName == "IMG"){
-                    missionitem.item(i).style.display = 'none';
-                }
-            }
-        }
-    }
-    function setInput(name){
-        var input = document.getElementById("missionInput");
-        input.value = name;
-        trackChange(name);
-    }
-    function setZoom(id){
-        console.log(id)
-        var img = document.getElementById(id);
-        console.log(img.style.maxHeight)
-        if (img.style.maxHeight == '100%'){
-            img.style.maxHeight = '100vh';
-        } else {
-            img.style.maxHeight = '100%';
-        }
-    }
+	function displayImgIn(div, disp){
+		imgList = div.getElementsByClassName("missionImg");
+		for(var i = 0; i < imgList.length; i++) {
+			imgList.item(i).style.display = disp;
+		}
+	}
+
+	function setInput(name){
+		var input = document.getElementById("missionInput");
+		input.value = name;
+		trackChange(name);
+	}
+
+	function setZoom(id){
+		console.log(id)
+		var img = document.getElementById(id);
+		console.log(img.style.maxHeight)
+		if (img.style.maxHeight == '100%'){
+			img.style.maxHeight = '100vh';
+		} else {
+			img.style.maxHeight = '100%';
+		}
+	}
+
+	(function() {
+		'use strict';
+		// click events
+		document.body.addEventListener('click', copy, true);
+		// event handler
+		function copy(e) {
+			// find target element
+			var
+			t = e.target,
+			c = t.dataset.copytarget,
+			inp = (c ? document.querySelector(c) : null);
+			// is element selectable?
+			if (inp && inp.select) {
+				// select text
+				inp.select();
+				try {
+					// copy text
+					document.execCommand('copy');
+					inp.blur();
+				}
+				catch (err) {
+					alert('please press Ctrl/Cmd+C to copy');
+				}
+			}
+		}
+	})();
 {% endblock %}
