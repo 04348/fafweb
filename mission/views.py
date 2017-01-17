@@ -20,19 +20,24 @@ def view_mission(request, mission):
 		if (mission == "course"):
 			list_mission = list_course
 			tp_mission = tp_course
+			name = m_name[4]
 		elif (mission == "defi"):
 			list_mission = list_defi
 			tp_mission = tp_defi
+			name = m_name[2]
 		elif (mission == "prime"):
 			list_mission = list_prime
 			tp_mission = tp_prime
+			name = m_name[1]
 		elif (mission == "puzzle"):
 			list_mission = list_puzzle
 			tp_mission = tp_puzzle
+			name = m_name[3]
 		else:
 			list_mission = list_rando
 			tp_mission = tp_rando
-		return render(request, 'mission/mission.html', {'mission': zip(list_mission, tp_mission)})
+			name = m_name[0]
+		return render(request, 'mission/mission.html', {'mission': zip(list_mission, tp_mission), 'm_name':name})
 	raise Http404
 
 list_puzzle = [
@@ -106,7 +111,7 @@ list_prime = [
 	["Yanonka, la palefrenière de rats", "Champs de ruines ", ["http://i.imgur.com/9SFufAk.jpg"],],
 ]
 
-list_prime = [
+tp_prime = [
 	"", #"Adjointe" Brooke
 	"", #André \"Sauvage\" Douest
 	"", #Bwiki le Rat de bibiliothèque

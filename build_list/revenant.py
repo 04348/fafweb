@@ -45,7 +45,7 @@ Si votre groupe ne possède aucun mesmer, vous pouvez utiliser Shiro au lieu de 
 <h1>Aptitudes</h1>
 
 <img src="http://i.imgur.com/Qa137HJ.jpg"/>
-
+Dévastation 2-3-1, Invocation 2-1-1, Hérault 2-2-1
 <h1>Utilisation en combat</h1>
 
 Le cycle de dps repose sur le changement de légende, disponible toutes les 10 secondes. En effet, ce changement redonne 50 point d'énergie, ce qui permet de consommer 5pts/sec en permanance.

@@ -18,10 +18,12 @@
     }
     .sli {
             display: inline-block;
-            width: 25%; /* Jouez avec la width ou le zoom ! */
-            min-width: 218px; /* L'image ne débordera pas de la boîte \o/ */
+            /*
+            width: 25%; 
+            min-width: 218px;
             margin: 1ex; padding: 1ex;
             border: 0px;
+            */
     }
     .sfig {
             margin: 0;
@@ -33,7 +35,7 @@
         transform: scale(1.2);
     }
 {% endblock %}
-{% block title %}Builds{% endblock %}
+{% block title %}Missions de guilde{% endblock %}
 {% block content %}
     <ul class="sul">
     {% for name, url, icon in missions %}

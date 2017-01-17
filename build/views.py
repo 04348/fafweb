@@ -1,7 +1,16 @@
 from django.shortcuts import render
 from django.http import HttpResponse
 from build.models import Build, BuildForm
+
 from build_list.revenant import getRevBuild
+from build_list.gardien import getGardBuild
+from build_list.guerrier import getWarBuild
+from build_list.rodeur import getRodBuild
+from build_list.ingenieur import getIngeBuild
+from build_list.voleur import getVolBuild
+from build_list.elementaliste import getEleBuild
+from build_list.necromancien import getNecBuild
+from build_list.envouteur import getEnvBuild
 
 prof_url = ["elementaliste", "envouteur", "necroment", "rodeur", "ingenieur", "voleur", "guerrier", "gardien", "revenant"]
 prof_name = ["Elementaliste",
@@ -34,6 +43,22 @@ def convertToHtml(s):
 def getBuilds(prof, build_title, build_cont):
     if (prof == "revenant"):
         getRevBuild(build_title, build_cont)
+    elif (prof == "guerrier"):
+        getWarBuild(build_title, build_cont)
+    elif (prof == "gardien"):
+        getGardBuild(build_title, build_cont)
+    elif (prof == "voleur"):
+        getVolBuild(build_title, build_cont)
+    elif (prof == "ingenieur"):
+        getIngeBuild(build_title, build_cont)
+    elif (prof == "rodeur"):
+        getRodBuild(build_title, build_cont)
+    elif (prof == "envouteur"):
+        getEnvBuild(build_title, build_cont)
+    elif (prof == "necroment"):
+        getNecBuild(build_title, build_cont)
+    else: #(prof == "elementaliste"):
+        getEleBuild(build_title, build_cont)
 
     for i in range(0, len(build_cont)):
         build_cont[i] = convertToHtml(build_cont[i])
@@ -55,7 +80,7 @@ def view_build_n(request, prof, n):
             buildNum = n
         else:
             buildNum = 0
-        return render(request, 'build/build.html', {'prof':prof ,'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty, 'buildNum':buildNum})
+        return render(request, 'build/build.html', {'prof':prof.capitalize() ,'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty, 'buildNum':buildNum})
     raise Http404
 
 def view_build(request, prof):
