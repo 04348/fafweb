@@ -1,8 +1,10 @@
 <!DOCTYPE html>
+{% load staticfiles %}
 <html lang="fr">
   <head>
     <meta content="text/html; charset=UTF-8" http-equiv="content-type">
-    <title>Fils des Ages Farouches : {% block page-title %}{% endblock %}</title>
+    <link rel="icon" href="https://i.imgur.com/jeQoh3z.png">
+    <title>Fils des Ages Farouches {% block page-title %}{% endblock %}</title>
     <style type="text/css">
       body {
         text-align: center;
@@ -13,22 +15,25 @@
         margin-bottom: 0px;
         margin-left: 0px;
         color: #ecf0f1;
-        background-image: url("http://i.imgur.com/C30CvmH.jpg");
+        background-image: url("https://i.imgur.com/9TZJAzP.jpg");
         background-position: center top;
         background-attachment: fixed;
       }
+      {% block content-style %}
       #content {
-        padding-top: 60px;
+        padding-top: 5px;
         width: 75%;
         text-align: center;
-        margin-top: 112px;
+        margin-top: 162px;
         margin-right: auto;
-        margin-bottom: auto;
+        margin-bottom: 10px;
         margin-left: auto;
+        padding-bottom: 15px;
         background-color: #ecf0f1 !important;
         box-shadow: 0px 0px 10px 1px #333333;
         color: #2c3e50;
       }
+      {% endblock %}
       #top-screen {
         width: 100%;
         position: fixed;
@@ -42,12 +47,27 @@
         color: #ecf0f1;
       }
 
+      footer {
+        width: 75%;
+        margin: auto;
+      }
+
       h1 {
         font-weight: normal;
         font-size: 30px;
         color: #c0392b;
       }
 
+      
+      p{
+          width : 85%;
+          margin : auto;
+          text-align : left;
+      }
+
+      .footer {
+        clear: both;
+      }
       #page-title {
         text-align: left;
         padding-top: 5px;
@@ -91,7 +111,7 @@
         padding-bottom: 14px;
         padding-left: 16px;
         text-decoration: none;
-      transition: all 0.3s ease 0s;
+        transition: all 0.3s ease 0s;
         font-size: 17px;
       }
 
@@ -128,12 +148,21 @@
             &nbsp; </li>
         </ul>
       </nav>
-      <h1 id="page-title"404</h1>
+      <h1 id="page-title">{% block title %}Accueil{% endblock %}</h1>
     </div>
+
     <section id="content">
-      Erreur 404
+      <h1>Erreur 404</h1>
+      <h2>Euh... le fil bleu ?</h2>
+      <img src="http://i.imgur.com/WJu1gjw.png" />
     </section>
-    <footer>© Fils des Ages Farouches</footer>
+
+    <div class="clear" style="clear:both"></div>
+    
+    <footer>
+      NCsoft®, le logo NC, le logo ArenaNet, ArenaNet®, Arena.net, Guild Wars®, Guild Wars Prophecies, Guild Wars Factions®, Factions, Guild Wars Nightfall®, Nightfall, Guild Wars: Eye of the North®, Guild Wars Eye of the North®, Guild Wars 2 et tous les logos et designs associés sont des marques de commerce ou des marques déposées de NCsoft Corporation.
+    </footer>
+    
     <script>
       function myFunction() {
           var x = document.getElementById("myTopnav");
@@ -143,5 +172,26 @@
               x.className = "topnav";
           }
       }
-</script> </body>
+      var timer1;
+
+      function headerResize() {
+          var header = document.getElementById("top-screen")
+          var hh = header.clientHeight;
+          document.getElementById("content").style.marginTop = hh+10;
+          timer1= window.setTimeout(function(){ headerResize() },1000);
+      }
+
+      headerResize();
+
+      if( navigator.userAgent.match(/Android/i)
+        || navigator.userAgent.match(/webOS/i)
+        || navigator.userAgent.match(/iPhone/i)
+        || navigator.userAgent.match(/iPad/i)
+        || navigator.userAgent.match(/iPod/i)
+        || navigator.userAgent.match(/BlackBerry/i)
+        ){
+          document.getElementById("content").style.width = '99%'
+        }
+    </script>
+  </body>
 </html>
