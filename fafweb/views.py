@@ -4,7 +4,7 @@ from django.http import HttpResponse
 
 def home(request):
     if "https" in request.build_absolute_uri():
-        redirect(request.build_absolute_uri().replace('https', 'http'))
+        raise Http404
     return render(request, 'home.html')
 
 def redir(request, url):
