@@ -22,4 +22,6 @@ urlpatterns = [
     url(r'^$', views.home),
     url(r'^build/', include('build.urls')),
     url(r'^mission/', include('mission.urls')),
+    url(r'^url=(?P<url>.+)', views.redir),
+    url(r'^gw2-tooltip-jquery.js', include('mission.urls')),
 ]

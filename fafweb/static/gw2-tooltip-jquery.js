@@ -12,13 +12,13 @@
 
 (function($) {
 
-	var content_url = "http://db.gw2.fr/",
+	var content_url = "http://fils-des-ages-farouches.herokuapp.com/url=http://db.gw2.fr/",
 		icon_loading = content_url + "img/item-tooltip-loading.gif",
 		css_url = content_url + "css/remote-tooltip.css",
-		icon_url = "http://data.gw2.fr/db-icons/<id>.png",
+		icon_url = "http://fils-des-ages-farouches.herokuapp.com/url=http://data.gw2.fr/db-icons/<id>.png",
 		icon_mystic_url = content_url + "img/tooltip-icon-mystic.png",
 		icon_recipe_url = content_url + "img/tooltip-icon-recipe.png",
-		api_url = "http://<domain>/tooltip/<type>/<id>",
+		api_url = "http://fils-des-ages-farouches.herokuapp.com/url=http://<domain>/tooltip/<type>/<id>",
 		domains = {
 			fr: "db.gw2.fr",
 			en: "db.dulfy.net",
