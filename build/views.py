@@ -79,8 +79,8 @@ def view_build_n(request, prof, n):
         if (n > 0 and n <= len(build_title)):
             buildNum = n
         else:
-            buildNum = 0
-        return render(request, 'build/build.html', {'prof':prof.capitalize() ,'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty, 'buildNum':buildNum})
+            buildNum = 1
+        return render(request, 'build/build.html', {'prof':prof ,'builds': zip(build_title, build_cont), 'titles':build_title, 'isEmpty':isEmpty, 'buildNum':buildNum})
     raise Http404
 
 def view_build(request, prof):

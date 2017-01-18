@@ -40,7 +40,7 @@ Dans la majorité des cas, utilisez les légendes Brill et Jalis.
 Si il faut que vous ayez accès à du debuff, utilisez Mallyx au lieu de Jalis.
 Si votre groupe ne possède aucun mesmer, vous pouvez utiliser Shiro au lieu de Jalis.
 
-<img src="http://i.imgur.com/NlMI9qJ.png"/>
+<img src="http://i.imgur.com/7mE2Vbo.png"/>
 
 <h1>Aptitudes</h1>
 
