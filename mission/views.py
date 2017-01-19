@@ -16,6 +16,7 @@ def view_missionSelect(request):
 	return render(request, 'mission/missionSelect.html', {'missions': zip(m_name, m_url, m_icon)})
 
 def view_mission(request, mission):
+	print("list : " + str(len(list_rando)) + ", tp : " + str(len(tp_rando)))
 	if mission in m_url:
 		if (mission == "course"):
 			list_mission = list_course
@@ -498,7 +499,6 @@ list_rando = [
 	["Vallon de Cymbel" ,"Champs de ruine, Point de passage La route de l'ogre",
 		["http://image.noelshack.com/fichiers/2013/16/1366453918-cymbel-s-glen-champs-de-ruines.jpg" ] ],
 ]
-
 tp_rando = [
 	"", #Alc&ocirc;ve de Courtilleracine
 	"", #Alimentation en eau d&#39;Orvanic
@@ -509,6 +509,7 @@ tp_rando = [
 	"", #Balcon des d&eacute;lices
 	"", #Banc de Varech de Malm&eacute;duse
 	"", #Barri&egrave;re de Bercebruy&egrave;re
+	"", #Bassin de la sentinelle
 	"[&BOoAAAA=]", #Belv&eacute;d&egrave;re goutedo 
 	"[&BKUDAAA=]", #Bistrot rouport 
 	"", #Bivouac du Lys
@@ -526,8 +527,8 @@ tp_rando = [
 	"", #Cavit&eacute; du Contrema&icirc;tre
 	"", #Cellier de la Garde du Lion
 	"", #Cellier du Lion Noir
-	"", #Champ de Montesauvage
 	"", #Champ de force de la cinqui&egrave;me brasse
+	"", #Champ de Montesauvage
 	"[&BLgEAAA=]", #Ch&acirc;timent de Bluup 
 	"", #Chute d&#39;East End
 	"", #Chutes de Gerb&eacute;caille
@@ -581,10 +582,10 @@ tp_rando = [
 	"", #Grenier effondr&eacute;
 	"", #Griffure de l&#39;&eacute;clat c&eacute;leste
 	"", #Griffure invisible
-	"", #Grotte Oubli&eacute;e
 	"", #Grotte d&#39;Eaudefonte
 	"", #Grotte de Gorgetoile
 	"", #Grotte de Lawen
+	"", #Grotte Oubli&eacute;e
 	"[&BE8BAAA=]", #Gu&eacute; kraal&eacute;troi 
 	"", #Guet de la bagarre de barils
 	"", #Guet r&eacute;verb&eacute;rant
@@ -594,17 +595,18 @@ tp_rando = [
 	"", #Halte de Soren Draa
 	"", #Impasse du Gladiver
 	"", #Jardin de Fortepatte
+	"", #L&#39;impasse du peuple
 	"", #Laboratoire de la taverne de Turai
 	"[&BI0DAAA=]", #La sellette de Kaldar 
 	"", #Le devoir de Morndottir
 	"", #Le magasin des ouvriers
 	"", #Les Marches du Talus
 	"[&BNUGAAA=]", #Les karkas associ&eacute;s 
-	"", #L&#39;impasse du peuple
 	"[&BNIGAAA=]", #Marche vaporeuses 
 	"[&BPoAAAA=]", #Mirador de Beetletun 
 	"[&BNgGAAA=]", #Monument &agrave; l&#39;ancien 
 	"", #Motte de Lamenoire
+	"", #Mouillage de Covington
 	"", #Mouillage du Capitaine
 	"", #Mur d&#39;enceinte de Claypool
 	"", #Nid d&#39;Araign&eacute;e cavernicole
