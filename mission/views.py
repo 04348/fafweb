@@ -48,9 +48,9 @@ list_puzzle = [
 ]
 
 tp_puzzle = [
-	"", #Laboratoire de proxémie
-	"", #Domaine de Langmar
-	"", #Cache d’Angvar
+	"[&BPkGAAA=]", #Laboratoire de proxémie
+	"[&BPgGAAA=]", #Domaine de Langmar
+	"[&BP8GAAA=]", #Cache d’Angvar
 ]
 
 list_defi = [
@@ -63,12 +63,12 @@ list_defi = [
 ]
 
 tp_defi = [
-	"", #Brise-attaque des eaux du Tourment
-	"", #Stigmatisation et mise à mort
-	"", #De gros problèmes
-	"", #Sauvetage de ravitaillement
-	"", #Défendez la sentinelle de la brèche
-	"", #Lancer de crabe à Sud-Soleil
+	"[&BPsBAAA=]", #Brise-attaque des eaux du Tourment
+	"[&BEsBAAA=]", #Stigmatisation et mise à mort
+	"[&BNICAAA=]", #De gros problèmes
+	"[&BOoBAAA=]", #Sauvetage de ravitaillement
+	"[&BEYEAAA=]", #Défendez la sentinelle de la brèche
+	"[&BNAGAAA=]", #Lancer de crabe à Sud-Soleil
 ]
 
 list_course = [
@@ -82,13 +82,13 @@ list_course = [
 ]
 
 tp_course = [
-	"", #Foulée de l'Ourse
-	"", #Poulet en fuite
-	"", #Fugue du crabe
-	"", #Terrier du Dévoreur
-	"", #Fuite du loup fantôme
-	"", #Course arachnide
-	"", #Pagaie quaggan
+	"[&BOkAAAA=]", #Foulée de l'Ourse
+	"[&BEwBAAA=]", #Poulet en fuite
+	"[&BNAGAAA=]", #Fugue du crabe
+	"[&BMkDAAA=]", #Terrier du Dévoreur
+	"[&BKUAAAA=]", #Fuite du loup fantôme
+	"[&BF0CAAA=]", #Course arachnide
+	"[&BIACAAA=]", #Pagaie quaggan
 ]
 
 list_prime = [
@@ -504,7 +504,7 @@ tp_rando = [
 	"", #Alimentation en eau d&#39;Orvanic
 	"[&BJcDAAA=]", #Antre cach&eacute;cailleux 
 	"", #Antre de Hurleneige
-	"", #Autel d&#39;Inondesel
+	"[&BMcBAAA=]", #Autel d&#39;Inondesel
 	"", #Aveuglement de l&#39;Erudit
 	"", #Balcon des d&eacute;lices
 	"", #Banc de Varech de Malm&eacute;duse
@@ -685,5 +685,5 @@ tp_rando = [
 	"", #Tunnel de Bandacier
 	"", #Tunnel sous le lac
 	"[&BKgCAAA=]", #Upsilon Hyperbolo&iuml;de 
-	"", #Vallon de Cymbel
+	"[&BE8BAAA=]", #Vallon de Cymbel
 ]
