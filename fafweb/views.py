@@ -3,8 +3,6 @@ from django.http import HttpResponse, Http404
 # Create your views here.
 
 def home(request):
-    if "https" in request.build_absolute_uri():
-        raise Http404
     return render(request, 'home.html')
 
 def redir(request, url):
