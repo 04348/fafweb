@@ -30,6 +30,9 @@
 		margin-bottom: 10px;
 		box-shadow: 0px 0px 10px 1px #333333;
 	}
+	input{
+		font-size: 1.5em;
+	}
 	.right{
 		float:right;
 		font-size: 0.5em;
@@ -66,11 +69,11 @@
 {% block content %}
 	<div id="inputdiv">
 		<h2>Entrez le nom de la cible à trouver :</h2>
-		<input type="text" onKeyUP="trackChange(this.value)" id="missionInput">
+		<input type="text" onKeyUP="trackChange(this.value)" id="missionInput"><a onClick="clearInput()" style="font-size:1.5em; cursor: pointer;" alt="Tout effacer"> < </a>
 	</div>
 	{% for mission, tp in mission %}
 		<div onclick="setInput('{{ mission.0 }}')">
-			<div class="missionDiv" id="{{ mission.0 }}">
+			<div class="missionDiv" id="{{ mission.0 }}" style="font-size:1.35em; cursor: pointer;">
 				{{ mission.0 }}
 				{% if tp != "" %}
 					<div class="missionImg missionTp">
@@ -128,6 +131,12 @@
 	function setInput(name){
 		var input = document.getElementById("missionInput");
 		input.value = name;
+		trackChange(name);
+	}
+
+	function clearInput(){
+		var input = document.getElementById("missionInput");
+		input.value = "";
 		trackChange(name);
 	}
 

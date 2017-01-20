@@ -16,7 +16,6 @@ def view_missionSelect(request):
 	return render(request, 'mission/missionSelect.html', {'missions': zip(m_name, m_url, m_icon)})
 
 def view_mission(request, mission):
-	print("list : " + str(len(list_rando)) + ", tp : " + str(len(tp_rando)))
 	if mission in m_url:
 		if (mission == "course"):
 			list_mission = list_course
