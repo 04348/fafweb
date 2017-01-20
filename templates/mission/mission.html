@@ -30,7 +30,7 @@
 		margin-bottom: 10px;
 		box-shadow: 0px 0px 10px 1px #333333;
 	}
-	#inputitem{
+	#missionInput{
 		font-size: 1.5em;
 	}
 	.right{
@@ -76,7 +76,7 @@
 			<div class="missionDiv" id="{{ mission.0 }}" style="font-size:1.35em; cursor: pointer;" id="inputitem">
 				{{ mission.0 }}
 				{% if tp != "" %}
-					<div class="missionImg missionTp">
+					<div class="missionImg missionTp" src="none">
 						<div class = "missionTpDiv">
 							<img class="tpicon" src="http://i.imgur.com/Kl5xcZB.png">
 							<input class="tpinput" type="text" id="TP{{ forloop.counter }}" value="{{ tp }}" />
@@ -100,31 +100,48 @@
 	var nbfound = 0;
     var lastFound;
     var imgList;
+	var contentList = []
+
+	for(var i = 0; i < missiondiv.length; i++) {
+		contentList[i] = [];
+		var srcList = missiondiv.item(i).getElementsByClassName("missionImg");
+		for(var j = 0; j < srcList.length; j++) {
+			contentList[i][j] = srcList[j].src;
+			srcList[j].src = '//:0';
+		}
+	}
 
 	function trackChange(value){
 		nbfound = 0;
+		indexfound = 0;
 		for(var i = 0; i < missiondiv.length; i++) {
 			if (missiondiv.item(i).id.toLowerCase().includes(value.toLowerCase())){
 				lastFound = missiondiv.item(i);
 				nbfound++;
+				indexfound = i;
                 missiondiv.item(i).style.display = 'block';
 			} else {
 				missiondiv.item(i).style.display = 'none';
 			}
-			displayImgIn(missiondiv.item(i), 'none');
+			displayImgIn(missiondiv.item(i), 0, 0);
 		}
 		if (nbfound == 1){
 			imgList = lastFound.getElementsByClassName("missionImg");
-			for(var i = 0; i < imgList.length; i++) {
-				displayImgIn(lastFound, 'block');
-			}
+			displayImgIn(lastFound, indexfound, 1);
 		}
 	}
 
-	function displayImgIn(div, disp){
+	function displayImgIn(div, n, disp){
 		imgList = div.getElementsByClassName("missionImg");
 		for(var i = 0; i < imgList.length; i++) {
-			imgList.item(i).style.display = disp;
+			if (disp == 0) {
+				imgList.item(i).src = '//:0';
+				imgList.item(i).style.display = 'none';
+			} else {
+				imgList.item(i).src = contentList[n][i];
+				imgList.item(i).style.display = 'block';
+			}
+			
 		}
 	}
 
