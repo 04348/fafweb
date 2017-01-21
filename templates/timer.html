@@ -1,0 +1,488 @@
+{% extends "base.html" %}
+{% block css %}
+@import url(https://fonts.googleapis.com/css?family=Open+Sans:400, 700);
+/*body {
+	font-family: 'Open Sans', sans-serif;
+	font-size: 14px;
+	color: #333;
+}*/
+.wrapper {
+	position: relative;
+	padding-top: 1.4em;
+	padding-block-end: 10px;
+    padding: 20px;
+}
+.pointer {
+	position: absolute;
+	height: 101%;
+	border-left: 2px solid red;
+	z-index: 400;
+	top: 0;
+	transition: left 1s ease-in-out;
+}
+.pointer .top, .pointer .down {
+	position: absolute;
+	left: 0;
+	background: red;
+	color: white;
+	font-size: 0.9em;
+	font-weight: bold;
+	padding: 4px 6px;
+	margin-left: -2px;
+}
+.pointer .down {
+	top: 98%;
+}
+.bar {
+	display: flex;
+	flex-wrap: nowrap;
+	padding-bottom: 8px;
+}
+h2 {
+	font-size: 1em;
+	font-weight: bold;
+	width: 100%;
+	margin: 0.25em -7px;
+}
+h2 > img {
+	vertical-align: middle;
+}
+.bar > div {
+	box-sizing: border-box;
+	padding: 0.5em;
+	font-size: 0.8em;
+	position: relative;
+	font-weight: bold;
+}
+.bar > div > span {
+	display: inline-block;
+	padding: 0px 0 2px 0;
+	margin: 2px;
+	color: rgba(0,0,0,0.6);
+	font-weight: normal;
+	border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+.bar > div > strong {
+	display: block;
+}
+.wpboss {
+	vertical-align: sub;
+	padding-right: 3px;
+}
+#copy-button button {
+	background: rgba(255, 255, 255, 0.50) none no-repeat 0% 0%;
+	border-width: 1px;
+	border-radius: 7px;
+	font-size: 9px;
+	padding: 0px 0px 1px 0px;
+}
+{% endblock %}
+
+{% block title %}Horaire des prochains évènements{% endblock %}
+
+{% block content %}
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.5.1/moment.min.js"></script>
+    <div class="wrapper">
+	<div class="pointer">
+		<span class="top"><span>00:00</span></span>
+		<span class="down"><span>00:00</span></span>
+	</div>
+</div>
+{% endblock %}
+
+{% block js %}
+// Original code by FAMME : http://jsfiddle.net/fffam/tukuz9x1/
+// Traduction, Modified by ReActif
+// WorldBoss code by Seyguai
+// Date : 2015/11
+// Using :
+// - Library Moment.js
+// - Web component <copy-button> 
+var metas = {
+	boss: {
+		name: "Bosses Mondiaux",
+		url: "http://wiki-fr.guildwars2.com/wiki/Boss_mondiaux",
+		img: "http://wiki.guildwars2.com/images/thumb/6/6f/Bosses.png/24px-Bosses.png",
+		phases: [
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+			{ duration: 15, color: "linear-gradient( 90deg, #8CA3FF, #A0B3FF )" },
+		],
+	},
+	vb: {
+		name: "Orée d'Emeraude",
+		url: "https://wiki-fr.guildwars2.com/wiki/Or%C3%A9e_d'%C3%A9meraude",
+		img: "http://wiki.guildwars2.com/images/thumb/e/ee/Verdant_Brink.png/24px-Verdant_Brink.png",
+		phases: [
+			{ name: "Jour", duration: 45, color: "#C4E2A5" },
+			{ name: "Nuit", duration: 25, color: "#84C147" },
+			{ name: "Boss de la Canopée", duration: 20, color: "#6DAC2F" },
+			{ name: "Jour", duration: 30, color: "#C4E2A5" },
+		]
+	},
+	ab: {
+		name: "Bassin Aurique",
+		url: "http://wiki-fr.guildwars2.com/wiki/Bassin_aurique",
+		img: "http://wiki.guildwars2.com/images/thumb/6/63/Auric_Basin.png/24px-Auric_Basin.png",
+		phases: [
+			{ name: "Octoliane", duration: 20, color: "#EAB700" },
+			{ name: "Pause", duration: 10, color: "#FFF1C1" },
+			{ name: "Défenses des Avant-Postes & Pylônes", duration: 75, color: "#FFE37F" },
+			{ name: "Défis", duration: 15, color: "#FFD53D" },
+		]
+	},
+	td: {
+		name: "Profondeurs Verdoyantes",
+		url: "http://wiki-fr.guildwars2.com/wiki/Profondeurs_verdoyantes",
+		img: "http://wiki.guildwars2.com/images/thumb/8/8b/Tangled_Depths.png/24px-Tangled_Depths.png",
+		phases: [
+			{ name: "Aider les Avant-Postes", duration: 85, color: "#FFD7D7" },
+			{ name: "Prép.", duration: 5, color: "#FFBDBD" },
+			{ name: "Régents Chaks", duration: 20, color: "#F99" },
+			{ name: "Aider les Avant-Postes", duration: 10, color: "#FFD7D7" },
+		]
+	},
+	ds: {
+		name: "Repli du Dragon",
+		url: "http://wiki-fr.guildwars2.com/wiki/Repli_du_Dragon",
+		img: "https://wiki.guildwars2.com/images/thumb/5/5a/Dragon%27s_Stand.png/24px-Dragon%27s_Stand.png",
+		phases: [
+			{ name: "", duration: 30, color: "linear-gradient( 90deg, #c8c5e5, #DFDDF7 )" },
+			{ name: "Début",  duration: 90, color: "linear-gradient( 90deg, #9f99cc, #C8C5E5 )" },
+		]
+	},
+	dt: {
+		name: "Cimesèche",
+		url: "http://wiki-fr.guildwars2.com/wiki/Cimes%C3%A8che",
+		img: "http://wiki.guildwars2.com/images/thumb/d/d6/Dry_Top.png/24px-Dry_Top.png",
+		phases: [
+			{ name: "Site du Crash (monter la faveur)", duration: 40, color: "#FCFADC" },
+			{ name: "Tempête de Sable", duration: 20, color: "#DED98A" },
+			{ name: "Site du Crash (monter la faveur)", duration: 40, color: "#FCFADC" },
+			{ name: "Tempête de Sable", duration: 20, color: "#DED98A" },
+		]
+	}
+	/*
+	,
+	la: {
+		name: "Arche du Lion",
+		url: "http://wiki-fr.guildwars2.com/wiki/L'Ombre_du_Roi_D%C3%A9ment",
+		img: "http://wiki.guildwars2.com/images/thumb/5/51/Shadow_of_the_Mad_King.png/24px-Shadow_of_the_Mad_King.png",
+		phases: [
+			{ name: "Roi Dément", duration: 120, color: "linear-gradient( 90deg, #DDD, #F5F5F5 )" },
+		]
+	}
+	*/
+};
+	
+var bosses = {
+	infos: {
+		behemoth: {
+			name: 'Béhémoth des Ombres',
+			link: '[&BPcAAAA=]',
+		},
+		elemental: {
+			name: 'Elementaire de Feu',
+			link: '[&BEcAAAA=]',
+		},
+		'great-wurm': {
+			name: 'Guivre de la Jungle',
+			link: '[&BEEFAAA=]',
+		},
+		shatterer: {
+			name: 'Le Destructeur',
+			link: '[&BE4DAAA=]',
+		},
+		'evolved-wurm': {
+			name: 'Grande Guivre de la Jungle',
+			link: '[&BKoBAAA=]',
+		},
+		tequatl: {
+			name: 'Tequatl le Sans-Soleil',
+			link: '[&BNABAAA=]',
+		},
+		markII: {
+			name: 'Golem Mark II',
+			link: '[&BNQCAAA=]',
+		},
+		jormag: {
+			name: 'Griffe de Jormag',
+			link: '[&BHoCAAA=]',
+		},
+		taidha: {
+			name: 'Taidha Covington',
+			link: '[&BKgBAAA=]',
+		},
+		karka: {
+			name: 'Reine Karka',
+			link: '[&BNUGAAA=]',
+		},
+		svanir: {
+			name: 'Chamane Svanir',
+			link: '[&BMIDAAA=]',
+		},
+		modniir: {
+			name: 'Ulgoth le Modniir',
+			link: '[&BLAAAAA=]',
+		},
+		megadestroyer: {
+			name: 'Megadestructeur',
+			link: '[&BM0CAAA=]',
+		},
+	},
+	timers: [
+		{ first: 'markII', second: 'karka', },
+		{ first: 'great-wurm', },
+		{ first: 'jormag', },
+		{ first: 'behemoth', },
+		{ first: 'taidha', second: 'tequatl', },
+		{ first: 'svanir', },
+		{ first: 'megadestroyer', },
+		{ first: 'elemental', },
+		{ first: 'shatterer', second: 'evolved-wurm', },
+		{ first: 'great-wurm', },
+		{ first: 'modniir', },
+		{ first: 'behemoth', },
+		{ first: 'markII', second: 'karka', },
+		{ first: 'svanir', },
+		{ first: 'jormag', },
+		{ first: 'elemental', },
+		{ first: 'taidha', second: 'tequatl', },
+		{ first: 'great-wurm', },
+		{ first: 'megadestroyer', },
+		{ first: 'behemoth', },
+		{ first: 'shatterer', second: 'evolved-wurm', },
+		{ first: 'svanir', },
+		{ first: 'modniir', },
+		{ first: 'elemental', },
+		{ first: 'markII', },
+		{ first: 'great-wurm', },
+		{ first: 'jormag', },
+		{ first: 'behemoth', },
+		{ first: 'taidha', second: 'karka', },
+		{ first: 'svanir', },
+		{ first: 'megadestroyer', },
+		{ first: 'elemental', },
+		{ first: 'shatterer', second: 'tequatl', },
+		{ first: 'great-wurm', },
+		{ first: 'modniir', },
+		{ first: 'behemoth', },
+		{ first: 'markII', second: 'evolved-wurm', },
+		{ first: 'svanir', },
+		{ first: 'jormag', },
+		{ first: 'elemental', },
+		{ first: 'taidha', },
+		{ first: 'great-wurm', },
+		{ first: 'megadestroyer', },
+		{ first: 'behemoth', },
+		{ first: 'shatterer', },
+		{ first: 'svanir', },
+		{ first: 'modniir', second: 'karka', },
+		{ first: 'elemental', },
+		{ first: 'markII', },
+		{ first: 'great-wurm', },
+		{ first: 'jormag', second: 'tequatl', },
+		{ first: 'behemoth', },
+		{ first: 'taidha', },
+		{ first: 'svanir', },
+		{ first: 'megadestroyer', second: 'evolved-wurm', },
+		{ first: 'elemental', },
+		{ first: 'shatterer', },
+		{ first: 'great-wurm', },
+		{ first: 'modniir', },
+		{ first: 'behemoth', },
+		{ first: 'markII', },
+		{ first: 'svanir', },
+		{ first: 'jormag', },
+		{ first: 'elemental', },
+		{ first: 'taidha', second: 'karka', },
+		{ first: 'great-wurm', },
+		{ first: 'megadestroyer', },
+		{ first: 'behemoth', },
+		{ first: 'shatterer', second: 'tequatl', },
+		{ first: 'svanir', },
+		{ first: 'modniir', },
+		{ first: 'elemental', },
+		{ first: 'markII', second: 'evolved-wurm', },
+		{ first: 'great-wurm', },
+		{ first: 'jormag', },
+		{ first: 'behemoth', },
+		{ first: 'taidha', second: 'karka', },
+		{ first: 'svanir', },
+		{ first: 'megadestroyer', },
+		{ first: 'elemental', },
+		{ first: 'shatterer', second: 'tequatl', },
+		{ first: 'great-wurm', },
+		{ first: 'modniir', },
+		{ first: 'behemoth', },
+		{ first: 'markII', second: 'evolved-wurm', },
+		{ first: 'svanir', },
+		{ first: 'jormag', },
+		{ first: 'elemental', },
+		{ first: 'taidha', },
+		{ first: 'great-wurm', },
+		{ first: 'megadestroyer', },
+		{ first: 'behemoth', },
+		{ first: 'shatterer', },
+		{ first: 'svanir', },
+		{ first: 'modniir', },
+		{ first: 'elemental', },
+	]
+};
+
+var NBSP = '&nbsp;';
+
+// Function for moving the pointer to the correct location based on
+// the current time
+function movePointer() {
+	// Get the time
+	var currentTime = moment();
+		// Format with leading 0s so 09:08 doesn't end up as 9:8
+	var hour = ("00" + currentTime.hour()).slice(-2);
+	var minute = ("00" + currentTime.minute()).slice(-2);
+		// How far along are we (in  % ) of the current 2 hour event cycles?
+	var percentOfTwoHours = ((hour % 2) + (minute / 60)) * 50;
+		// Set the text and move the pointer to that %
+	$('.pointer .top span').text(hour + ":" + minute);
+	$('.pointer .down span').text(hour + ":" + minute);
+	$('.pointer').css('left', percentOfTwoHours + "%");
+}
+
+// Function for updating the times
+function updateTimes() {
+
+	// For each block within a map
+	$('.bar>div').each(function ( i ) {
+
+		var elm = $(this);
+		var offset = elm.data('offset');
+		var currentTime = moment();
+
+		// What hour was the start of this 2 hour block?
+		var startHour = Math.floor(currentTime.hour()/2)*2;
+		var correctedTime = startHour + (offset > 59 ? 1 : 0);
+
+		if (elm.data('key') == 'boss') {
+
+			// Retrieve the boss infos for this block
+			var displayId = elm.data('id');
+			var timerId = Math.floor(currentTime.hour() / 2) * 2 * 4 + displayId;
+
+			// Current boss adjustment (display next boss if timer is over)
+			var currentId = currentTime.hour() * 4 + Math.floor(currentTime.minute() / 15);
+			if (currentId > timerId) {
+				timerId = (timerId + 2 * 4) % bosses.timers.length;
+				correctedTime = (correctedTime + 2) % 24;
+			}
+
+			var timerEntry = bosses.timers[timerId];
+			var timerInfo = bossAsHtml(timerEntry.second);
+			timerInfo = bossAsHtml(timerEntry.first) + (timerInfo ? '<br /><br /><font color="BE0000">' + timerInfo + '</font>' : '');
+			elm.find('strong').html(timerInfo);
+		}
+
+		// Format the time so 9:8 becomes 09:08
+		var hour = ("00" + correctedTime).slice(-2);
+		var minute = ("00" + (offset%60)).slice(-2);
+
+		// Set the text
+		elm.find('span').text(hour + ":" + minute);
+	});
+}
+
+function bossAsHtml(key) {
+	var html = '';
+	if (key) {
+		var bossInfo = bosses.infos[key];
+
+        // Two lines mode
+		html += bossInfo.name;
+		html += '<br />'
+		html += '<img src="http://wiki.guildwars2.com/images/d/d2/Waypoint_%28map_icon%29.png" width="15px" height="15px" class="wpboss" /><copy-button target-text="'
+		html += bossInfo.name;
+		html += NBSP
+		html += bossInfo.link;
+		html += '" id="copy-button">'
+		html += bossInfo.link;
+		html += '</copy-button>'
+
+		// One line mode
+		/*
+        html += '<img src="http://wiki.guildwars2.com/images/d/d2/Waypoint_%28map_icon%29.png" width="15px" height="15px" class="wpboss" /><copy-button target-text="'
+		html += bossInfo.name;
+		html += NBSP
+		html += bossInfo.link;
+		html += '" id="copy-button">'
+		html += bossInfo.link;
+		html += '</copy-button>'
+		html += NBSP
+		html += bossInfo.name;
+		*/
+    }
+	return html;
+}
+
+// Function for setting up the bars when first loaded
+// based on the meta event info at the start
+function setupBars() {
+
+	// For each meta event..
+	$.each( metas, function( key, metaEvent ) {
+		if(!metaEvent.phases) return;
+
+		// Create a bar for it on the page
+		var bar = $('<div class="bar"></div>');
+		var offset = 0;
+
+		// For each phase within a bar
+		$.each( metaEvent.phases, function( i, metaPhase ) {
+
+			// Create a block to represent that phase, and set the color
+			// and width based on the duration and color info
+			var block = $('<div style="background-color: #F5F5F5;" data-offset="0"> <span></span> <strong></strong></div>');
+			block.data('key', key);
+			block.data('id', i);
+			block.css('background',metaPhase.color);
+			block.css('width',(100*metaPhase.duration/120)+"%");
+
+			// Store the bar's offset for use in updating the time
+			block.data('offset',offset);
+			offset += metaPhase.duration;
+
+			// Set the phase name for this block (e.g. Sandstorm)
+			block.find('strong').text(metaPhase.name);
+
+			// add this block to the bar
+			bar.append(block);
+		});
+
+		// Set the name for the meta event and add the bar to the page
+		$('.wrapper').append (
+			$('<h2>'
+			+ '<img src="'
+			+ metaEvent.img
+			+ '"/>'
+			+ NBSP + metaEvent.name
+			+ (metaEvent.url ? NBSP + '(' + NBSP + '<a href="' + metaEvent.url + '" target="_blank">Wiki</a>' + NBSP + ')' : '')
+			+ '</h2>')
+		);
+		$('.wrapper').append(bar);
+	});
+}
+
+// Now lets do the things
+setupBars();
+
+// Start the pointer/times at the right place
+movePointer();
+updateTimes();
+
+// set up a timer to update the pointer and times every 5 seconds
+setInterval(movePointer,5000);
+setInterval(updateTimes,5000);
+{% endblock %}
