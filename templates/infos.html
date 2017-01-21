@@ -1,0 +1,105 @@
+{% extends "base.html" %}
+{% block css %}
+.tabledailies{
+    max-width:80%;
+    margin: auto;
+}
+.tabledaily{
+    min-height: 160px;
+    border-collapse: collapse;
+    border: 2px solid #c0392b;
+}
+{% endblock %}
+
+{% block title %}Infos utiles{% endblock %}
+
+
+{% block content %}
+    <h1>Quotidiennes JvE</h1>
+    <table id="pve1" class="tabledailies">
+        <tr>
+        {% for name, com, lmin, lmax, xpac in pve %} 
+            {% if xpac and lmax == 80 %}
+            <td>
+                <table class="tabledaily" border="1">
+                    <tr>
+                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:0.85em">{{ com }}</td>
+                    </tr>
+                </table>
+            </td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    </table>
+    <table id="pve2" class="tabledailies">
+        <tr>
+        {% for name, com, lmin, lmax, xpac in pve %} 
+            {% if not xpac or not lmax == 80 %}
+            <td>
+                <table class="tabledaily" border="1">
+                    <tr>
+                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:0.85em">{{ com }}</td>
+                    </tr>
+                </table>
+            </td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    </table>
+    <h1>Quotidiennes JcJ</h1>
+    <table id="pvp" class="tabledailies">
+        {% for name, com, lmin, lmax, xpac in pvp %} 
+            <td>
+                <table class="tabledaily" border="1">
+                    <tr>
+                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:0.85em">{{ com }}</td>
+                    </tr>
+                </table>
+            </td>
+        {% endfor %}
+    </table>
+    <h1>Quotidiennes McM</h1>
+    <table id="wvw" class="tabledailies">
+        {% for name, com, lmin, lmax, xpac in wvw %} 
+            <td>
+                <table class="tabledaily" border="1">
+                    <tr>
+                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:0.85em">{{ com }}</td>
+                    </tr>
+                </table>
+            </td>
+        {% endfor %}
+    </table>
+    <h1>Quotidiennes Spéciales</h1>
+    <table id="spe" class="tabledailies">
+        {% for name, com, lmin, lmax, xpac in spe %} 
+            <td>
+                <table class="tabledaily" border="1">
+                    <tr>
+                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
+                    </tr>
+                    <tr>
+                        <td style="font-size:0.85em">{{ com }}</td>
+                    </tr>
+                </table>
+            </td>
+        {% endfor %}
+    </table>
+{% endblock %}
+
+
+{% block js %}
+    
+{% endblock %}
