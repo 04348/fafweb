@@ -5,6 +5,7 @@ from urllib.request import Request, urlopen
 from celery.schedules import crontab
 from threading import Timer
 from celery import task
+import datetime
 import json
 # Create your views here.
 
@@ -15,12 +16,19 @@ DAILY_PVE = []
 DAILY_PVP = []
 DAILY_WVW = []
 DAILY_SPE = []
+list_ap = [ "[&BA8CAAA=], [&BKYBAAA=], [&BEwDAAA=], [&BIcHAAA=], [&BNIEAAA=], [&BIMCAAA=]",
+            "[&BIMBAAA=], [&BBkAAAA=], [&BEgAAAA=], [&BH8HAAA=], [&BKgCAAA=], [&BGQCAAA=]",
+            "[&BPEBAAA=], [&BKYAAAA=], [&BMIBAAA=], [&BH4HAAA=], [&BP0CAAA=], [&BDgDAAA=]",
+            "[&BOcBAAA=], [&BIMAAAA=], [&BF0AAAA=], [&BKsHAAA=], [&BO4CAAA=], [&BF0GAAA=]",
+            "[&BNMAAAA=], [&BNUGAAA=], [&BMwCAAA=], [&BJQHAAA=], [&BJsCAAA=], [&BHsBAAA=]",
+            "[&BBABAAA=], [&BJIBAAA=], [&BLkCAAA=], [&BH8HAAA=], [&BBEDAAA=], [&BEICAAA=]",
+            "[&BCECAAA=], [&BC0AAAA=], [&BDoBAAA=], [&BIkHAAA=], [&BO4CAAA=], [&BIUCAAA=]", ]
 
 def home(request):
     return render(request, 'home.html')
 
 def infos(request):
-    return render(request, 'infos.html', {'pve':DAILY_PVE, 'pvp':DAILY_PVP, 'wvw':DAILY_WVW, 'spe':DAILY_SPE,})
+    return render(request, 'infos.html', {'pve':DAILY_PVE, 'pvp':DAILY_PVP, 'wvw':DAILY_WVW, 'spe':DAILY_SPE, 'pact':list_ap[datetime.datetime.today().weekday()]})
 
 def redir(request, url):
     return redirect(url)
