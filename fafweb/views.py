@@ -30,6 +30,9 @@ def home(request):
 def infos(request):
     return render(request, 'infos.html', {'pve':DAILY_PVE, 'pvp':DAILY_PVP, 'wvw':DAILY_WVW, 'spe':DAILY_SPE, 'pact':list_ap[datetime.datetime.today().weekday()]})
 
+def timer(request):
+    return render(request, 'timer.html')
+
 def redir(request, url):
     return redirect(url)
 
