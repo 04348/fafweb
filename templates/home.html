@@ -1,6 +1,103 @@
 {% extends "base.html" %}
+{% block css %}
+.fbpubli{
+    background-color: #ecf0f1;
+    border:solid 2px #c0392b;
+    color: #2c3e50;
+    margin: 3px;
+    //padding-top: 10px;
+}
+
+.fbtime{
+    background-color: #c0392b;
+    color: #ecf0f1;
+    text-align: right;
+}
+
+.fbimg{
+    max-width:100%;
+    max-height:100%;
+}
+
+.left_col {
+   float:left;
+   width:45%;
+   text-align: left;
+   padding: 10px;
+}
+.right_col {
+   float:right;
+   width:50%;
+   background-color:#333333;
+   //margin:5px;
+}
+
+.fbtxtonly{
+    text-align: left;
+    padding: 10px;
+}
+
+.cleared {
+  clear: both;
+}
+
+#content{
+    background-color: rgba(51, 51, 51, 0.85) !important;
+    //box-shadow: 0px 0px 10px 1px #333333;
+    color: #ecf0f1;
+}
+{% endblock %}
 {% block title %}Accueil{% endblock %}
 {% block content %}
+    <div id="fb-root"></div>
+    <script>
+        (function(d, s, id) {
+        var js, fjs = d.getElementsByTagName(s)[0];
+        if (d.getElementById(id)) return;
+        js = d.createElement(s); js.id = id;
+        js.src = "//connect.facebook.net/fr_FR/sdk.js#xfbml=1&version=v2.8";
+        fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));     
+    </script>
+    <script type="text/javascript">   
+        function fbFetch(){
+            //Set Url of JSON data from the facebook graph api. make sure callback is set with a '?' to overcome the cross domain problems with JSON
+            var url = "https://graph.facebook.com/1518786195087459/feed?"+
+                    "fields=created_time,full_picture,message"+
+                    "&access_token=1263375167041344|24794e69870a80a21f31ab53e60c75e4";          
+            //Use jQuery getJSON method to fetch the data from the url and then create our unordered list with the relevant data.
+            $.getJSON(url,function(json){
+                console.log(json);
+                var html = "";
+                    //loop through and within data array's retrieve the message variable.
+                    $.each(json.data,function(i,fb){
+                        html += "<div class=\"fbpubli\">"
+                        if (fb.full_picture != undefined){
+                            html += "<div class=\"left_col\">"
+                        } else {
+                            html += "<div class=\"fbtxtonly\">"
+                        }
+                            html += "" + $('<div>').html(fb.message).text() + ""
+                         html += "</div>"
+                         if (fb.full_picture != undefined){
+                            html += "<div class=\"right_col\">"
+                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
+                            html += "</div>"                 
+                         }
+
+                        html+="<div class=\"cleared\"></div>";
+                        html += "<div class=\"fbtime\"><p>Le "+fb.created_time.replace('T', ' à ')+"</p></div></div>";
+                    });
+                //html += "</ul>";
+                //A little animation once fetched
+                $('.facebookfeed').animate({opacity:0}, 500, function(){
+                        $('.facebookfeed').html(html);
+                                                                    });
+                $('.facebookfeed').animate({opacity:1}, 500);
+            
+            });
+        };
+    </script>
     <h2>Bienvenue !</h2>
     <p>
         Ce site est encore en construction, n'hésitez pas à me prévenir si vous rencontrez des bugs, ou de vos idée pour améliorer le site !<br />
@@ -17,7 +114,15 @@
         -Ajout de la possibilité d'ajouter un TP aux missions, seules quelques randonnées en ont pour l'instant<br />
         -Ajout des tooltips Gw2 ! <a href="http://db.gw2.fr/item/77482">Fiole de sel</a><br />
         -Ecriture partielle de quelques builds (toujours en traveaux !)<br />
+        -Ajouts des quotidiennes et des agents du pactes<br />
+        -Ajout du timer<br />
+        -Ajout du feed de la page Facebook de la FaF !<br />
         <br />
     </p>
-    
+    <div class="facebookfeed">
+        <h2>Chargement...</h2>
+    </div>
+{% endblock %}
+{% block js %}
+    fbFetch()
 {% endblock %}
