@@ -107,8 +107,8 @@ def pingSite():
     timer.start()
 
 def start_tasks():
-    pingSite()
+    #pingSite()
     refreshDaily()
 
-init_task = Timer(10, start_tasks)
+init_task = Timer(15, start_tasks)
 init_task.start()
