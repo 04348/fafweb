@@ -12,6 +12,7 @@ import json
 API_DAILY = 'https://api.guildwars2.com/v2/achievements/daily'
 API_ACHIV = 'https://api.guildwars2.com/v2/achievements/'
 DAILY_REFRESH_RATE = 7200
+PING_REFRESH_RATE = 600
 DAILY_PVE = []
 DAILY_PVP = []
 DAILY_WVW = []
@@ -73,7 +74,7 @@ def refreshDaily():
     DAILY_SPE = getDaily(dailyjs, 'special')
     timer = Timer(DAILY_REFRESH_RATE, refreshDaily)
     timer.start()
-    print("Dailies updated ! Next update in " + str(DAILY_REFRESH_RATE) + "seconds")
+    print("Dailies updated ! Next update in " + str(DAILY_REFRESH_RATE) + "s")
 
 def getJSON(url):
     req = Request(url)
@@ -98,4 +99,16 @@ def getDaily(dailyjs, mode):
             print("Error while parsing daily API")
     return dlist
 
-refreshDaily()
+#keep heroku app from go sleep
+def pingSite():
+    print("Ping site. Next ping in "+ str(PING_REFRESH_RATE) + "s")
+    Request("http://fils-des-ages-farouches.herokuapp.com/")
+    timer = Timer(PING_REFRESH_RATE, pingSite)
+    timer.start()
+
+def start_tasks():
+    pingSite()
+    refreshDaily()
+
+init_task = Timer(10, start_tasks)
+init_task.start()
