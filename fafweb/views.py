@@ -24,11 +24,35 @@ list_ap = [ "[&BA8CAAA=], [&BKYBAAA=], [&BEwDAAA=], [&BIcHAAA=], [&BNIEAAA=], [&
             "[&BBABAAA=], [&BJIBAAA=], [&BLkCAAA=], [&BH8HAAA=], [&BBEDAAA=], [&BEICAAA=]",
             "[&BCECAAA=], [&BC0AAAA=], [&BDoBAAA=], [&BIkHAAA=], [&BO4CAAA=], [&BIUCAAA=]", ]
 
+fract_daily = [ 
+    [ ["Fractale Volcanique", "Fractale du Marais", "Fractale des Étherlame "],
+    ["Fractale d'Aveugleneige", "Réacteur de Thaumanova", "Ruines Aquatiques"],
+    ["Fractale de l'Océan Solide", "Complexe Souterrain", "Champs de bataille urbain"],
+    ["Fractale des Étherlame ", "Fractale du Chaos", "Fractale des Cauchemars"],
+    ["Fractale du Flanc de Falaise", "Boss de la Fusion", "Capitaine Mai Trin"],
+    ["Fractale du Marais", "Fractale de l'Océan Solide", "Fractale non classée"],
+    ["Fractale des Cauchemars", "Fractale d'Aveugleneige", "Fractale Volcanique"], ],
+    #"impair
+    [ ["Fractale des Étherlame ", "Fractale non classée", "Réacteur de Thaumanova"],
+    ["Fractale du Flanc de Falaise", "Champs de bataille urbain", "Fractale du Chaos"],
+    ["Complexe Souterrain", "Fractale Volcanique", "Capitaine Mai Trin"],
+    ["Fractale d'Aveugleneige", "Fractale de l'Océan Solide", "Fractale des Cauchemars"],
+    ["Fractale du Chaos", "Fractale non classée", "Champs de bataille urbain"],
+    ["Fractale du Flanc de Falaise", "Fournaise de la Fusion", "Fractale du Marais"],
+    ["Complexe Souterrain", "Réacteur de Thaumanova", "Boss de la Fusion"], ]
+]
+
 def home(request):
     return render(request, 'home.html')
 
 def infos(request):
-    return render(request, 'infos.html', {'pve':DAILY_PVE, 'pvp':DAILY_PVP, 'wvw':DAILY_WVW, 'spe':DAILY_SPE, 'pact':list_ap[datetime.datetime.today().weekday()]})
+    today = datetime.datetime.today()
+    tomorrow = datetime.datetime.today() + datetime.timedelta(days=1)
+    fracsToday = fract_daily[(today.isocalendar()[1])%2][today.weekday()]
+    fracsTomo = fract_daily[(tomorrow.isocalendar()[1])%2][tomorrow.weekday()]
+    print(fracsToday)
+    return render(request, 'infos.html', {'pve':DAILY_PVE, 'pvp':DAILY_PVP, 'wvw':DAILY_WVW, 'spe':DAILY_SPE,
+     'pact':list_ap[datetime.datetime.today().weekday()], 'fracstoday':fracsToday, 'fracstomo':fracsTomo})
 
 def timer(request):
     return render(request, 'timer.html')

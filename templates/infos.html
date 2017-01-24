@@ -1,9 +1,10 @@
 {% extends "base.html" %}
 {% block css %}
-.tabledailies{
-    width:80%;
+#tabledailies{
+    width:95%;
     margin: auto;
-    table-layout: fixed
+    //table-layout: fixed;
+    border-collapse: collapse;
 }
 .tabledaily{
     height: 130px;
@@ -14,106 +15,132 @@
 #patp{
     width: 80%;
 }
+.tooltip {
+	position: relative;
+	display: inline-block;
+	border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+	visibility: hidden;
+	width: 200px;
+	background-color: #333333;
+	color: #ecf0f1;
+	text-align: center;
+	padding: 5px 0;
+	border-radius: 6px;
+	position: absolute;
+	z-index: 1;
+    top: 100%;
+	left: 50%; 
+	margin-left: -100px;
+}
+
+.tooltip:hover .tooltiptext {
+	visibility: visible;
+}
+
+td, th {
+    border: 1px solid #000000;
+    text-align: left;
+    margin: 0px;
+    padding: 10px;
+}
+
+th {
+    text-align: center;
+    padding: 6px;
+    color: #c0392b;
+    font-size: 24px;
+}
+
 {% endblock %}
 
 {% block title %}Infos utiles{% endblock %}
 
 
 {% block content %}
-    <h1>Quotidiennes</h1>
-    <h2>Quotidiennes JvE</h2>
-    <table id="pve1" class="tabledailies">
-        <tr>
-        {% for name, com, lmin, lmax, xpac in pve %} 
-            {% if xpac and lmax == 80 %}
-            <td>
-                <table class="tabledaily" border="1">
-                    <tr>
-                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size:0.75em">{{ com }}</td>
-                    </tr>
-                </table>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </tr>
-    </table>
-
-    <h2>Quotidiennes JcJ</h2>
-    <table id="pvp" class="tabledailies">
-        {% for name, com, lmin, lmax, xpac in pvp %} 
-            <td>
-                <table class="tabledaily" border="1">
-                    <tr>
-                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size:0.75em">{{ com }}</td>
-                    </tr>
-                </table>
-            </td>
-        {% endfor %}
-    </table>
-
-    <h2>Quotidiennes McM</h2>
-    <table id="wvw" class="tabledailies">
-        {% for name, com, lmin, lmax, xpac in wvw %} 
-            <td>
-                <table class="tabledaily" border="1">
-                    <tr>
-                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size:0.75em">{{ com }}</td>
-                    </tr>
-                </table>
-            </td>
-        {% endfor %}
-    </table>
-
-    <h2>Quotidiennes Spéciales</h2>
-    <table id="spe" class="tabledailies">
-        {% for name, com, lmin, lmax, xpac in spe %} 
-            <td>
-                <table class="tabledaily" border="1">
-                    <tr>
-                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size:0.75em">{{ com }}</td>
-                    </tr>
-                </table>
-            </td>
-        {% endfor %}
-    </table>
-
-    Quotidiennes JvE pour accès restreint :
-    <table id="pve2" class="tabledailies">
-        <tr>
-        {% for name, com, lmin, lmax, xpac in pve %} 
-            {% if not xpac or not lmax == 80 %}
-            <td>
-                <table class="tabledaily" border="0.5">
-                    <tr>
-                        <td style="font-size:1.10em"><b>{{ name }}</b></td>
-                    </tr>
-                    <tr>
-                        <td style="font-size:0.75em">{{ com }}</td>
-                    </tr>
-                </table>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </tr>
-    </table>
-
     <h1>Agents du pacte</h1>
     <p>Listes des Points de Passages où trouver les Agents du Pacte aujourd'hui :</p>
     <input type="text" class="tpinput" id="patp" value="Agents du Pactes : {{ pact }}" />
 	<button class="tpbutton" data-copytarget="#patp">Copier</button>
+
+    <h1>Quotidiennes</h1>
+    <table id="tabledailies">
+        <tr><th colspan="100%">Quotidiennes JvE</th></tr>
+        <tr>
+        {% for name, com, lmin, lmax, xpac in pve %} 
+            {% if xpac and lmax == 80 %}
+            <td>
+                <div class="tooltip"><b>{{ name }}</b>
+                    <span class="tooltiptext">{{ com }}</span>
+                </div>
+            </td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+        <tr><th colspan="100%">Quotidiennes JcJ</th></tr>
+        <tr>
+        {% for name, com, lmin, lmax, xpac in pvp %} 
+            <td>
+                <div class="tooltip"><b>{{ name }}</b>
+                    <span class="tooltiptext">{{ com }}</span>
+                </div>
+            </td>
+        {% endfor %}
+    <tr><th colspan="100%">Quotidiennes McM</th></tr>
+        <tr>
+        {% for name, com, lmin, lmax, xpac in wvw %} 
+            <td>
+                <div class="tooltip"><b>{{ name }}</b>
+                    <span class="tooltiptext">{{ com }}</span>
+                </div>
+            </td>
+        {% endfor %}
+    <tr><th colspan="100%">Quotidiennes Spéciales</th></tr>
+        <tr>
+        {% for name, com, lmin, lmax, xpac in spe %} 
+            <td>
+                <div class="tooltip"><b>{{ name }}</b>
+                    <span class="tooltiptext">{{ com }}</span>
+                </div>
+            </td>
+        {% endfor %}
+    <tr><th colspan="100%" style="font-size:16px;">Quotidiennes JvE pour accès restreint :</th></tr>
+        <tr>
+        <tr>
+        {% for name, com, lmin, lmax, xpac in pve %} 
+            {% if not xpac or not lmax == 80 %}
+            <td>
+                <div class="tooltip"><b>{{ name }}</b>
+                    <span class="tooltiptext">{{ com }}</span>
+                </div>
+            </td>
+            {% endif %}
+        {% endfor %}
+        </tr>
+    </table>
     
+    <h1>Fractales Quotidiennes</h1>
+
+    <table id="tabledailies">
+        <tr><th colspan="100%">Fractales d'aujourd'hui</th></tr>
+        <tr>
+        {% for frac in fracstoday %} 
+            <td>
+                <p><b>{{ frac }}</b></p>
+            </td>
+        {% endfor %}
+        </tr>
+        <tr><th colspan="100%">Fractales de demain</th></tr>
+        <tr>
+        {% for frac in fracstomo %} 
+            <td>
+                <p><b>{{ frac }}</b></p>
+            </td>
+        {% endfor %}
+        </tr>
+    </table>
 {% endblock %}
 
 
