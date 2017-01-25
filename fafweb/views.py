@@ -99,15 +99,7 @@ def getDaily(dailyjs, mode):
             print("Error while parsing daily API")
     return dlist
 
-#keep heroku app from go sleep
-def pingSite():
-    print("Ping site. Next ping in "+ str(PING_REFRESH_RATE) + "s")
-    Request("http://fils-des-ages-farouches.herokuapp.com/")
-    timer = Timer(PING_REFRESH_RATE, pingSite)
-    timer.start()
-
 def start_tasks():
-    #pingSite()
     refreshDaily()
 
 init_task = Timer(15, start_tasks)
