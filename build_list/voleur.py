@@ -11,23 +11,22 @@ T_dps = "Fracasseur DPS"
 C_dps = """
 <h1>Equipement</h1>
 
-Toutes l'équipement en statistiques 
+Toutes l'équipement en statistiques Berserker
 <ul>
 	<li>Armes :<ul>
-			<li></li>
-			<li></li>
+			<li>Bâton</li>
 		</ul>
-	<li>Runes : </li>
-	<li>Cachets : </li>
+	<li>Runes : Runes d'érudit</li>
+	<li>Cachets : Cachet d'Air et Cachet de Fermeté</li>
 </ul>
 
 <h1>Compétences</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/laJlVeG.jpg"/>
 
 <h1>Aptitudes</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/exVPfc0.jpg"/>
 
 <h1>Utilisation en combat</h1>
 

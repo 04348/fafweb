@@ -11,23 +11,23 @@ T_ps = "Guerrier \"PS\""
 C_ps = """
 <h1>Equipement</h1>
 
-Toutes l'équipement en statistiques 
+Toutes l'équipement en statistiques Berserker
 <ul>
 	<li>Armes :<ul>
-			<li></li>
-			<li></li>
+			<li>Espadon</li>
+			<li>Masse/Bouclier</li>
 		</ul>
-	<li>Runes : </li>
-	<li>Cachets : </li>
+	<li>Runes : Runes de Force OU Rune de l'érudit</li>
+	<li>Cachets : Cachet de Fermeté et Cachet de Force</li>
 </ul>
 
 <h1>Compétences</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/zZ8tUMR.jpg"/>
 
 <h1>Aptitudes</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/TJEwPgq.png"/>
 
 <h1>Utilisation en combat</h1>
 

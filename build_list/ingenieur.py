@@ -1,6 +1,6 @@
 def getIngeBuild(build_title, build_cont):
-	cont = [C_condi,]
-	title = [T_condi,]
+	cont = []
+	title = []
 	for c in cont:
 		build_cont.append(c)
 	for t in title:

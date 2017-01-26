@@ -11,23 +11,23 @@ T_dps = "Chronomancien DPS"
 C_dps = """
 <h1>Equipement</h1>
 
-Toutes l'équipement en statistiques 
+Toutes l'équipement en statistiques Berserker, Sac à dos Exotique avec un doublon de Platine
 <ul>
 	<li>Armes :<ul>
-			<li></li>
-			<li></li>
+			<li>Epée/Bouclier</li>
+			<li>Focus ou Epée(main gauche)</li>
 		</ul>
-	<li>Runes : </li>
-	<li>Cachets : </li>
+	<li>Runes : Rune de Charisme</li>
+	<li>Cachets : Cachet de Concentration sur l'épée(Main droite) et cachet de Fermeté pour la main gauche</li>
 </ul>
 
 <h1>Compétences</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/1pz3Im7.jpg"/>
 
 <h1>Aptitudes</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/TjC7IRD.jpg"/>
 
 <h1>Utilisation en combat</h1>
 
@@ -41,23 +41,24 @@ T_tank = "Chronomancien Tank"
 C_tank = """
 <h1>Equipement</h1>
 
-Toutes l'équipement en statistiques 
+Equipement en statistiques Berserker, Sac à dos Exotique avec un doublon de Platine
+SAUF Deux choix : 1 anneau et 2 accessoires en Chevalier OU Les 6 pièces d'armure en Commandant
 <ul>
 	<li>Armes :<ul>
-			<li></li>
-			<li></li>
+			<li>Epée/Bouclier</li>
+			<li>Focus ou Epée(main gauche)</li>
 		</ul>
-	<li>Runes : </li>
-	<li>Cachets : </li>
+	<li>Runes : Rune de Charisme</li>
+	<li>Cachets : Cachet de Concentration sur l'épée(Main droite) et cachet de Fermeté pour la main gauche</li>
 </ul>
 
 <h1>Compétences</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/1pz3Im7.jpg"/>
 
 <h1>Aptitudes</h1>
 
-<img src=""/>
+<img src="http://i.imgur.com/TjC7IRD.jpg"/>
 
 <h1>Utilisation en combat</h1>
 
