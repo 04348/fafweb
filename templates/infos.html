@@ -67,58 +67,43 @@ th {
 
     <h1>Quotidiennes</h1>
     <table id="tabledailies">
-        <tr><th colspan="100%">Quotidiennes JvE</th></tr>
-        <tr>
-        {% for name, com, lmin, lmax, xpac in pve %} 
-            {% if xpac and lmax == 80 %}
-            <td>
-                <div class="tooltip"><b>{{ name }}</b>
-                    <span class="tooltiptext">{{ com }}</span>
-                </div>
-            </td>
+        {% for modetitle, dailymode in dailies %}
+            <tr><th colspan="100%">{{ modetitle }}</th></tr>
+            <tr>
+            {% if forloop.first %} <!-- if PvE -->
+                {% for id, lmin, lmax, xpac in dailymode %}
+                    {% if xpac and lmax == 80 %} <!-- if normal PvE daily-->          
+                    <td>
+                        <div class="dailyid tooltip" id="{{ id }}"><b>...</b>
+                            <span class="tooltiptext">...</span>
+                        </div>
+                    </td>
+                    {% endif %}
+                {% endfor %}
+            {% else %} <!-- else -->
+                {% for id, lmin, lmax, xpac in dailymode %} 
+                    <td>
+                        <div class="dailyid tooltip" id="{{ id }}"><b>...</b>
+                            <span class="tooltiptext">...</span>
+                        </div>
+                    </td>
+                {% endfor %}
             {% endif %}
+            </tr>
         {% endfor %}
-        </tr>
-        <tr><th colspan="100%">Quotidiennes JcJ</th></tr>
-        <tr>
-        {% for name, com, lmin, lmax, xpac in pvp %} 
-            <td>
-                <div class="tooltip"><b>{{ name }}</b>
-                    <span class="tooltiptext">{{ com }}</span>
-                </div>
-            </td>
-        {% endfor %}
-    <tr><th colspan="100%">Quotidiennes McM</th></tr>
-        <tr>
-        {% for name, com, lmin, lmax, xpac in wvw %} 
-            <td>
-                <div class="tooltip"><b>{{ name }}</b>
-                    <span class="tooltiptext">{{ com }}</span>
-                </div>
-            </td>
-        {% endfor %}
-    <tr><th colspan="100%">Quotidiennes Spéciales</th></tr>
-        <tr>
-        {% for name, com, lmin, lmax, xpac in spe %} 
-            <td>
-                <div class="tooltip"><b>{{ name }}</b>
-                    <span class="tooltiptext">{{ com }}</span>
-                </div>
-            </td>
-        {% endfor %}
-    <tr><th colspan="100%" style="font-size:16px;">Quotidiennes JvE pour accès restreint :</th></tr>
-        <tr>
-        <tr>
-        {% for name, com, lmin, lmax, xpac in pve %} 
-            {% if not xpac or not lmax == 80 %}
-            <td>
-                <div class="tooltip"><b>{{ name }}</b>
-                    <span class="tooltiptext">{{ com }}</span>
-                </div>
-            </td>
-            {% endif %}
-        {% endfor %}
-        </tr>
+        <!-- low-level PvE -->
+        <tr><th colspan="100%" style="font-size:16px;">Quotidiennes JvE pour accès restreint :</th></tr>
+            <tr>
+                {% for id, lmin, lmax, xpac in dailies.0.1 %}
+                    {% if not xpac or not lmax == 80 %}     
+                    <td>
+                        <div class="dailyid tooltip" id="{{ id }}"><b>...</b>
+                            <span class="tooltiptext">...</span>
+                        </div>
+                    </td>
+                    {% endif %}
+                {% endfor %}
+            </tr>
     </table>
     
     <h1>Fractales Quotidiennes</h1>
@@ -141,6 +126,24 @@ th {
         {% endfor %}
         </tr>
     </table>
+    <script>
+    var dailyid = document.getElementsByClassName('dailyid');
+    var id = 0;
+
+    function displayAchiv(data, i){
+        dailyid.item(i).innerHTML = "<b>"+data['name']+"</b><span class=\"tooltiptext\">"+data['requirement']+"</span>"
+    }
+    
+    for(var i = 0; i < dailyid.length; i++) {
+        $.getJSON('https://api.guildwars2.com/v2/achievements/'+dailyid.item(i).id,
+            (function(thisi) {
+                return function(data) {
+                    displayAchiv(data, thisi);   
+                };
+            }(i))
+        );
+    }
+    </script>
 {% endblock %}
 
 

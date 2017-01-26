@@ -13,10 +13,6 @@ API_DAILY = 'https://api.guildwars2.com/v2/achievements/daily'
 API_ACHIV = 'https://api.guildwars2.com/v2/achievements/'
 DAILY_REFRESH_RATE = 7200
 PING_REFRESH_RATE = 600
-DAILY_PVE = []
-DAILY_PVP = []
-DAILY_WVW = []
-DAILY_SPE = []
 list_ap = [ "[&BA8CAAA=], [&BKYBAAA=], [&BEwDAAA=], [&BIcHAAA=], [&BNIEAAA=], [&BIMCAAA=]",
             "[&BIMBAAA=], [&BBkAAAA=], [&BEgAAAA=], [&BH8HAAA=], [&BKgCAAA=], [&BGQCAAA=]",
             "[&BPEBAAA=], [&BKYAAAA=], [&BMIBAAA=], [&BH4HAAA=], [&BP0CAAA=], [&BDgDAAA=]",
@@ -43,17 +39,33 @@ fract_daily = [
     ["Complexe Souterrain", "Réacteur de Thaumanova", "Boss de la Fusion"], ]
 ]
 
+fract_mode = ["Quotidiennes JcE", "Quotidiennes JcJ", "Quotidiennes McM", "Quotidiennes Spéciales", "Err. : No section"]
+
 def home(request):
     return render(request, 'home.html')
 
 def infos(request):
+    #daily fractals
     today = datetime.datetime.today()
     tomorrow = datetime.datetime.today() + datetime.timedelta(days=1)
     fracsToday = fract_daily[(today.isocalendar()[1])%2][today.weekday()]
     fracsTomo = fract_daily[(tomorrow.isocalendar()[1])%2][tomorrow.weekday()]
-    print(fracsToday)
-    return render(request, 'infos.html', {'pve':DAILY_PVE, 'pvp':DAILY_PVP, 'wvw':DAILY_WVW, 'spe':DAILY_SPE,
-     'pact':list_ap[datetime.datetime.today().weekday()], 'fracstoday':fracsToday, 'fracstomo':fracsTomo})
+    #daily achiv
+    dailies = []
+    dailyjs = getJSON(API_DAILY)
+    index = 0
+    for mode in dailyjs:
+        mode_daily = []
+        for daily in dailyjs[mode]:
+            cur_daily = []
+            cur_daily.append(daily['id'])
+            cur_daily.append(daily['level']['min'])
+            cur_daily.append(daily['level']['max'])
+            cur_daily.append(bool('HeartOfThorns' in daily['required_access']))
+            mode_daily.append(cur_daily)
+        dailies.append([ fract_mode[index], mode_daily])
+        index = index+1
+    return render(request, 'infos.html', {'dailies':dailies, 'pact':list_ap[datetime.datetime.today().weekday()], 'fracstoday':fracsToday, 'fracstomo':fracsTomo})
 
 def timer(request):
     return render(request, 'timer.html')
@@ -61,46 +73,8 @@ def timer(request):
 def redir(request, url):
     return redirect(url)
 
-def refreshDaily():
-    print("Updating Dailies...")
-    global DAILY_PVE
-    global DAILY_PVP
-    global DAILY_WVW
-    global DAILY_SPE
-    dailyjs = getJSON(API_DAILY)
-    DAILY_PVE = getDaily(dailyjs, 'pve')
-    DAILY_PVP = getDaily(dailyjs, 'pvp')
-    DAILY_WVW = getDaily(dailyjs, 'wvw')
-    DAILY_SPE = getDaily(dailyjs, 'special')
-    timer = Timer(DAILY_REFRESH_RATE, refreshDaily)
-    timer.start()
-    print("Dailies updated ! Next update in " + str(DAILY_REFRESH_RATE) + "s")
-
 def getJSON(url):
     req = Request(url)
     req.add_header("Accept-Language", "fr-FR")
     responce = urlopen(req)
     return json.load(responce)
-
-def getDaily(dailyjs, mode):
-    # daily : {name, com, lmin, lmax, xpac}
-    dlist = []
-    for daily in dailyjs[mode]:
-        try:
-            achiv = getJSON(API_ACHIV + str(daily['id']))
-            dlist.append([
-                achiv['name'],
-                achiv['requirement'],
-                daily['level']['min'],
-                daily['level']['max'],
-                bool('HeartOfThorns' in daily['required_access']),
-            ])
-        except:
-            print("Error while parsing daily API")
-    return dlist
-
-def start_tasks():
-    refreshDaily()
-
-init_task = Timer(15, start_tasks)
-init_task.start()
