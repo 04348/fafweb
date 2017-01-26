@@ -24,7 +24,7 @@ PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 SECRET_KEY = "pl(rpyln-l!068)n&jzmjba3to^%y)a00ha+m1gv+nxjog+y2y"
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 # Application definition
 
@@ -45,14 +45,14 @@ INSTALLED_APPS = [
 
 MIDDLEWARE_CLASSES = [
     #'django.middleware.security.SecurityMiddleware',
-    'whitenoise.middleware.WhiteNoiseMiddleware',
-    #'django.contrib.sessions.middleware.SessionMiddleware',
-    #'django.middleware.common.CommonMiddleware',
+    #'whitenoise.middleware.WhiteNoiseMiddleware',
+    'django.contrib.sessions.middleware.SessionMiddleware',
+    'django.middleware.common.CommonMiddleware',
     #'django.middleware.csrf.CsrfViewMiddleware',
     #'django.contrib.auth.middleware.AuthenticationMiddleware',
-    #'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
-    #'django.contrib.messages.middleware.MessageMiddleware',
-    #'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'django.contrib.auth.middleware.SessionAuthenticationMiddleware',
+    'django.contrib.messages.middleware.MessageMiddleware',
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'fafweb.urls'

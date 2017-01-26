@@ -11,8 +11,6 @@ import json
 
 API_DAILY = 'https://api.guildwars2.com/v2/achievements/daily'
 API_ACHIV = 'https://api.guildwars2.com/v2/achievements/'
-DAILY_REFRESH_RATE = 7200
-PING_REFRESH_RATE = 600
 list_ap = [ "[&BA8CAAA=], [&BKYBAAA=], [&BEwDAAA=], [&BIcHAAA=], [&BNIEAAA=], [&BIMCAAA=]",
             "[&BIMBAAA=], [&BBkAAAA=], [&BEgAAAA=], [&BH8HAAA=], [&BKgCAAA=], [&BGQCAAA=]",
             "[&BPEBAAA=], [&BKYAAAA=], [&BMIBAAA=], [&BH4HAAA=], [&BP0CAAA=], [&BDgDAAA=]",
