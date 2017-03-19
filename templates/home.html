@@ -11,7 +11,8 @@
 .fbtime{
     background-color: #c0392b;
     color: #ecf0f1;
-    text-align: right;
+    text-align: center;
+    font-size: 1.10em;
 }
 
 .fbimg{
@@ -24,17 +25,26 @@
    width:45%;
    text-align: left;
    padding: 10px;
+   font-size: 1.15em;
 }
 .right_col {
    float:right;
    width:50%;
    background-color:#333333;
-   //margin:5px;
 }
 
 .fbtxtonly{
     text-align: left;
     padding: 10px;
+    width:100%;
+    font-size: 1.15em;
+}
+
+.fbtitle{
+    background-color: #c0392b;
+    color: #ecf0f1;
+    text-align: left;
+    font-size: 1.25em;
 }
 
 .cleared {
@@ -63,7 +73,7 @@
         function fbFetch(){
             //Set Url of JSON data from the facebook graph api. make sure callback is set with a '?' to overcome the cross domain problems with JSON
             var url = "https://graph.facebook.com/1518786195087459/feed?"+
-                    "fields=created_time,full_picture,message"+
+                    "fields=created_time,full_picture,message,id"+
                     "&access_token=1263375167041344|24794e69870a80a21f31ab53e60c75e4";          
             //Use jQuery getJSON method to fetch the data from the url and then create our unordered list with the relevant data.
             $.getJSON(url,function(json){
@@ -72,7 +82,46 @@
                     //loop through and within data array's retrieve the message variable.
                     $.each(json.data,function(i,fb){
                         html += "<div class=\"fbpubli\">"
-                        if (fb.full_picture != undefined){
+                         /*
+                          *  Image + Titre
+                          */
+                        if (fb.full_picture != undefined && fb.message != undefined && fb.message.length<100){
+                            html += "<div class=\"fbtitle\">"
+                                html += "" + $('<div>').html(fb.message).text() + ""
+                            html += "</div>"
+                            html += "<div class=\"fbimgonly\">"
+                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
+                            html += "</div>"    
+                        }
+                         /*
+                          *  Image Seule
+                          */
+                        else if (fb.full_picture != undefined && fb.message == undefined){
+                            html += "<div class=\"fbimgonly\">"
+                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
+                            html += "</div>"    
+                        }
+                         /*
+                          *  Image + Message
+                          */
+                        else if (fb.full_picture != undefined && fb.message != undefined){
+                            html += "<div class=\"left_col\">"
+                                html += "" + $('<div>').html(fb.message).text() + ""
+                            html += "</div>"    
+                            html += "<div class=\"right_col\">"
+                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
+                            html += "</div>"    
+                        }  
+                         /*
+                          *  Message Seule
+                          */
+                        else if (fb.full_picture == undefined && fb.message != undefined){
+                            html += "<div class=\"fbtxtonly\">"
+                                html += "" + $('<div>').html(fb.message).text() + ""
+                            html += "</div>"    
+                        }
+
+                        /*if (fb.full_picture != undefined && content.length>100){
                             html += "<div class=\"left_col\">"
                         } else {
                             html += "<div class=\"fbtxtonly\">"
@@ -84,9 +133,9 @@
                                 html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
                             html += "</div>"                 
                          }
-
+                        */
                         html+="<div class=\"cleared\"></div>";
-                        html += "<div class=\"fbtime\"><p>Le "+fb.created_time.replace('T', ' à ')+"</p></div></div>";
+                        html += "<a href=\"http://www.facebook.com/"+fb.id+"\"><div class=\"fbtime\"><p>Lien vers la publication ("+fb.created_time.replace('T', ' à ').replace('+0000', '')+")</p></div></div></a>";
                     });
                 //html += "</ul>";
                 //A little animation once fetched
@@ -98,27 +147,7 @@
             });
         };
     </script>
-    <h2>Bienvenue !</h2>
-    <p>
-        Ce site est encore en construction, n'hésitez pas à me prévenir si vous rencontrez des bugs, ou de vos idée pour améliorer le site !<br />
-        Les missions de guildes sont disponibles, par contre les images peuvent être longue à s'afficher (pour l'instant).<br />
-        La section build est opérationelle mais encore aucun n'a été écrit, ça arrive d'ici peu !<br />
-        <br />
-        Pour les missions de guilde, tapez quelques lettres de la cible voulu, les résultats potentiels s'afficheront.<br />
-        Lorsque un seul résultat est possible ou que vous cliquez sur un nom, les images s'affichent (vous pouvez zoomer sur les images qui ne prennent pas toute la largeur avec un clic).
-        <br />
-        <br />-Grenbur
-        <br />
-        <br />
-        Nouveautés :<br />
-        -Ajout de la possibilité d'ajouter un TP aux missions, seules quelques randonnées en ont pour l'instant<br />
-        -Ajout des tooltips Gw2 ! <a href="http://db.gw2.fr/item/77482">Fiole de sel</a><br />
-        -Ecriture partielle de quelques builds (toujours en traveaux !)<br />
-        -Ajouts des quotidiennes et des agents du pactes<br />
-        -Ajout du timer<br />
-        -Ajout du feed de la page Facebook de la FaF !<br />
-        <br />
-    </p>
+    <h1>Fil d'actualité de la FaF</h1>
     <div class="facebookfeed">
         <h2>Chargement...</h2>
     </div>

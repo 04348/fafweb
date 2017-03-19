@@ -4,7 +4,7 @@ from django.http import HttpResponse, Http404
 # Create your views here.
 m_url = ["rando", "prime", "defi", "puzzle", "course"]
 
-m_name = ["Randonnés", "Primes", "Défis", "Puzzles", "Courses"]
+m_name = ["Randonnées", "Primes", "Défis", "Puzzles", "Courses"]
 
 m_icon = ["http://i.imgur.com/UyqQ3Z5.png",
 		  "http://i.imgur.com/A51dpIP.png",
