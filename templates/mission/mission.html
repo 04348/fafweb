@@ -197,20 +197,5 @@
 			}
 		}
 	})();
-
-	var http = new XMLHttpRequest();
-	var url = "http://pastebin.com/api/api_post.php";
-	var params = "api_dev_key=2d6fff589cc3091f774f35bdbdc0b356&api_paste_code=texte&api_paste_private=1&api_paste_name=bugtracker&api_paste_expire_date=10M&api_paste_format=php&api_user_key=180be6d91ed3226295da5e97d3f9d76a";
-	http.open("POST", url, true);
-
-	//Send the proper header information along with the request
-	http.setRequestHeader("Content-type", "application/x-www-form-urlencoded");
-
-	http.onreadystatechange = function() {//Call a function when the state changes.
-		if(http.readyState == 4 && http.status == 200) {
-			alert(http.responseText);
-		}
-	}
-	http.send(params);
 	
 {% endblock %}
