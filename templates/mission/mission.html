@@ -65,30 +65,39 @@
 {% endblock %}
 {% block title %}Missions de guilde : {{ m_name }}{% endblock %}
 
-
 {% block content %}
 	<div id="inputdiv">
 		<h2>Entrez le nom de la cible à trouver :</h2>
 		<input type="text" onKeyUP="trackChange(this.value)" id="missionInput"><a onClick="clearInput()" style="font-size:1.5em; cursor: pointer;" alt="Tout effacer"> < </a>
 	</div>
-	{% for mission, tp in mission %}
+	{% for mission in mission %}
 		<div onclick="setInput('{{ mission.0 }}')">
 			<div class="missionDiv" id="{{ mission.0 }}" style="font-size:1.35em; cursor: pointer;" id="inputitem">
 				{{ mission.0 }}
 					<div class="missionImg missionTp" src="none">
-						{{ mission.1 }}
+						{{ mission.1.0 }}
 					</div>
-				{% if tp != "" %}
+				{% if mission.1.1 != "" %}
+					<div class="missionImg missionTp" src="none">
+						{{ mission.1.1 }}
+					</div>
+				{% endif %}
+				{% if mission.1.2 != "" %}
 					<div class="missionImg missionTp" src="none">
 						<div class = "missionTpDiv">
 							<img class="tpicon" src="http://i.imgur.com/Kl5xcZB.png">
-							<input class="tpinput" type="text" id="TP{{ forloop.counter }}" value="{{ tp }}" />
+							<input class="tpinput" type="text" id="TP{{ forloop.counter }}" value="{{ mission.1.2 }}" />
 							<button class="tpbutton" data-copytarget="#TP{{ forloop.counter }}">Copier</button>
 						</div>
 					</div>
 				{% endif %}
+				{% if mission.1.3 != "" %}
+				<div class="missionImg missionTp" src="none">
+						{{ mission.1.3 }}
+				</div>
+				{% endif %}
 				<div>
-					{% for url in mission.2 %}
+					{% for url in mission.1.4 %}
 						<img src="{{ url }}" onclick="setZoom(this.id)" class="missionImg" id="{{ mission.0 }}_{{ forloop.counter }}">
 					{% endfor %}
 				</div>

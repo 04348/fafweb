@@ -12,21 +12,53 @@
         box-shadow: 0px 0px 10px 1px #333333;
         color: #2c3e50;
     }
-    .prof_icon:hover {
-        transform: scale(.9);
+    .sul {
+        list-style: none;
+        padding: 0;
+    }
+    .sli {
+            display: inline-block;
+            /*
+            width: 25%; 
+            min-width: 218px;
+            margin: 1ex; padding: 1ex;
+            border: 0px;
+            */
+			margin: 5ex;
+    }
+    .sfig {
+            margin: 0;
+            text-align: center;
+            color: #ecf0f1;
+            font-size: 1.25em;
+    }
+	.icon {
+        transform: scale(1.2);
+    }
+    .icon:hover {
+        transform: scale(1.4);
     }
 {% endblock %}
 {% block title %}Builds{% endblock %}
 {% block content %}
-    <table align="center">
-    {% for name, icon, url in prof %}
-        {% if forloop.counter == 1 or forloop.counter == 4 or forloop.counter == 7 %}<tr>{% endif %}
-            <td>
-                <a href="/build/_{{ url }}">
-                    <img src="{{ icon }}"  class="prof_icon">
-                </a>
-            </td>
-        {% if forloop.counter == 3 or forloop.counter == 6 or forloop.counter == 9 %}</tr>{% endif %}
-    {% endfor %}
-    </table>
+<ul class="sul">
+	<li class="sli">
+		<figure class="sfig">
+			<a href="https://snowcrows.com/builds/"><img src="https://wiki.guildwars2.com/images/1/1f/Spirit_Vale_%28achievements%29.png"  class="icon"></a>
+			<figcaption>Raids & Fractales</figcaption>
+		</figure>
+	</li>
+	<li class="sli">
+		<figure class="sfig">
+			<a href="https://metabattle.com/wiki/Conquest"><img src="https://wiki.guildwars2.com/images/c/ca/PvP_Conqueror.png"  class="icon"></a>
+			<figcaption>Joueurs contre Joueurs</figcaption>
+		</figure>
+	</li>
+	<li class="sli">
+		<figure class="sfig">
+			<a href="https://metabattle.com/wiki/WvW"><img src="https://wiki.guildwars2.com/images/d/d2/World_vs_World.png"  class="icon"></a>
+			<figcaption>Monde contre Monde</figcaption>
+		</figure>
+    </li>
+</ul>
 {% endblock %}

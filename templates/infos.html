@@ -81,12 +81,13 @@ th {
                     {% endif %}
                 {% endfor %}
             {% else %} <!-- else -->
-                {% for id, lmin, lmax, xpac in dailymode %} 
+                {% for id, lmin, lmax, xpac in dailymode %}
                     <td>
                         <div class="dailyid tooltip" id="{{ id }}"><b>...</b>
                             <span class="tooltiptext">...</span>
                         </div>
                     </td>
+					{% if forloop.counter == 4 or forloop.counter == 8 or forloop.counter == 12 %}<tr></tr>{% endif %}
                 {% endfor %}
             {% endif %}
             </tr>
@@ -106,26 +107,6 @@ th {
             </tr>
     </table>
     
-    <h1>Fractales Quotidiennes</h1>
-
-    <table id="tabledailies">
-        <tr><th colspan="100%">Fractales d'aujourd'hui</th></tr>
-        <tr>
-        {% for frac in fracstoday %} 
-            <td>
-                <p><b>{{ frac }}</b></p>
-            </td>
-        {% endfor %}
-        </tr>
-        <tr><th colspan="100%">Fractales de demain</th></tr>
-        <tr>
-        {% for frac in fracstomo %} 
-            <td>
-                <p><b>{{ frac }}</b></p>
-            </td>
-        {% endfor %}
-        </tr>
-    </table>
     <script>
     var dailyid = document.getElementsByClassName('dailyid');
     var id = 0;

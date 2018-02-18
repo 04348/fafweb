@@ -19,96 +19,67 @@ def view_mission(request, mission):
 	if mission in m_url:
 		if (mission == "course"):
 			list_mission = list_course
-			tp_mission = tp_course
 			name = m_name[4]
 		elif (mission == "defi"):
 			list_mission = list_defi
-			tp_mission = tp_defi
 			name = m_name[2]
 		elif (mission == "prime"):
 			list_mission = list_prime
-			tp_mission = tp_prime
 			name = m_name[1]
 		elif (mission == "puzzle"):
 			list_mission = list_puzzle
-			tp_mission = tp_puzzle
 			name = m_name[3]
 		else:
 			list_mission = list_rando
-			tp_mission = tp_rando
 			name = m_name[0]
-		return render(request, 'mission/mission.html', {'mission': zip(list_mission, tp_mission), 'm_name':name})
+		return render(request, 'mission/mission.html', {'mission': list_mission, 'm_name':name})
 	raise Http404
 
 list_puzzle = [
-	["Laboratoire de proxémie", "Terres sauvages de Brisban", ["http://i.imgur.com/zpGFPYz.jpg"], ],
-	["Domaine de Langmar", "Plaines d’Ashford", ["http://i.imgur.com/z5JGizB.jpg"], ],
-	["Cache d’Angvar", "Congères d’Antreneige", ["http://i.imgur.com/6BdaLZC.jpg"], ],
+	["Laboratoire de proxémie", ["Terres sauvages de Brisban", "", "[&BPkGAAA=]", "", ["http://i.imgur.com/zpGFPYz.jpg"], ]],
+	["Domaine de Langmar", ["Plaines d’Ashford", "", "[&BPgGAAA=]", "", ["http://i.imgur.com/z5JGizB.jpg"], ]],
+	["Cache d’Angvar", ["Congères d’Antreneige", "", "[&BP8GAAA=]", "", ["http://i.imgur.com/6BdaLZC.jpg"], ]],
 ]
 
-tp_puzzle = [
-	"[&BPkGAAA=]", #Laboratoire de proxémie
-	"[&BPgGAAA=]", #Domaine de Langmar
-	"[&BP8GAAA=]", #Cache d’Angvar
-]
 
 list_defi = [
-	["Brise-attaque des eaux du Tourment", "Steppes de la Strie Flamboyante", ["http://i.imgur.com/6RXIhCt.jpg"], ],
-	["Stigmatisation et mise à mort", "Champs de Ruines", ["http://i.imgur.com/4YbgoyP.jpg"], ],
-	["De gros problèmes", "Mont Maelstrom", ["http://i.imgur.com/Iy4lLT7.jpg"], ],
-	["Sauvetage de ravitaillement", "Marais de Fer", ["http://i.imgur.com/41zkUP7.jpg"], ],
-	["Défendez la sentinelle de la brèche", "Chutes de la Canopée", ["http://i.imgur.com/UZK47Fk.jpg"], ],
-	["Lancer de crabe à Sud-Soleil", "Crique de Sud-Soleil", ["http://i.imgur.com/uFWjmys.jpg"], ],
-]
-
-tp_defi = [
-	"[&BPsBAAA=]", #Brise-attaque des eaux du Tourment
-	"[&BEsBAAA=]", #Stigmatisation et mise à mort
-	"[&BNICAAA=]", #De gros problèmes
-	"[&BOoBAAA=]", #Sauvetage de ravitaillement
-	"[&BEYEAAA=]", #Défendez la sentinelle de la brèche
-	"[&BNAGAAA=]", #Lancer de crabe à Sud-Soleil
+	["Brise-attaque des eaux du Tourment", ["Steppes de la Strie Flamboyante", "", "[&BPsBAAA=]", "", ["http://i.imgur.com/6RXIhCt.jpg"], ]],
+	["Stigmatisation et mise à mort", ["Champs de Ruines", "", "[&BEsBAAA=]", "", ["http://i.imgur.com/4YbgoyP.jpg"], ]],
+	["De gros problèmes", ["Mont Maelstrom", "", "[&BNICAAA=]", "", ["http://i.imgur.com/Iy4lLT7.jpg"], ]],
+	["Sauvetage de ravitaillement", ["Marais de Fer", "", "[&BOoBAAA=]", "", ["http://i.imgur.com/41zkUP7.jpg"], ]],
+	["Défendez la sentinelle de la brèche", ["Chutes de la Canopée", "", "[&BEYEAAA=]", "", ["http://i.imgur.com/UZK47Fk.jpg"], ]],
+	["Lancer de crabe à Sud-Soleil", ["Crique de Sud-Soleil", "", "[&BNAGAAA=]", "", ["http://i.imgur.com/uFWjmys.jpg"], ]],
 ]
 
 list_course = [
-	["Foulée de l'Ourse", "Passage de Lornar", ["http://i.imgur.com/0ETDu4t.jpg"], ],
-	["Poulet en fuite", "Champs de Ruines", ["http://i.imgur.com/8NjwfW3.jpg"], ],
-	["Fugue du crabe", "Crique du Sud Soleil", ["http://i.imgur.com/G80N0HD.jpg"], ],
-	["Terrier du Dévoreur", "Plateau de Diessa", ["http://i.imgur.com/gcyLGct.jpg"], ],
-	["Fuite du loup fantôme", "Hinterlands Harathis", ["http://i.imgur.com/PIMk8LP.jpg"], ],
-	["Course arachnide", "Falaises de Hantedraguerre", ["http://i.imgur.com/S8wNxbk.jpg"], ],
-	["Pagaie quaggan", "Détroit des gorges glacées", ["http://i.imgur.com/u7TtGJq.jpg"], ],
-]
-
-tp_course = [
-	"[&BOkAAAA=]", #Foulée de l'Ourse
-	"[&BEwBAAA=]", #Poulet en fuite
-	"[&BNAGAAA=]", #Fugue du crabe
-	"[&BMkDAAA=]", #Terrier du Dévoreur
-	"[&BKUAAAA=]", #Fuite du loup fantôme
-	"[&BF0CAAA=]", #Course arachnide
-	"[&BIACAAA=]", #Pagaie quaggan
+	["Foulée de l Ourse", ["Passage de Lornar", "", "[&BOkAAAA=]", "", ["http://i.imgur.com/0ETDu4t.jpg"], ]],
+	["Poulet en fuite", ["Champs de Ruines", "", "[&BEwBAAA=]", "", ["http://i.imgur.com/8NjwfW3.jpg"], ]],
+	["Fugue du crabe", ["Crique du Sud Soleil", "", "[&BNAGAAA=]", "", ["http://i.imgur.com/G80N0HD.jpg"], ]],
+	["Terrier du Dévoreur", ["Plateau de Diessa", "", "[&BMkDAAA=]", "", ["http://i.imgur.com/gcyLGct.jpg"], ]],
+	["Fuite du loup fantôme", ["Hinterlands Harathis", "", "[&BKUAAAA=]", "", ["http://i.imgur.com/PIMk8LP.jpg"], ]],
+	["Course arachnide", ["Falaises de Hantedraguerre", "", "[&BF0CAAA=]", "", ["http://i.imgur.com/S8wNxbk.jpg"], ]],
+	["Pagaie quaggan", ["Détroit des gorges glacées", "", "[&BIACAAA=]", "", ["http://i.imgur.com/u7TtGJq.jpg"], ]],
 ]
 
 list_prime = [
-	["\"Adjointe\" Brooke", "Congères Antreneige ", ["http://i.imgur.com/EhzO7wG.jpg?1"],],
-	["André \"Sauvage\" Douest", "Crique de sud-soleil ", ["http://i.imgur.com/yyEujzb.jpg?1"],],
-	["Bwiki le Rat de bibiliothèque", "Passage de Lornar ", ["http://i.imgur.com/u4FOC4Y.jpg"],],
-	["Brekkabek le Skritt", "Hinterlands Harathis ", ["http://i.imgur.com/lqk8y44.jpg"],],
-	["Chaman Arderus Montée", "Flambecoeur ", ["http://i.imgur.com/NdlIw51.jpg"],],
-	["Croisée Michèle", "Marais de Lumillule ", ["http://i.imgur.com/1RRKliB.jpg"],],
-	["Félix Colairik", "Plateau diessa ", ["http://i.imgur.com/07Fkog2.jpg?1"],],
-	["Komali Micui", "Mont Maelstrom ", ["http://i.imgur.com/KXX9kiI.jpg"],],
-	["Mayana Imposant", "Marais de Lumillule  ", ["http://i.imgur.com/HqLRN8S.jpg"],],
-	["Poobadoo", "Colline de Kessex ", ["http://i.imgur.com/i8lKkFh.jpg"],],
-	["Prisonnier 1411", "Marais de fer ", ["http://i.imgur.com/SVwrG6C.jpg"],],
-	["6-RUS", "Chutes de la Canopée ", ["http://i.imgur.com/JbfvXpE.jpg"],],
-	["Sotzz le voyou", "Champs Gendarran ", ["http://i.imgur.com/ceg8i4R.jpg?1"],],
-	["Tarban le Diplomate", "Terres sauvages de Brisban ", ["http://i.imgur.com/PEqLFe1.jpg"],],
-	["Teesa la Louche", "Détroit des gorge glacées ", ["http://i.imgur.com/m0YWBFr.jpg"],],
-	["Trekksa la Rusée", "Steppes Stries Flamboyantes ", ["http://i.imgur.com/kqpufgM.jpg"],],
-	["Trillia Mylieu", "Champs de ruines ", ["http://i.imgur.com/6q821J8.jpg"],],
-	["Yanonka, la palefrenière de rats", "Champs de ruines ", ["http://i.imgur.com/9SFufAk.jpg"],],
+	["\"Adjointe\" Brooke", ["Congères Antreneige ", "", "", "", ["http://i.imgur.com/EhzO7wG.jpg?1"],]],
+	["André \"Sauvage\" Douest", ["Crique de sud-soleil ", "", "", "", ["http://i.imgur.com/yyEujzb.jpg?1"],]],
+	["Bwiki le Rat de bibiliothèque", ["Passage de Lornar ", "", "", "", ["http://i.imgur.com/u4FOC4Y.jpg"],]],
+	["Brekkabek le Skritt", ["Hinterlands Harathis ", "", "", "", ["http://i.imgur.com/lqk8y44.jpg"],]],
+	["Chaman Arderus Montée", ["Flambecoeur ", "", "", "", ["http://i.imgur.com/NdlIw51.jpg"],]],
+	["Croisée Michèle", ["Marais de Lumillule ", "", "", "", ["http://i.imgur.com/1RRKliB.jpg"],]],
+	["Félix Colairik", ["Plateau diessa ", "", "", "", ["http://i.imgur.com/07Fkog2.jpg?1"],]],
+	["Komali Micui", ["Mont Maelstrom ", "", "", "", ["http://i.imgur.com/KXX9kiI.jpg"],]],
+	["Mayana Imposant", ["Marais de Lumillule  ", "", "", "", ["http://i.imgur.com/HqLRN8S.jpg"],]],
+	["Poobadoo", ["Colline de Kessex ", "", "", "", ["http://i.imgur.com/i8lKkFh.jpg"],]],
+	["Prisonnier 1411", ["Marais de fer ", "", "", "", ["http://i.imgur.com/SVwrG6C.jpg"],]],
+	["6-RUS", ["Chutes de la Canopée ", "", "", "", ["http://i.imgur.com/JbfvXpE.jpg"],]],
+	["Sotzz le voyou", ["Champs Gendarran ", "", "", "", ["http://i.imgur.com/ceg8i4R.jpg?1"],]],
+	["Tarban le Diplomate", ["Terres sauvages de Brisban ", "", "", "", ["http://i.imgur.com/PEqLFe1.jpg"],]],
+	["Teesa la Louche", ["Détroit des gorge glacées ", "", "", "", ["http://i.imgur.com/m0YWBFr.jpg"],]],
+	["Trekksa la Rusée", ["Steppes Stries Flamboyantes ", "", "", "", ["http://i.imgur.com/kqpufgM.jpg"],]],
+	["Trillia Mylieu", ["Champs de ruines ", "", "", "", ["http://i.imgur.com/6q821J8.jpg"],]],
+	["Yanonka, la palefrenière de rats", ["Champs de ruines ", "", "", "", ["http://i.imgur.com/9SFufAk.jpg"],]],
 ]
 
 tp_prime = [
@@ -133,556 +104,376 @@ tp_prime = [
 ]
 
 list_rando = [
-	["Alcôve de Courtilleracine" ,"Le Bosquet, Point de passage : portail asura",
-		["http://image.noelshack.com/fichiers/2013/16/1366476839-gardenroot-alcove-le-bosquet-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476829-gardenroot-alcove-le-bosquet-1.jpg" ] ],
-	["Alimentation en eau d’Orvanic" ,"Marais de la Lumillule, Point de passage du goulet de l'océan",
-		["http://image.noelshack.com/fichiers/2013/16/1366537156-orvanic-sourcewaters-lumillule-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366537169-organic-sourcewaters-lumillule-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366537196-organic-sourcewaters-lumillule-3.jpg" ] ],
-	["Antre cachécailleux ","Plaine d'Ashford, Point de passage de Féritas",
-		["http://image.noelshack.com/fichiers/2013/19/1368291278-skalestash-hideway-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368291284-skalestash-hideway-2.jpg" ] ],
-	["Antre de Hurleneige" ,"Contreforts d'Antreneige, Point de passage de la terrasse du faucon des neiges",
-		["http://image.noelshack.com/fichiers/2013/16/1366547289-snowhowl-den-congeres-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366547301-snowhowl-den-congeres-2.jpg" ] ],
-	["Autel d’Inondesel" ,"Marais de la Lumillule, Point de passage d'Inondesel",
-		["http://image.noelshack.com/fichiers/2013/16/1366544859-saltflood-altar-lumillule-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366544874-saltflood-altar-lumillule-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366544882-saltflood-altar-lumillule-3.jpg", "http://image.noelshack.com/fichiers/2013/16/1366544890-saltflood-altar-lumillule-4.jpg" ] ],
-	["Aveuglement de l'Erudit" ,"Falaise de Hantedraguerre, Point de passage de Steelbrachen",
-		["http://image.noelshack.com/fichiers/2013/16/1366545043-scholar-s-blind-hantedraguerre-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545055-scholar-s-blind-hantedraguerre-2.jpg" ] ],
-	["Balcon des délices" ,"Saut de Malchor, Point de passage de Pagga", ["http://image.noelshack.com/fichiers/2013/16/1366454028-delight-s-balcony-malchor-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454038-delight-s-balcony-malchor-2.jpg", 								 "http://image.noelshack.com/fichiers/2013/16/1366454049-delight-s-balcony-malchor-3.jpg" ] ],
-	["Banc de Varech de Malméduse" ,"Congères d'Antreneige, Point de Passage de l'Exil ou de Vaselac",
-		["http://image.noelshack.com/fichiers/2013/14/1365369175-badjelly-kelpbed-congeres-d-entreneige.jpg", "http://image.noelshack.com/fichiers/2014/23/1402058594-banc-de-varech-malmeduse04.jpg" ] ],
-	["Barrière de Bercebruyère" ,"Forêt de Caledon, Point de passage de la Spirale",
-		["http://image.noelshack.com/fichiers/2013/16/1366371370-briarthorn-barrier-foret-de-caledon-passage-de-la-spirale.jpg", "http://image.noelshack.com/fichiers/2014/23/1402058836-barriere-de-bercebruyere04.jpg" ] ],
-	["Bassin de la Sentinelle" ,"Marais de fer, Point de passage du campement du Guet du stigmate",
-		["http://image.noelshack.com/fichiers/2013/16/1366545283-sentinel-sink-marais-de-fer-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545296-sentinel-sink-marais-de-fer-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545305-sentinel-sink-marais-de-fer-3.jpg" ] ],
-	["Belvédère goutedo " ,"Passage de Lornar, Point de passage de la complainte",
-		["http://image.noelshack.com/fichiers/2013/21/1369238775-steamscrap-overlook-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369238779-steamscrap-overlook-2.jpg" ] ],
-	["Bistrot rouport " ,"Citadelle noire, Point de passage du Terrain de rassemblement",
-		["http://image.noelshack.com/fichiers/2013/19/1368289391-wheelport-pub-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368289397-wheelport-pub-2.jpg", "http://image.noelshack.com/fichiers/2013/19/1368289402-wheelport-pub-3.jpg" ] ],
-	["Bivouac du Lys" ,"Province de Métrica, Point de passage de la vieille fonderie de golems",
-		["http://image.noelshack.com/fichiers/2013/16/1366478370-lily-s-bivvy-flambecoeur-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478380-lily-s-bivvy-flambecoeur-2.jpg" ] ],
-	["Bord de Valaigu" ,"Steppes de la Strie flamboyante, Point de passage du Fort de crête fendue",
-		["http://image.noelshack.com/fichiers/2013/16/1366545353-sharkhallow-s-edge-strie-flamboyante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545368-sharkhallow-s-edge-strie-flamboyante-2.jpg" ] ],
-	["Bosquet de Tarstar" ,"Montée de Flambecoeur, Point de passage de l'Apostat",
-		["http://image.noelshack.com/fichiers/2013/16/1366551837-tarstar-copse-flambecoeur-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366551848-tarstar-copse-flambecoeur-2.jpg" ] ],
-	["Boucherie piègécayeux " ,"Marais de fer, Point de passage du village d'Attrapécaille",
-		["http://image.noelshack.com/fichiers/2013/19/1368361357-skalecatch-butcher-shop-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368361361-skalecatch-butcher-shop-2.jpg" ] ],
-	["Cache à miel de Boisecoeur" ,"Vallée de la Reine, Point de passage de Phinney",
-		["http://image.noelshack.com/fichiers/2013/16/1366477565-heartwood-honey-cache-vallee-de-la-reine.jpg" ] ],
-	[" Cache de l’Ours des cavernes" ,"Congères d'Antreneige, Point de passage du faucheur",
-		["http://image.noelshack.com/fichiers/2014/23/1402061466-cache-de-lours-des-cavernes03.jpg", "http://image.noelshack.com/fichiers/2014/23/1402061468-cache-de-lours-des-cavernes04.jpg" ] ],
-	["Cache du fugitif" ,"Rivage maudit, Point de passage du pénitent",
-		["http://image.noelshack.com/fichiers/2013/16/1366376430-cache-of-the-pursued-rivage-maudit-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366376472-cache-of-the-pursued-rivage-maudit-2.jpg" ] ],
-	["Caisse du marchand" ,"Hoelbrak, Point de passage de Peeta",
-		["http://image.noelshack.com/fichiers/2013/16/1366552486-trader-s-tash-hoelbrak-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366552491-trader-s-tash-hoelbrak-2.jpg" ] ],
-	["Camp principal du gardien" ,"Hinterlands Arathis, Point de passage de Grey Gritta",
-		["http://image.noelshack.com/fichiers/2013/16/1366477436-guardian-overwatch-hinterlands-arathis-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477426-guardian-overwatch-hinterlands-arathis-1.jpg" ] ],
-	["Canyons de Gallow" ,"Terres sauvages de Brisban, Point de passage des prés de potence",
-		["http://image.noelshack.com/minis/2013/16/1366471806-161731canyonsdegallow.png", "http://image.noelshack.com/fichiers/2013/16/1366476748-gallow-canyons-brisban-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476781-gallow-canyons-brisban-2.jpg" ] ],
-	["Carré de chou du bandit" ,"Hinterlands Arathis, Point de passage de Démétra",
-		["http://image.noelshack.com/fichiers/2013/14/1365368045-bandit-s-cabbage-patch-hinterlands-harathis.jpg" ] ],
-	["Cavité de la cathédrale" ,"Saut de Malchor, Point de passage de Wren",
-		["http://image.noelshack.com/fichiers/2014/23/1402062970-cavite-de-la-cathedrale03.jpg", "http://image.noelshack.com/fichiers/2013/16/1366378509-cathedral-s-cavity-saut-de-malchior-2.jpg" ] ],
-	["Cavité du Contremaître" ,"Falaises Hantedraguerre, Point de passage de Dociu",
-		["http://image.noelshack.com/fichiers/2013/16/1366476270-foreman-s-recess-hantedraguerre-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476287-foreman-s-recess-hantedraguerre-2.jpg", "http://image.noelshack.com/fichiers/2014/23/1402063192-cavite-du-contremaitre04.jpg" ] ],
-	["Cellier de la Garde du Lion" ,"Contreforts du voyageur, Point de passage du Refuge de Doubléperon",
-		["http://image.noelshack.com/fichiers/2013/16/1366478424-lionguard-larder-contreforts-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478435-lionguard-larder-contreforts-2.jpg" ] ],
-	["Cellier du Lion Noir" ,"Le Bosquet, étage intermédiaire/inférieur, à l'hôtel des ventes",
-		["http://image.noelshack.com/fichiers/2013/14/1365371640-black-lionroot-cellar-le-bosquet-passage-du-speculateur.jpg", "http://image.noelshack.com/fichiers/2014/23/1402063725-cellier-du-lion-noir04.jpg" ] ],
-	["Champ de force de la cinquième brasse" ,"Détroit de la dévastation, Point de passage Fort Trinité",
-		["http://image.noelshack.com/fichiers/2013/16/1366455696-fathom-five-forcefiels-devastation-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366455706-fathom-five-forcefield-devastation-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366455714-fathom-five-forcefield-devastation-3.jpg" ] ],
-	["Champ de Montesauvage" ,"Côte de la marée sanglante, Point de passage de Remanda",
-		["http://image.noelshack.com/fichiers/2013/16/1366539410-risewild-green-maree-sanglante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366539423-risewild-green-maree-sanglante-2.jpg" ] ],
-	["Châtiment de Bluup " ,"Rata Sum, Point de passage de Recherche (niveau inférieur)",
-		["http://image.noelshack.com/fichiers/2013/19/1368287221-bluup-s-comeuppance-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368287324-bluup-s-comeuppance-2.jpg", "http://image.noelshack.com/fichiers/2013/19/1368287357-blupp-s-comeuppance-3.jpg", "http://image.noelshack.com/fichiers/2013/19/1368287382-bluup-s-comeuppance-4.jpg", "http://image.noelshack.com/fichiers/2013/19/1368287403-bluup-s-comeuppance-5.jpg" ] ],
-	["Chute d’East End" ,"Terres sauvages de Brisban, Point de passage de East End",
-		["http://image.noelshack.com/fichiers/2013/16/1366455454-east-end-falls-terres-sauvages-de-brisbane.jpg", "http://image.noelshack.com/fichiers/2014/23/1402064429-chutes-deast-end04.jpg" ] ],
-	["Chutes de Gerbécaille " ,"Chutes de la Canopée, Point de passage d'Okaniroo (en général contesté), Point de passage de l'anneau",
-		["http://image.noelshack.com/fichiers/2013/16/1366545583-skalesplash-fall-canopee-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545599-skalesplash-fall-canopee-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545624-skalesplash-fall-canopee-3.jpg" ] ],
-	["Chutes de la Génitrice" ,"Détroit des Gorges glacées, Point de passage de la Courbe du Yak",
-		["http://image.noelshack.com/fichiers/2013/16/1366372147-broodmother-falls-gorges-glacees-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366372172-broodmother-falls-gorges-glacees-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366372195-broodmother-falls-gorges-glacees-3.jpg" ] ],
-	["Cisaillement interdit" ,"Saut de Malchor, Point de passage des murmures",
-		["http://image.noelshack.com/fichiers/2013/16/1366476189-forbidden-shear-malchor-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476208-forbidden-shear-malchor-2.jpg" ] ],
-	["Coeur du flacon du fondateur" ,"Champs de ruine, Point de passage de la Crécerelle",
-		["http://image.noelshack.com/fichiers/2013/16/1366476418-founder-s-flagon-hearth-champs-de-ruines-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476463-founder-s-flagon-hearth-champs-de-ruines-2.jpg" ] ],
-	["Coffre-fort de Kevach" ,"Contreforts du voyageur, Point de passage de la cave de Lostvyrm",
-		["http://image.noelshack.com/fichiers/2013/21/1369238218-kevach-s-strongroom-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369238224-kevach-s-strongroom-2.jpg", "http://image.noelshack.com/fichiers/2013/21/1369238228-kevach-s-strongroom-3.jpg" ] ],
-	["Coin d'Anya" ,"Plateau de Diessa, Ville de Nolan dans le renfoncement près du panorama", 
-		["http://image.noelshack.com/minis/2013/14/1365360835-gw2-anyas-patch-guild-trek.png","http://image.noelshack.com/fichiers/2014/23/1402065254-coin-danya03.jpg" ] ],
-	["Coin de Castavall" ,"Côte de la marée sanglante, Point de passage de Castavall",
-		["http://image.noelshack.com/fichiers/2013/16/1366378112-castavall-corner-maree-sanglante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366378137-castavall-corner-maree-sanglante-2.jpg" ] ],
-	["Coin du Magièdre" ,"Province de Métrica, Point de passage de la Cour métrique",
-		["http://image.noelshack.com/fichiers/2013/16/1366478528-magihedron-corner-rata-sum-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478539-magihedron-corner-rata-sum-2.jpg" ] ],
-	["Col des Frères" ,"Hoelbrack, Pavillon de la panthère des neiges",
-		["http://image.noelshack.com/fichiers/2013/16/1366373443-brother-s-notch-veines-du-dragon-hoelbrach.jpg" ] ],
-	["Col du Coeur criant" ,"Montée de Flambecoeur, Point de passage de l'Apostat",
-		["http://image.noelshack.com/fichiers/2013/16/1366477506-heart-speaks-notch-flambecoeur-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477519-heart-speaks-notch-flambecoeur-2.jpg" ] ],
-	["Console de commande principale LIN39 " ,"Province de Métrica, Point de passage Muridienne",
-		["http://image.noelshack.com/fichiers/2013/19/1368293149-master-control-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368293155-master-control-2.jpg" ] ],
-	["Contrepoids d’Osenfold" ,"Contreforts du voyageur, Point de passage d'Osenfold",
-		["http://image.noelshack.com/fichiers/2013/16/1366537350-osenfold-counterweights-contreforts-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366537365-osenfold-counterweights-contreforts-2.jpg" ] ],
-	["Côte de Couvedrake" ,"Plateau de Diessa, Point de passage Lac Brèchezeaux",
-		["http://image.noelshack.com/fichiers/2013/16/1366454368-drakehatch-shore-lac-brechezeaux-plateau-de-diessa.jpg" ] ],
-	["Côte de Tagotl " ,"Collines de Kesse, Point de passage de Viathan",
-		["http://image.noelshack.com/fichiers/2013/16/1366551574-tagotl-shore-kessex-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366551588-tagotl-shore-kessex-2.jpg" ] ],
-	["Cour des Chutes brisées" ,"Citadelle Noire, Point de passage Ruines de Rin",
-		["http://image.noelshack.com/fichiers/2013/16/1366372422-broken-falls-courtyard-ruines-de-rin-citadelle-noire.jpg" ] ],
-	["Cour des Chutes de la Biche" ,"Plaines d'Ashford, Point de passage de la Cité d'Ascalon",
-		["http://image.noelshack.com/fichiers/2013/16/1366454245-doefalls-plaines-d-ashford.jpg" ] ],
-	["Crevasse du Gibier" ,"Passage le Lornar, Point de passage de la maison de Vanjir",
-		["http://image.noelshack.com/fichiers/2013/16/1366553483-venison-hollow-lornar-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553493-venison-hollow-lornar-2.jpg" ] ],
-	["Crique d’Isenfall" ,"Congères d'Antreneige, Point de passage d'Isenfall",
-		["http://image.noelshack.com/fichiers/2013/19/1368367128-isenfall-wash-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368367134-isenfall-wash-2.jpg" ] ],
-	["Crique de Trouvécaille" ,"Montée de Flambecoeur, Point de passage du poste de commandement de Tuyère",
-		["http://image.noelshack.com/fichiers/2013/16/1366545509-skalefound-cove-flambecoeur-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545516-skalefound-cove-flambecoeur-2.jpg", "http://image.noelshack.com/fichiers/2014/23/1402067247-gw521.jpg" ] ],
-	["Débarras d’Ulta" ,"Terres sauvages de Brisban, Point de passage de la Métamagique d' Ulta",
-		["http://image.noelshack.com/fichiers/2013/16/1366552883-ulta-scraproom-brisban-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366552891-ulta-scraproom-brisban-2.jpg" ] ],
-	["Dents de la corruption" ,"Détroit des gorges glacées, Point de passage de Drakkar",
-		["http://image.noelshack.com/fichiers/2013/16/1366381538-corruption-s-teeth-gorges-glacees-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366381561-corruption-s-teeth-gorges-glacees-2.jpg" ] ],
-	["Désir de Pochtecatl" ,"Côte de la Marée sanglante, Point de passage de Jelako",
-		["http://image.noelshack.com/fichiers/2013/19/1368306852-pochtecatl-s-desire-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368306859-pochtecatl-s-desire-2.jpg" ] ],
-	["Déversoir de Thaumanova" ,"Province de Métrica, Point de passage muridienne",
-		["http://image.noelshack.com/fichiers/2013/16/1366551951-thaumanova-spillway-metrica-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366551962-thaumanova-spillway-metrica-2.jpg" ] ],
-	["Distillerie de la Chouette cachée" ,"Congères d'Antreneige, Point de passage du Hibou",
-		["http://image.noelshack.com/fichiers/2013/16/1366477672-hidden-owl-distillery-congeres-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477686-hidden-owl-distillery-congeres-2.jpg" ] ],
-	["Dortoir du hall de Skibo " ,"Rata Sum, Point de passage auxiliaire",
-		["http://image.noelshack.com/fichiers/2013/19/1368347709-skibo-hall-dormitory-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368347715-skibo-hall-dormitory-2.jpg", "http://image.noelshack.com/fichiers/2013/19/1368347718-skibo-hall-dormitory-3.jpg" ] ],
-	["Échafaudage autoporteur" ,"Citadelle noire, Point de passage des Ruines de Rin",
-		["http://image.noelshack.com/fichiers/2013/16/1366476584-freestand-scaffold-citadelle-noire.jpg" ] ],
-	["Emplacement hanté" ,"Saut de Malchor, Point de passage des lumières",
-		["http://image.noelshack.com/fichiers/2013/16/1366547831-spectrehaunt-socket-malchor-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366547840-spectrehaunt-socket-malchor-2.jpg" ] ],
-	["Emprise agitée" ,"Mont Maelström, Point de passage du site du vieux traîneau",
-		["http://image.noelshack.com/fichiers/2013/16/1366539142-restless-footings-maelstrom-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366539153-restless-footings-maelstrom-2.jpg" ] ],
-	["Ermitage abandonné" ,"Steppes de la Strie flamboyante, Point de passage de la pierre gardienne",
-		["http://image.noelshack.com/fichiers/2013/16/1366553362-vacant-hermitage-strie-flamboyante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553374-vancant-hermitage-strie-flamboyante2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553379-vacant-hermitage-strie-flamboyante-3.jpg" ] ],
-	["Escarpement du pêcheur" ,"Province de Métrica, Point de passage de la vieille fonderie de golems",
-		["http://image.noelshack.com/fichiers/2013/16/1366475937-fisher-s-crag-province-de-metrica.jpg", "http://image.noelshack.com/fichiers/2014/23/1402072631-escarpement-du-pecheur04.jpg" ] ],
-	["Etreinte de l’hymne" ,"Rivage maudit, Point de passage du rocher de l'épave", ["http://image.noelshack.com/minis/2013/19/1368200260-gw2-anthems-hold-guild-trek.png", "http://image.noelshack.com/fichiers/2013/19/1368374457-anthem-s-hold-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368374462-anthem-s-hold-2.jpg" ] ],
-	["Excavation profanée" ,"Colline de Kesse, Point de passage de Sombreplaie",
-		["http://image.noelshack.com/fichiers/2013/16/1366453991-defiled-delve-collines-de-kesse.jpg" ] ],
-	["Faille de Pouacregriffe" ,"Marais de fer, Point de passage du lac Pourprenage",
-		["http://image.noelshack.com/fichiers/2013/16/1366454154-dirtclaw-cleft-marais-de-fer-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454164-dirtclaw-cleft-marais-de-fer-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454177-dirtclaw-cleft-marais-de-fer-3.jpg" ] ],
-	["Fière tanière du jaguar" ,"Province de Métrica, Point de passage d'Artegon",
-		["http://image.noelshack.com/fichiers/2013/16/1366477957-jaguar-pride-den-metrica-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477964-jaguar-pride-den-metrica-2.jpg" ] ],
-	["Folie de Widd" ,"Forêt de Calédon, Point de passage de Mabon",
-		["http://image.noelshack.com/fichiers/2013/19/1368308040-widd-s-folly-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368308054-widd-s-folly-2.jpg" ] ],
-	["Fontaine de Verdance" ,"Rivage maudit, Point de passage de Verdance",
-		["http://image.noelshack.com/fichiers/2013/16/1366553572-verdance-front-rivage-maudit-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553578-verdance-front-rivage-maudit-2.jpg" ] ],
-	["Fontaine des racines cachées" ,"Le Bosquet, Point de passage du spéculateur",
-		["http://image.noelshack.com/fichiers/2013/14/1365366867-backroot-fountain-le-bosquet.jpg" ] ],
-	["Forage du nid de skelk" ,"Détroit des gorges glacées, Point de passage du bourbier de la mélancolie",
-		["http://image.noelshack.com/fichiers/2013/16/1366545780-skelkness-borehole-gorges-glacees-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545793-skelknest-borehole-gorges-glacees-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545799-skelkness-borehole-gorges-glacees-3.jpg", "http://image.noelshack.com/fichiers/2013/16/1366546286-skelknest-borehole-gorges-glacees-4.jpg" ] ],
-	["Fosse de la guivre des glaces" ,"Détroit des gorges glacées, Point de passage de Dimotiki", 
-		["http://image.noelshack.com/fichiers/2013/16/1366477737-icewurm-trench-gorges-glacees-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477753-icewurm-trench-gorges-glacees-2.jpg" ] ],
-	["Fosse de Piègetroll" ,"Passage de Lornar, Point de passage du Prieuré de Durmand",
-		["http://image.noelshack.com/fichiers/2013/16/1366552628-trolltrap-pit-lornar-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366552638-trolltrap-pit-lornar-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366552646-trolltrap-pit-lornar-3.jpg" ] ],
-	["Fouilles de Stigmafrappe" ,"Champs de ruines, Point de passage de Tenaebron",
-		["http://image.noelshack.com/fichiers/2013/15/1365425010-brandstrike-dig-champs-de-ruines.jpg" ] ],
-	["Fouilleur de fumier" ,"Falaises de Hantedraguerre, Point de passage Steelbrachen",
-		["http://image.noelshack.com/fichiers/2013/16/1366476057-forager-s-midden-falaises-de-hantedraguerres-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476077-forager-s-midden-falaises-de-hantedraguerres-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476155-forager-s-midden-falaises-de-hanedraguerres-3.jpg" ] ],
-	["Foyer de Kari" ,"Collines de Kesse, Point de passage Canyon de Cereboth",
-		["http://image.noelshack.com/fichiers/2013/16/1366478050-kari-s-hot-spot-kessex-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478062-kari-s-hot-spot-kessex-2.jpg" ] ],
-	["Frayère des drakes des récifs" ,"Crique de Sud Soleil, Point de passage de l'Îlot de perle ou directement par le bateau", ["http://image.noelshack.com/fichiers/2013/21/1369222030-reef-drake-den-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369222037-reef-drake-den-2.jpg", "http://image.noelshack.com/fichiers/2013/21/1369222041-reef-drake-den-3.jpg" ] ],
-	["Fuite de Toxal" ,"Terres sauvages de Brisban, Point de passage de Mirkrise",
-		["http://image.noelshack.com/fichiers/2013/19/1368310554-toxal-spill-brisban-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368310563-toxal-spill-brisban-2.jpg" ] ],
-	["Galerie du limon sanglant" ,"Côte de la marée sanglante, Point de passage lugubre",
-		["http://image.noelshack.com/fichiers/2013/15/1365424972-blood-oooze-galery-maree-sanglante.jpg" ] ],
-	["Geôle de Provatum" ,"Montée de Flambecoeur, Point de passage du gardien",
-		["http://image.noelshack.com/fichiers/2013/16/1366538211-provatum-carcer-flambecoeur-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366538229-provatum-carcer-flambecoeur-2.jpg" ] ],
-	["Gouffre de Whitland" ,"Mont Maelström, Point de passage du site du vieux traîneau",
-		["http://image.noelshack.com/fichiers/2013/16/1366554016-whitland-sinkhole-maestrom-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366554026-whitland-sinkhole-maestrom-2.jpg" ] ],
-	["Grenier effondré" ,"Marais de la Lumillule, Point de passage de la Maison de Frimo",
-		["http://image.noelshack.com/fichiers/2013/16/1366545408-shattered-loft-lumillule-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545418-shattered-loft-lumillule-2.jpg" ] ],
-	["Griffure de l’éclat céleste" ,"Hinterlands Arathis, Point de passage de Grey Gritta",
-		["http://image.noelshack.com/fichiers/2013/16/1366545915-skyshrine-scratch-hinterlands-arathis-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545929-skyshrine-scratch-hinterlands-arathis-2.jpg" ] ],
-	["Griffure invisible" ,"Forêt de Caledon, Point de passage de Mabon",
-		["http://image.noelshack.com/fichiers/2013/16/1366553011-unseen-scratch-caledon-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553017-unseen-scratch-caledon-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553026-unseen-scratch-caledon-3.jpg" ] ],
-	["Grotte d’Eaudefonte" ,"Chutes de la Canopée, Point de passage de banc d'écaille.",
-		["http://image.noelshack.com/fichiers/2013/16/1366478575-meltwater-cave-canopee-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366536136-meltwater-cave-canopee-2.jpg" ] ],
-	["Grotte de Gorgetoile" ,"Steppes de la Strie flamboyante, Point de passage du Glaive",
-		["http://image.noelshack.com/fichiers/2013/16/1366377215-canyonweb-cave-strie-flamboyante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366377245-canyonweb-cave-strie-flamboyante-2.jpg" ] ],
-	["Grotte de Lawen" ,"Champs de Gendarran, Point de passage du premier refuge",
-		["http://image.noelshack.com/fichiers/2013/16/1366478261-lawen-grotto-gendarran-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478269-lawen-grotto-gendarran-2.jpg" ] ],
-	["Grotte Oubliée" ,"Steppes de la Strie flamboyante, Point de passage Terra Carorunda",
-		["http://image.noelshack.com/fichiers/2013/16/1366476350-forgotten-grotto-strie-flamboyante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476372-forgotten-grotto-strie-flamboyante-2.jpg" ] ],
-	["Gué kraalétroi" ,"Champs de ruines, Point de passage de la route de l'ogre",
-		["http://image.noelshack.com/fichiers/2013/19/1368359063-narrowkraal-crossing-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368359068-narrowkraal-crossing-2.jpg" ] ],
-	["Guet de la bagarre de barils" ,"Hoelbrak, Point de passage la boussole du Héro",
-		["http://image.noelshack.com/fichiers/2013/16/1366478108-kegbrawl-watch-hoelbrak.jpg" ] ],
-	["Guet réverbérant" ,"Contreforts du voyageur, Point de passage d'Ecorchenuit",
-		["http://image.noelshack.com/fichiers/2013/16/1366539259-reverberant-s-watch-contreforts-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366539273-reverberant-s-watch-contreforts-2.jpg" ] ],
-	["Guivre des sables maraudeuse" ,"Crique de Sud Soleil, Point de passage de l'Avant poste de Kiel", ["http://image.noelshack.com/minis/2013/21/1369222707-gw2-sandwurm-prowl-guild-trek.png", "http://image.noelshack.com/fichiers/2013/21/1369222629-sandwurm-prowl-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369222635-sandwurm-prowl-2.jpg" ] ],
-	["Hall de Guilde du Destin" ,"Vallée de la Reine, Point de passage de Shaemoor",
-		["http://image.noelshack.com/fichiers/2013/16/1366454107-destiny-s-guildhall-vallee-de-la-reine-village-de-shaemoor.jpg" ] ],
-	["Halte de Coupegorge" ,"Champs de Gendarran, Point de passage de Brigantine",
-		["http://image.noelshack.com/fichiers/2013/16/1366453884-cutthroat-s-rest-champs-de-gendarran.jpg" ] ],
-	["Halte de Soren Draa" ,"Province de Métrica, Point de passage de Soren Draa",
-		["http://image.noelshack.com/fichiers/2013/16/1366547573-soren-draa-rest-shop-metrica-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366547580-soren-draa-rest-shop-metrica-2.jpg" ] ],
-	["Impasse du Gladiver" ,"Rivage maudit, Point de passage R & D",
-		["http://image.noelshack.com/fichiers/2013/16/1366554377-winterknell-impasse-rivage-maudit-2.jpg" ] ],
-	["Jardin de Fortepatte" ,"Plateau de Diessa, Point de passage de Nageling",
-		["http://image.noelshack.com/fichiers/2013/16/1366550077-strongpaw-s-garden-plateau-de-diessa.jpg" ] ],
-	["Klub des Karkas" ,"Crique de Sud Soleil, Point de passage de l'Îlot de perle", ["http://image.noelshack.com/minis/2013/21/1369221297-gw2-the-karka-club-guild-trek.png", "http://image.noelshack.com/fichiers/2013/21/1369221408-the-karka-club-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369221423-the-karka-club-2.jpg" ] ],
-	["L’impasse du peuple" ,"Détroit des gorges glacées, Point de passage de Grosnev",
-		["http://image.noelshack.com/fichiers/2013/24/1370856564-impasse-du-peuple-5.jpg", "http://image.noelshack.com/fichiers/2013/24/1370856668-impasse-du-peuple-4.jpg", "http://image.noelshack.com/fichiers/2013/24/1370856851-impasse-du-peuple-3.jpg", "http://image.noelshack.com/fichiers/2013/24/1370857071-impasse-du-peuple-2.jpg" ] ],
-	["Laboratoire de la taverne de Turai" ,"Promontoire divin, Point de passage Place de Balthazar",
-		["http://image.noelshack.com/fichiers/2013/16/1366552769-turai-tavern-promontoire-divin-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366552776-turai-tavern-promontoire-divin-2.jpg" ] ],
-	["La sellette de Kaldar" ,"Hoelbrak, Point de passage du Poste de garde de l'est",
-		["http://image.noelshack.com/fichiers/2013/19/1368290182-kaldar-s-hot-seat-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368290187-kaldar-s-hot-seat-2.jpg" ] ],
-	["Le devoir de Morndottir" ,"Hoelbrack, Point de passage du rocher de l'abri",
-		["http://image.noelshack.com/fichiers/2013/16/1366477391-grimdottir-s-duty-hoelbrak.jpg" ] ],
-	["Le magasin des ouvriers" ,"Falaises de Hantedraguerre, Point de passage de la route grise",
-		["http://image.noelshack.com/fichiers/2013/16/1366552274-the-worker-s-stores-hantedraguerre-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366552284-the-worker-s-stores-hantedraguerre-2.jpg" ] ],
-	["Les Marches du Talus" ,"Chutes de la Canopée, Point de passage de Talus",
-		["http://image.noelshack.com/fichiers/2013/16/1366551693-talus-steps-canopee-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366551703-talus-steps-canopee-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366551712-talus-steps-canopee-3.jpg" ] ],
-	["Marches vaporeuses" ,"Crique de Sud Soleil, Point de passage du Point du Lion", ["http://image.noelshack.com/fichiers/2013/21/1369224336-steamy-steps-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369224339-steamy-steps-2.jpg", "http://image.noelshack.com/fichiers/2013/21/1369224343-steamy-steps-3.jpg" ] ],
-	["Mirador Beetlestone" ,"Vallée de la Reine, Point de passage de Beetletun",
-		["http://image.noelshack.com/fichiers/2013/19/1368304250-beetlestone-mirador-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368304256-beetlestone-mirador-2.jpg" ] ],
-	["Monument à l’Ancien" ,"Crique de Sud soleil, Point de passage du Refuge d'Owain", ["http://image.noelshack.com/minis/2013/21/1369225830-gw2-monument-to-the-ancient-one-guild-trek.png", "http://image.noelshack.com/fichiers/2013/21/1369225756-monument-to-the-ancient-one-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369225759-monument-to-the-ancient-one-2.jpg" ] ],
-	["Motte de Lamenoire" ,"Plateau de Diessa, Point de passage Temple de la fontaine de Rhand",
-		["http://image.noelshack.com/fichiers/2013/14/1365370434-blackblade-butte-fontaine-de-rand-plateau-de-diessa.jpg" ] ],
-	["Mouillage de Covington" ,"Côte de la marée sanglante, Point de passage de la mouette rieuse",
-		["http://image.noelshack.com/fichiers/2013/16/1366453785-covington-s-stowage-maree-sanglante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366381922-covington-s-stawage-maree-sanglante-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366453819-covington-s-stowage-maree-sanglante-3.jpg" ] ],
-	["Mouillage du Capitaine" ,"Saut de Malchor, Point de passage des lumières",
-		["http://image.noelshack.com/fichiers/2013/16/1366377636-captain-s-berth-malchor-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366377661-captain-s-berth-malchor-2.jpg" ] ],
-	["Mur d’enceinte de Claypool" ,"Vallée de la Reine, Village de Claypool",
-		["http://image.noelshack.com/fichiers/2013/16/1366381520-claypool-bailey-village-de-claypool.jpg" ] ],
-	["Nid d’araignée cavernicole" ,"Passage de Lornar, Point de passage de l'enclave du Pinacle",
-		["http://image.noelshack.com/fichiers/2013/16/1366381474-cave-spider-nidus-lornar-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366381489-cave-spider-nidus-lornar-2.jpg" ] ],
-	["Nid de raptor" ,"Marais de fer, Point de passage de la Ville de l'étoile de Caninecol",
-		["http://image.noelshack.com/fichiers/2013/19/1368365759-raptor-s-aerie-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368365765-raptor-s-aerie-2.jpg" ] ],
-	["Objets trouvés de l’Autorité du Port" ,"Rata Sum, Point de passage du port",
-		["http://image.noelshack.com/fichiers/2013/16/1366537832-port-authority-lost-and-found-rata-sum-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366537852-port-authority-lost-and-found-rata-sum-2.jpg" ] ],
-	["Œil du Scorpion des mers" ,"Rivage maudit, Point de passage de la Crête indiscrète",
-		["http://image.noelshack.com/fichiers/2013/16/1366545226-sea-scorpion-s-eye-rivage-maudit-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545239-sea-scorpion-s-eye-rivage-maudit-2.jpg" ] ],
-	["Œuvre d’Heidi" ,"Hinterland Arathis, Point de passage du Plateau du Séraphin",
-		["http://image.noelshack.com/fichiers/2013/19/1368285358-heidi-s-showpiece-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368285381-heidi-s-showpiece-2.jpg", "http://image.noelshack.com/fichiers/2013/19/1368285402-heidi-s-showpiece-3.jpg" ] ],
-	["Paddock du moa vert" ,"Forêt de Caledon, Point de passage du Refuge de Caledon",
-		["http://image.noelshack.com/fichiers/2013/16/1366477309-green-moa-paddock-caledon-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477320-green-moa-paddock-caledon-2.jpg" ] ],
-	["Palan charmine" ,"Montée de Flambecoeur, Point de passage du cochon de fer",
-		["http://image.noelshack.com/fichiers/2013/19/1368363526-orecart-hoist-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368363532-orecart-hoist-2.jpg" ] ],
-	["Panorama de Phasmatis" ,"Plaines d'Ashford, Point de passage du chantier naval de Dockfer",
-		["http://image.noelshack.com/fichiers/2013/16/1366537674-phasmatis-prospect-ashford-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366537687-phasmatis-prspect-ashford-2.jpg" ] ],
-	["Parapet des constellations" ,"Le Bosquet, Point de passage du quartier populaire supérieur",
-		["http://image.noelshack.com/fichiers/2013/16/1366381529-constellation-parpet-refuge-des-constellations-le-bosquet.jpg", "http://image.noelshack.com/fichiers/2013/20/1368983471-constellation-parapet-1.jpg", "http://image.noelshack.com/fichiers/2013/20/1368983479-constellation-parapet-2.jpg" ] ],
-	["Pas de Tir de Mina" ,"Promontoire divin, Point de passage des communes",
-		["http://image.noelshack.com/fichiers/2013/16/1366535010-mina-s-target-shoot-promontoire-divin-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366535054-mina-s-target-shoot-promontoire-divin-2.jpg" ] ],
-	["Pavillon de Grenth" ,"Promontoire divin, Point de passage Place de Grenth",
-		["http://image.noelshack.com/fichiers/2013/16/1366477356-grenth-s-pavillion-promontoire-divin.jpg" ] ],
-	["Pavillon du seigneur" ,"Collines de Kesse, Point de passage du Seigneur",
-		["http://image.noelshack.com/fichiers/2013/16/1366537510-overlord-lodge-kesse-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366537523-overlord-lodge-kesse-2.jpg" ] ],
-	["Perchoir d’œil-de-faucon" ,"Chutes de la Canopée, Point de passage du serpent",
-		["http://image.noelshack.com/fichiers/2013/20/1368983026-hawkeye-perch-1.jpg", "http://image.noelshack.com/fichiers/2013/20/1368983034-hawkeye-perch-2.jpg" ] ],
-	["Perchoir de l’Ermite" ,"Champs de ruine, Point de passage du campement de Rosco",
-		["http://image.noelshack.com/fichiers/2013/16/1366477604-hermit-s-roost-champs-de-ruine-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477620-hermit-s-roost-champs-de-ruine-2.jpg" ] ],
-	["Perchoir de Raptor" ,"Champs de Gendarran, Point de passage d'Aveugleneige",
-		["http://image.noelshack.com/fichiers/2013/16/1366538714-raptor-s-perch-gendarran-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366538723-raptor-s-perch-gendarran-2.jpg" ] ],
-	["Perchoir Tubavapeur" ,"Crique de Sud Soleil, Point de passage de l'Îlot de perle", ["http://image.noelshack.com/minis/2013/21/1369223784-gw2-steampipe-perch-guild-trek-3.png", "http://image.noelshack.com/fichiers/2013/21/1369223805-steampipe-perch-1.jpg", "http://image.noelshack.com/fichiers/2013/21/1369223815-steampipe-perch-2.jpg", "http://image.noelshack.com/fichiers/2013/21/1369223816-steampipe-perch-3.jpg" ] ],
-	["Pergola d’Aubeluit" ,"Le Bosquet, Point de passage de Ronan, niveau inférieur",
-		["http://image.noelshack.com/fichiers/2013/16/1366453953-dawngleam-pergola-le-bosquet-passage-de-ronan.jpg" ] ],
-	["Pic du Béliervédère" ,"Falaises Hantedraguerre, Point de passage de l'avalanche",
-		["http://image.noelshack.com/fichiers/2013/16/1366538406-ramview-peak-hantedraguerre-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366538421-ramview-peak-hantedraguerre-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366538429-ramview-peak-hantedraguerre-3.jpg" ] ],
-	["Place engloutie" ,"Détroit de la dévastation, Point de passage de Pic du signal",
-		["http://image.noelshack.com/fichiers/2013/20/1368982467-drowned-plaza-1.jpg" ] ],
-	["Plage nécrolithe" ,"Forêt de Calédon, Point de passage de Calédon",
-		["http://image.noelshack.com/fichiers/2013/19/1368288536-necrolith-landing-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368288541-necrolith-landing-2.jpg" ] ],
-	["Planche à dessin de Tekki" ,"Terres sauvages de Brisban, Point de passage de la métamagique d'Ulta",
-		["http://image.noelshack.com/fichiers/2013/19/1368295404-tekki-s-drawing-board-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368295409-tekki-s-drawing-board-2.jpg" ] ],
-	["Plateau de Krallcamden" ,"Plaines d'Ashford, Point de passage Forêt de Cadem",
-		["http://image.noelshack.com/fichiers/2013/16/1366376879-cademkral-plaines-d-ashford.jpg" ] ],
-	["Plongeur focebourbié" ,"   ",
-		["http://image.noelshack.com/fichiers/2014/23/1402242568-plongeur-facebourbie03.jpg", "http://image.noelshack.com/fichiers/2014/23/1402242571-plongeur-focebourbie04.jpg" ] ],
-	["Poche de diablotin de feu" ,"Mont Maelström, Point de passage de Maelström",
-		["http://image.noelshack.com/fichiers/2013/16/1366455814-fire-imp-pocket-maelstrom-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366455826-fire-imp-pocket-maelstr-m-2.jpg" ] ],
-	["Point de vue d’Isgarren" ,"Collines de Kessex, Point de passage de Sombreplaie",
-		["http://image.noelshack.com/fichiers/2013/19/1368305146-isgarren-viewpoint-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368305152-isgarren-viewpoint-2.jpg" ] ],
-	["Point de vue de Dockfer" ,"Plaines d'Ashford, Point de passage du chantier naval de Dockfer",
-		["http://image.noelshack.com/fichiers/2013/16/1366477902-irondock-viewpoint-ashford-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477914-irondock-viewpoint-ashford-2.jpg" ] ],
-	["Point de vue de Gnashar" ,"Terres sauvages de Brisban, Point de passage de Wendom",
-		["http://image.noelshack.com/fichiers/2013/16/1366476883-gnashar-s-viewpoint-brisban-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477147-gnashar-s-viewpoint-brisban-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477237-gnashar-s-viewpoint-brisban-3.jpg" ] ],
-	["Point de vue de Rurik" ,"Promontoire divin, Point de passage de Rurikton",
-		["http://image.noelshack.com/fichiers/2013/16/1366539528-rurik-view-promontoire-divin-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366539537-rurik-view-promontoire-divin-2.jpg" ] ],
-	["Pont du Guet-du-feu" ,"Marais de fer, Point de passage du campement du guet-du-feu",
-		["http://image.noelshack.com/fichiers/2013/16/1366459483-firewatch-flybridge-marais-de-fer-1.jpg", "http://image.noelshack.com/fichiers/2013/22/1370192244-firewatch-flybridge-marais-de-fer-2.jpg" ] ],
-	["Porche de Fawcett" ,"Hinterlands Arathis, Point de passage du plateau du Séraphin ou d'Arca",
-		["http://image.noelshack.com/fichiers/2013/16/1366455774-fawcett-s-porch-hinterlands-arathis.jpg", "http://image.noelshack.com/fichiers/2013/21/1369252146-porche-de-fawcett-4.jpg", "http://image.noelshack.com/fichiers/2013/21/1369252143-porche-de-fawcet-3.jpg" ] ],
-	["Port extérieur du Vizir" ,"Détroit de la dévastation, Point de passage du poste isolé",
-		["http://image.noelshack.com/fichiers/2013/16/1366553668-vizier-s-anteport-devastation-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553676-vizier-s-anteport-devastation-2.jpg" ] ],
-	["Porte de Droknah" ,"Monts Maelström, Point de passage du site du vieux traîneau",
-		["http://image.noelshack.com/fichiers/2013/16/1366454410-droknah-s-gate-maestrom-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454428-droknah-s-gate-maestrom-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366454446-droknah-s-gate-maestrom-3.jpg" ] ],
-	["Porte de Wikk" ,"Chutes de la Canopée, Point de passage du Tutorat de Valance",
-		["http://image.noelshack.com/fichiers/2013/16/1366554109-wikk-s-gate-canopee-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366554118-wikk-s-gate-canopee-2.jpg" ] ],
-	["Portique de Rata Pten" ,"Mont Maelström, Point de passage de Criterion",
-		["http://image.noelshack.com/fichiers/2013/16/1366538826-rata-pten-mortico-maelstrom-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366538835-rata-pten-mortico-maelstrom-2.jpg" ] ],
-	["Poste de vigie de Décimus" ,"Plaines d'Ashford, Point de passage du portail de Vir",
-		["http://image.noelshack.com/fichiers/2013/16/1366553901-watchpoint-decimus-ashford-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553908-watchpoint-decimus-ashford-2.jpg" ] ],
-	["Préfecture de Lychcroft" ,"Collines de Kesse, Point de passage du site d'Ombrecoeur",
-		["http://image.noelshack.com/fichiers/2013/16/1366478476-lychcroft-wardenship-kesse-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478485-lychcroft-wardenship-kesse-2.jpg" ] ],
-	["Prison de Taupvlaquie" ,"Contreforts du voyageur, Point de passage d'Halvaunt",
-		["http://image.noelshack.com/fichiers/2013/16/1366536951-moleberia-prison-contreforts-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366536964-moleberia-prison-contreforts-2.jpg" ] ],
-	["Promontoire de Portmatt" ,"Côte de la marée sanglante, Point de passage des lamentations",
-		["http://image.noelshack.com/fichiers/2013/16/1366538033-portmatt-s-promontory-maree-sanglante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366538062-portmat-s-promontory-maree-sanglante-2.jpg" ] ],
-	["Quai de Lestepied" ,"Détroit de la dévastation, Point de passage de Tonnecaboche",
-		["http://image.noelshack.com/fichiers/2013/16/1366478325-lightfoot-dock-devastation-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478332-lightfoot-dock-devastation-2.jpg" ] ],
-	["Recoin du Corbeau" ,"Hoelbrak, Point de passage du corbeau",
-		["http://image.noelshack.com/fichiers/2013/16/1366538949-raven-nook-hoelbrak.jpg" ] ],
-	["Recoin du Scriptorium" ,"Citadelle noire, Point de passage du factorium",
-		["http://image.noelshack.com/fichiers/2013/16/1366545168-scriptorium-nook-citadelle-noire.jpg" ] ],
-	["Recoin lapidaire de Flakk" ,"Rata Sum, Syndicat de la dynamique, Point de passage de la comptabilité",
-		["http://image.noelshack.com/fichiers/2013/16/1366475985-flakk-s-lapidary-nook-rata-sum.jpg" ] ],
-	["Refuge d’Antreneige" ,"Congères d'Antreneige, Point de passage de la congère",
-		["http://image.noelshack.com/fichiers/2013/16/1366547164-snowden-safehouse-congeres-1.jpg", "http://image.noelshack.com/fichiers/2013/22/1370193293-snowden-safehouse-congeres-2.jpg" ] ],
-	["Refuge de siamouth" ,"Marais de la Lumillule, Point de passage du ciel lugubre",
-		["http://image.noelshack.com/fichiers/2013/16/1366545460-siamoth-refuge-lumillule-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545472-siamoth-refuge-lumillule-2.jpg" ] ],
-	["Refuge du Stentor" ,"Détroit de la dévastation, Point de passage du Pic de signal",
-		["http://image.noelshack.com/fichiers/2013/16/1366548087-stentor-shelter-devastation-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366548101-stentor-shelter-devastation-2.jpg" ] ],
-	["Refuge percebul" ,"Steppes de la Strie flamboyante, Point de passage de l'Oeil d'acier",
-		["http://image.noelshack.com/fichiers/2013/19/1368360377-burstbubble-blind-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368360383-burstbubble-blind-2.jpg" ] ],
-	["Repaire de l’Arctodus" ,"Contrefort du Voyageur, Point de passage de la Colonie de Vendrake",
-		["http://image.noelshack.com/fichiers/2013/14/1365366301-arctodus-haunt-riviere-froidfrill-contrefort-du-voyageur.jpg" ] ],
-	["Repaire de l’Autel du Ruisseau" ,"Vallée de la Reine, Point de passage de l'autel du ruisseau",
-		["http://image.noelshack.com/fichiers/2013/14/1365365927-altar-brook-vallee-de-l-autel-du-ruisseau-vallee-de-la-reine.jpg" ] ],
-	["Repaire de Soufflettin" ,"Passage de Lornar, Point de passage du gouffre du démon",
-		["http://image.noelshack.com/fichiers/2013/16/1366455618-ettinbreath-lair-lornar-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366455644-ettinbreath-lair-lornar-2.jpg" ] ],
-	["Repli stratégique" ,"Rivage maudit, Point de passage du rocher de l'épave",
-		["http://image.noelshack.com/fichiers/2013/16/1366551471-tactical-retreat-rivage-maudit-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366551479-tactical-retreat-rivage-maudit-2.jpg" ] ],
-	["Retraite Gelée" ,"Chutes de la Canopée, Point de passage de Feuilleblanche",
-		["http://image.noelshack.com/fichiers/2013/16/1366476625-frozen-antrum-canopee-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476645-frozen-antrum-canopee-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366476679-frozen-antrum-canopee-3.jpg" ] ],
-	["Rotonde de Soggorsort" ,"Forêt de Caledon, Point de passage du Hameau d'Annwen",
-		["http://image.noelshack.com/fichiers/2013/16/1366547429-soggorsort-rotunda-caledon-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366547439-soggorsort-rotunda-caledon-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366547447-soggorsort-rotunda-caledon-3.jpg" ] ],
-	["Ruelle du vadrouilleur de l’est" ,"Promontoire divin, Place de Dwayna, quartier populaire Est",
-		["http://image.noelshack.com/fichiers/2013/16/1366455493-eastlurk-alley-quartier-populaire-est-le-promontoire-divin.jpg" ] ],
-	["Salon d’Esparvent" ,"Citadelle noire, Point de passage de l'Imperator",
-		["http://image.noelshack.com/fichiers/2013/16/1366547698-sparwind-s-lounge-citadelle-noire.jpg" ] ],
-	["Salon de Wrelk" ,"Champs de Gendarran, Point de passage d'Almuten",
-	["http://image.noelshack.com/fichiers/2013/19/1368283728-wrelk-s-salon-1.jpg", "http://image.noelshack.com/minis/2013/19/1368283752-wrelk-s-salon-2.png", ] ],
-	["Sanctuaire hanté par un diablotin" ,"Forêt de Caledon, Point de passage du marais de Wychmire",
-		["http://image.noelshack.com/fichiers/2013/16/1366477850-imphant-hallow-caledon-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477863-imphant-hallow-caledon-2.jpg" ] ],
-	["Sanctuaire piersacrée" ,"Plateau de Diessa, Point de passage du Sanctuaire",
-		["http://image.noelshack.com/fichiers/2013/19/1368292027-holystone-sanctum-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368292035-holystaone-sanctum-2.jpg" ] ],
-	["Saut de Drakefaille" ,"Champs de ruine, Point de passage du Guet de Mordrage",
-		["http://image.noelshack.com/fichiers/2013/16/1366454282-drakecleft-sheff-champs-de-ruines.jpg" ] ],
-	["Saut de la conceptualisation" ,"Rata Sum, Point de passage de l'Incubateur",
-		["http://image.noelshack.com/fichiers/2013/16/1366477795-ideation-leap-rata-sum-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366477808-ideation-leap-rata-sum-2.jpg" ] ],
-	["Saut de Mistriven" ,"Passage de Lornar, Point de passage de Mistriven",
-		["http://image.noelshack.com/fichiers/2013/16/1366535100-mistriven-shelf-lornar-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366535113-mistriven-shelf-lornar-2.jpg" ] ],
-	["Sépulcre azumière" ,"Détroit de la dévastation, Point de passage de Xenarius",
-		["http://image.noelshack.com/fichiers/2013/19/1368377319-sepulchre-skylight-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368377324-sepuchre-skylight-2.jpg" ] ],
-	["Sépulcre ravagé" ,"Plateau de Diessa, Point de passage Landes ravagées",
-		["http://image.noelshack.com/fichiers/2013/14/1365371410-blasted-sepulchtre-landes-ravagees-plateau-de-diessa.jpg" ] ],
-	["Seuil d’Usharr" ,"Marais de la Lumillule, Point de passage de la tête du crapaud",
-		["http://image.noelshack.com/fichiers/2013/19/1368307713-usharr-s-threshold-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368307718-usharr-s-threshold-2.jpg" ] ],
-	["Sommet de l’Epave" ," ",
-		["http://image.noelshack.com/fichiers/2013/16/1366478014-junker-s-apex-citadelle-noire.jpg" ] ],
-	["Source de Brûlereinette" ,"Marais de la Lumillule, Point de passage Flamefrog",
-		["http://image.noelshack.com/fichiers/2013/16/1366459341-firefrog-springs-limillule.jpg" ] ],
-	["Source de Dwayna" ,"Promontoire divin, Point de passage des Communes",
-		["http://image.noelshack.com/fichiers/2013/19/1368286111-dwayna-s-fount-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368286257-dwayna-s-fount-2.jpg" ] ],
-	["Source des lamentations" ,"Détroit des gorges glacées, Point de passage de la Maison de Hautecieux",
-		["http://image.noelshack.com/fichiers/2013/19/1368369582-source-of-lament-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368369586-source-of-lament-2.jpg" ] ],
-	["Surprise d’Elise" ,"Hinterlands Arathis, Point de passage Ruines de Demetra la Sacrée",
-		["http://image.noelshack.com/fichiers/2013/16/1366455532-elise-s-surprise-hinterlands-arathis.jpg" ] ],
-	["Surveillant de Folleflamme" ,"Province de Métrica, Point de passage Soren Draa",
-		["http://image.noelshack.com/fichiers/2013/16/1366554250-wildflame-monitor-province-metrica.jpg" ] ],
-	["Terrasse de Wassa" ,"Champs de Gendarran, Point de passage du premier refuge",
-		["http://image.noelshack.com/fichiers/2013/16/1366553780-wassa-s-terrace-gendarran-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366553791-wassa-s-terrace-gendarran-2.jpg" ] ],
-	["Tour de guet de Mâchefléau" ,"Marais de Fer, Point de passage du Campement de Belpelisse",
-		["http://image.noelshack.com/fichiers/2013/16/1366545096-scourgejaw-watchtower-marais-de-fer-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545106-scourgejaw-watchtower-marais-de-fer-2.jpg", "http://image.noelshack.com/fichiers/2013/16/1366545117-scourgejaw-watchtower-marais-de-fer-3.jpg" ] ],
-	["Tour de la tribulation" ,"Falaises de Hantedraguerre, Point de passage de la tribulation",
-		["http://image.noelshack.com/fichiers/2013/19/1368371671-tower-of-tribulation-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368371796-tower-of-tribulation-2.jpg" ] ],
-	["Trou de tirailleur de Creusepierre" ,"Champs de Gendarran, Point de passage de Talajian",
-		["http://image.noelshack.com/fichiers/2013/16/1366548216-stonebore-spiderhole-gendarran-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366548229-stonebore-spiderhole-gendarran-2.jpg" ] ],
-	["Tunnel de Bandacier" ,"Steppes de la Strie flamboyante, Point de passage de Tumok",
-		["http://image.noelshack.com/fichiers/2013/16/1366547970-steelband-s-tunnel-strie-flamboyante-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366547981-steelband-s-tunnel-strie-flamboyante-2.jpg" ] ],
-	["Tunnel sous le lac" ,"Vallée de la Reine, Point de passage de la scierie d'Ojon",
-		["http://image.noelshack.com/fichiers/2013/16/1366478193-lakebottom-underpass-vallee-de-la-reine-1.jpg", "http://image.noelshack.com/fichiers/2013/16/1366478202-lakebottom-underpass-valee-de-la-reine-2.jpg" ] ],
-	["Upsilon hyperboloïde" ,"Saut de Malchor, Point de passage des crevasses oubliées",
-		["http://image.noelshack.com/fichiers/2013/19/1368372980-upsilon-hyperboloid-1.jpg", "http://image.noelshack.com/fichiers/2013/19/1368372989-upsilon-hyperboloid-2.jpg" ] ],
-	["Vallon de Cymbel" ,"Champs de ruine, Point de passage La route de l'ogre",
-		["http://image.noelshack.com/fichiers/2013/16/1366453918-cymbel-s-glen-champs-de-ruines.jpg" ] ],
-]
-tp_rando = [
-	"", #Alc&ocirc;ve de Courtilleracine
-	"", #Alimentation en eau d&#39;Orvanic
-	"[&BJcDAAA=]", #Antre cach&eacute;cailleux 
-	"", #Antre de Hurleneige
-	"[&BMcBAAA=]", #Autel d&#39;Inondesel
-	"", #Aveuglement de l&#39;Erudit
-	"", #Balcon des d&eacute;lices
-	"", #Banc de Varech de Malm&eacute;duse
-	"", #Barri&egrave;re de Bercebruy&egrave;re
-	"", #Bassin de la sentinelle
-	"[&BOoAAAA=]", #Belv&eacute;d&egrave;re goutedo 
-	"[&BKUDAAA=]", #Bistrot rouport 
-	"", #Bivouac du Lys
-	"", #Bord de Valaigu
-	"", #Bosquet de Tarstar
-	"[&BOcBAAA=]", #Boucherie pi&egrave;gecayeux 
-	"", #Cache &agrave; miel de Boisecoeur
-	"", #Cache de l&#39;Ours des cavernes
-	"", #Cache du fugitif
-	"", #Réserve du marchand
-	"", #Camp principal du gardien
-	"", #Canyons de Gallow
-	"", #Carr&eacute; de chou du bandit
-	"", #Cavit&eacute; de la cath&eacute;drale
-	"", #Cavit&eacute; du Contrema&icirc;tre
-	"", #Cellier de la Garde du Lion
-	"", #Cellier du Lion Noir
-	"", #Champ de force de la cinqui&egrave;me brasse
-	"", #Champ de Montesauvage
-	"[&BLgEAAA=]", #Ch&acirc;timent de Bluup 
-	"", #Chute d&#39;East End
-	"", #Chutes de Gerb&eacute;caille
-	"", #Chutes de la G&eacute;nitrice
-	"", #Cisaillement interdit
-	"", #Coeur du flacon du fondateur
-	"[&BMEDAAA=]", #Coffre-fort de Kevach 
-	"", #Coin d&#39;Anya
-	"", #Coin de Castavall
-	"", #Coin de Magi&egrave;dre
-	"", #Col des fr&egrave;res
-	"", #Col du Coeur criant
-	"[&BEcAAAA=]", #Console de commande principale LIN39 
-	"", #Contrepoids d&#39;Osenfold
-	"", #C&ocirc;te de Couvedrake
-	"", #C&ocirc;te de Togatl
-	"", #Cour de Chutes bris&eacute;es
-	"", #Cour des Chutes de la Biche
-	"", #Crevasse du Gibier
-	"[&BLgAAAA=]", #Crique d&#39;Isenfell 
-	"", #Crique de Trouv&eacute;caille
-	"", #D&eacute;barras d&#39;Ulta
-	"", #Dents de la corruption
-	"[&BK8BAAA=]", #D&eacute;sir de Pochtecatl 
-	"", #D&eacute;versoir de Thaumanova
-	"", #Distillerie de la Chouette cach&eacute;e
-	"", #Dortoir du Hall de Skibo
-	"", #&Eacute;chafaudage autoporteur
-	"", #Emplacement hant&eacute;
-	"", #Emprise agit&eacute;e
-	"", #Ermitage abandonn&eacute;
-	"", #Escarpement du p&ecirc;cheur
-	"[&BOQGAAA=]", #Etreinte de l&#39;hymne 
-	"", #Excavation profan&eacute;e
-	"", #Faille de Pouacregriffe
-	"", #Fi&egrave;re tani&egrave;re du jaguar
-	"[&BDoBAAA=]", #Folie de Widd 
-	"", #Fontaine de Verdance
-	"", #Fontaine des racines cach&eacute;es
-	"", #Forage du nid de skelk
-	"", #Fosse de Pi&egrave;getroll
-	"", #Fosse de la guivre des glace
-	"", #Fouilles de Stigmafrappe 
-	"", #Fouilleur de fumier
-	"", #Foyer de Kari
-	"[&BNUGAAA=]", #Fray&egrave;re des drakes des r&eacute;cifs 
-	"", #Fuite de Toxal
-	"", #Galerie du limon de sanglant
-	"", #G&eacute;&ocirc;le de Provatum
-	"", #Gouffre de Whitland
-	"", #Grenier effondr&eacute;
-	"", #Griffure de l&#39;&eacute;clat c&eacute;leste
-	"", #Griffure invisible
-	"", #Grotte d&#39;Eaudefonte
-	"", #Grotte de Gorgetoile
-	"", #Grotte de Lawen
-	"", #Grotte Oubli&eacute;e
-	"[&BE8BAAA=]", #Gu&eacute; kraal&eacute;troi 
-	"", #Guet de la bagarre de barils
-	"", #Guet r&eacute;verb&eacute;rant
-	"[&BNUGAAA=]", #Guivre des sables maraudeuse 
-	"", #Hall de Guilde du Destin
-	"", #Halte de Coupegorge
-	"", #Halte de Soren Draa
-	"", #Impasse du Gladiver
-	"", #Jardin de Fortepatte
-	"", #L&#39;impasse du peuple
-	"", #Laboratoire de la taverne de Turai
-	"[&BI0DAAA=]", #La sellette de Kaldar 
-	"", #Le devoir de Morndottir
-	"", #Le magasin des ouvriers
-	"", #Les Marches du Talus
-	"[&BNUGAAA=]", #Les karkas associ&eacute;s 
-	"[&BNIGAAA=]", #Marche vaporeuses 
-	"[&BPoAAAA=]", #Mirador de Beetletun 
-	"[&BNgGAAA=]", #Monument &agrave; l&#39;ancien 
-	"", #Motte de Lamenoire
-	"", #Mouillage de Covington
-	"", #Mouillage du Capitaine
-	"", #Mur d&#39;enceinte de Claypool
-	"", #Nid d&#39;Araign&eacute;e cavernicole
-	"", #Nid du raptor
-	"", #Objets trouv&eacute;s de l&#39;Autorit&eacute; du Port
-	"", #Oeil du Scorpion des mers
-	"[&BKcAAAA=]", #&OElig;uvre d&#39;Heidi 
-	"", #Paddock du moa vert
-	"[&BBcCAAA=]", #Palan charmine 
-	"", #Panorama de Phasmatis
-	"", #Parapet des constellations
-	"", #Pas de Tir de Mina
-	"", #Pavillon de Grenth
-	"", #Pavillon du Seigneur
-	"[&BNUGAAA=]", #Perchoir Tubavapeur 
-	"", #Perchoir de Raptor
-	"", #Perchoir de l&#39;Ermite</strong>
-	"[&BEUCAAA=]", #Perchoir d&#39;&oelig;il-de-faucon 
-	"", #Pergola d&#39;Aubeluit
-	"", #Pic du B&eacute;lierv&eacute;d&egrave;re
-	"", #Place engloutie
-	"[&BBIEAAA=]", #Plage n&eacute;crolithe 
-	"[&BGUAAAA=]", #Planche &agrave; dessin de Tekki 
-	"", #Plateau de Krallcamden
-	"[&BNECAAA=]", #Plongeur facebourbi&eacute; 
-	"", #Poche de diablotin de feu
-	"", #Point de vue de Dockfer
-	"", #Point de vue de Gnashar
-	"", #Point de vue de Rurik
-	"[&BBEAAAA=]", #Point de vue d&#39;isgarren 
-	"", #Pont de Guet-du-feu
-	"", #Porche de Fawcett
-	"", #Porte de Droknah
-	"", #Porte de Wikk
-	"", #Port ext&eacute;rieur du Vizir
-	"", #Portique de Rata Pten
-	"", #Poste de vigie de D&eacute;cimus
-	"", #Pr&eacute;fecture de Lychcroft
-	"", #Prison de Taupvaquie
-	"", #Promontoire de Portmatt
-	"", #Quai de Lestepied</strong>
-	"", #Recoin du Scriptorium</strong>
-	"", #Recoin lapidaire de Flakk
-	"", #Refuge d&#39;Antreneige
-	"", #Refuge de siamouth
-	"", #Refuge du Stentor
-	"[&BFIDAAA=]", #Refuge percebul 
-	"", #Repaire de Soufflettin
-	"", #Repaire de l&#39;Arctodus
-	"", #Rep&egrave;re de l&#39;Autel du Ruisseau
-	"", #Repli strat&eacute;gique
-	"", #Retraite Gel&eacute;e
-	"", #Rotonde de Soggorsort
-	"", #Ruelle du vadrouilleur de l’est
-	"", #Salon d&#39;Esparvent
-	"[&BJQBAAA=]", #Salon de Wrelk 
-	"", #Sanctuaire hant&eacute; par un diablotin
-	"[&BMUDAAA=]", #Sanctuaire piersacr&eacute;e 
-	"", #Saut de Drakefaille
-	"", #Saut de Mistriven</strong>
-	"", #Saut de la conceptualisation
-	"", #Sentinelle Engloutie / Bassin de la Sentinelle
-	"[&BNIEAAA=]", #S&eacute;pulcre azumi&egrave;re 
-	"", #S&eacute;pulcre ravag&eacute;
-	"[&BMsBAAA=]", #Seuil d&#39;Usharr 
-	"", #Sommet de l&#39;Epave
-	"", #Source de Br&ucirc;lereinette
-	"[&BCoDAAA=]", #Source de Dwayna 
-	"[&BIECAAA=]", #Source des lamentations 
-	"", #Surprise d&#39;Elise
-	"", #Surveillant de Folleflamme
-	"", #Terrasse de Wassa
-	"", #Tour de guet de M&acirc;chefl&eacute;au
-	"[&BFYCAAA=]", #Tour de la tribulation 
-	"", #Trou de tirailleur de Creusepierre
-	"", #Tunnel de Bandacier
-	"", #Tunnel sous le lac
-	"[&BKgCAAA=]", #Upsilon Hyperbolo&iuml;de 
-	"[&BE8BAAA=]", #Vallon de Cymbel
+	["Alcôve de Courtilleracine", 
+		 [ "Le Bosquet", "Point de passage du Spéculateur", "[&BLsEAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-gardenroot-alcove-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-gardenroot-alcove-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-gardenroot-alcove-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-gardenroot-alcove-guild-trek-3.jpg"]]],
+	["Alimentation en eau d Orvanic", 
+		 [ "Marais de Lumillule", "Point de passage du Goulet de l'Océan", "[&BMkBAAA=]", "Vous devrez prendre le passage de tunnel pour arriver à la cascade supérieure, suivrez les flèches sur la carte.", ["http://androuw.e-monsite.com/medias/images/gw2-orvanic-sourcewaters-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-orvanic-sourcewaters-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-orvanic-sourcewaters-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-orvanic-sourcewaters-guild-trek-3.jpg"]]],
+	["Antre cachécailleux", 
+		 [ "Plaines d'Ashford", "Point de passage de Feritas", "[&BJcDAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-skalestash-hideaway-guild-trek1.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skalestash-hideaway-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skalestash-hideaway-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skalestash-hideaway-guild-trek-4.jpg"]]],
+	["Antre de Hurleneige", 
+		 [ "Congères d'Antreneige", "Point de passage de la Terrasse du Faucon des neiges", "[&BL8AAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-snowhowl-den-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-snowhowl-den-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-snowhowl-den-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-snowhowl-den-guild-trek-3.jpg"]]],
+	["Autel d Inondesel", 
+		 [ "Marais de Lumillule", "Point de passage d'Inondesel", "[&BPkAAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-saltflood-altar-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-saltflood-altar-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-saltflood-altar-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-saltflood-altar-guild-trek-4.jpg"]]],
+	["Aveuglement de l Erudit", 
+		 [ "Falaises de HanteDraguerre", "Point de passage de la Crevasse de Toran", "[&BFwCAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-scholars-blind1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scholars-blind-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scholars-blind-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scholars-blind-guild-trek-2.jpg"]]],
+	["Balcon des délices", 
+		 [ "Saut de Malchor", "Point de passage de Pagga", "[&BKYCAAA=]", "Le balcon se situe tout en haut au sommet, vous pouvez y accéder via un petit jumping puzzle (il suffit de suivre les points blancs)", ["http://androuw.e-monsite.com/medias/images/gw2-delights-balcony-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-delights-balcony-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-delights-balcony-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-delights-balcony-guild-trek.jpg"]]],
+	["Banc de Varech de Malméduse", 
+		 [ "Congères d'Antreneige", "Point de passage de l'Exil", "[&BLwAAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-badjelly-kelpbed-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-badjelly-kelpbed-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-badjelly-kelpbed-guild-trek-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-badjelly-kelpbed-guild-trek-2.jpg"]]],
+	["Barrière de Bercebruyère", 
+		 [ "Fôret de Caledon", "Point de passage de la Spirale", "[&BDUBAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-briarthorn-barrier-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-briarthorn-barrier-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-briarthorn-barrier-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-briarthorn-barrier-guild-trek.jpg"]]],
+	["Belvédère goutedo", 
+		 [ "Passage de Lornar", "Point de passage de la Complainte", "[&BOoAAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-steamscrap-overlook-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-steamscrap-overlook-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-steamscrap-overlook-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-steamscrap-overlook-guild-trek-3.jpg"]]],
+	["Bistrot rouport", 
+		 [ "Citadelle noire", "Point de passage des Terres du rassemblement", "[&BKUDAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-wheelport-pub-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-wheelport-pub-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-wheelport-pub-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-wheelport-pub-guild-trek-3.jpg"]]],
+	["Bivouac du Lys", 
+		 [ "Montée de Flambecoeur", "Point de passage de la Pointe de glace", "[&BCACAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-lilys-bivvy-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lilys-bivvy-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lilys-bivvy-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lilys-bivvy-guild-trek-4.jpg"]]],
+	["Bord de Valaigu", 
+		 [ "Les Steppes de la Strie Flamboyante", "Point de passage de Behem", "[&BP0BAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-sharkhollows-edge-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sharkhollows-edge-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sharkhollows-edge-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sharkhollows-edge-guild-trek-3.jpg"]]],
+	["Bosquet de Tarstar", 
+		 [ "Montée de Flambecoeur", "Point de passage de l'Apostat", "[&BB0CAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-tarstar-copse-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tarstar-copse-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tarstar-copse-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tarstar-copse-guild-trek-3.jpg"]]],
+	["Boucherie piègecayeux", 
+		 [ "Marais de fer", "Point de passage du Village d'Attrapécaille", "[&BOcBAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-skalecatch-bucher-shop-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skalecatch-bucher-shop-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skalecatch-bucher-shop-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skalecatch-bucher-shop-guild-trek-3.jpg"]]],
+	["Cache à miel de Boisecoeur", 
+		 [ "Vallée de la Reine", "Point de passage du Camp de Boisecoeur", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-heartwoods-honey-cache-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-heartwoods-honey-cache-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-heartwoods-honey-cache-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-heartwoods-honey-cache-guild-trek-3.jpg"]]],
+	["Cache de l Ours des cavernes", 
+		 [ "Congères d'Antreneige", "Point de passage de la Terrasse du Faucon des neiges", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-cave-bear-cache-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cave-bear-cache-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cave-bear-cache-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cave-bear-cache-guild-trek-3.jpg"]]],
+	["Cache du fugitif", 
+		 [ "Rivage Maudit", "Point de passage de Caer Fougère", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-cache-of-the-pursued-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cache-of-the-pursued-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cache-of-the-pursued-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cache-of-the-pursued-guild-trek-3.jpg"]]],
+	["Réserve du marchand", 
+		 [ "Hoelbrak", "Point de passage de Peeta", "", "Pour atteindre et emplacement, suivez les flèches rouges, vous ne pouvez pas y atteindre du point de passage de la Place du commerce.", ["http://androuw.e-monsite.com/medias/images/gw2-traders-stash-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-traders-stash-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-traders-stash-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-traders-stash-guild-trek-2.jpg"]]],
+	["Camp principal du gardien", 
+		 [ "Harathi Hinterlands", "Point de passage du Camp de la barricade", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-guardian-overwatch-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-guardian-overwatch-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-guardian-overwatch-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-guardian-overwatch-guild-trek-2.jpg"]]],
+	["Canyons de Gallow", 
+		 [ "Terres Sauvages de Brisban", "Point de passage des Près de potence", "", "", ["http://androuw.e-monsite.com/medias/images/161731canyonsdegallow.png", "http://androuw.e-monsite.com/medias/images/gw2-toxal-spill-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-toxal-spill-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-toxal-spill-guild-trek-2.jpg"]]],
+	["Carré de chou du bandit", 
+		 [ "Harathi Hinterlands", "Point de passage de Point de ralliement de Wynchona", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-bandits-cabbage-patch-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-bandits-cabbage-patch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-bandits-cabbage-patch-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-bandits-cabbage-patch-guild-trek-4.jpg"]]],
+	["Cavité de la cathédrale", 
+		 [ "Saut de Malchor", "Point de passage de Lyssa", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-cathedrals-cavity1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cathedrals-cavity-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cathedrals-cavity-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cathedrals-cavity-guild-trek-2.jpg"]]],
+	["Cavité du Contremaître", 
+		 [ "Falaises de HanteDraguerre", "Point de passage de Dociu", "", "Notez que pour arriver à la marque, vous devez sauter sur deux ou trois rampes vu qu'elle est placée au sommet.", ["http://androuw.e-monsite.com/medias/images/gw2-foremans-recess-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-foremans-recess-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-foremans-recess-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-foremans-recess-guild-trek-3.jpg"]]],
+	["Cellier de la Garde du Lion", 
+		 [ "Contrefort du Voyageur", "Point de passage du Refuge de Doubléperon", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-lionguard-larder-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lionguard-larder-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lionguard-larder-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lionguard-larder-guild-trek-2.jpg"]]],
+	["Cellier du Lion Noir", 
+		 [ "Le Bosquet", "Point de passage du Spéculateur", "", "Pour avoir accès au cercle d'or en bas, vous devez sauter de la rampe près du marchand du Lion Noir.", ["http://androuw.e-monsite.com/medias/images/gw2-black-lion-root-cellar-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-black-lion-root-cellar-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-black-lion-root-cellar.jpg", "http://androuw.e-monsite.com/medias/images/gw2-black-lion-root-cellar-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-black-lion-root-cellar-guild-trek.jpg"]]],
+	["Champ de Montesauvage", 
+		 [ "Côte de la Marée Sanglante", "Point de passage Remanda", "", "La zone exacte de l'emplacement de la randonnée de guilde demeure inconnue à ce jour.", ["http://androuw.e-monsite.com/medias/images/gw2-risewild-green1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-risewild-green-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-risewild-green-guild-trek1.jpg"]]],
+	["Champ de force de la cinquième brasse", 
+		 [ "Détroit de la Dévastation", "Point de passage de la Cloche Vespérale", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-fathom-five-forcefield-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fathom-five-forcefield-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fathom-five-forcefield-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fathom-five-forcefield-guild-trek-4.jpg"]]],
+	["Châtiment de Bluup", 
+		 [ "Rata Sum", "", "[&BLgEAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-bluups-comeuppance-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-bluups-comeuppance-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-bluups-comeuppance-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-bluups-comeuppance-guild-trek-3.jpg"]]],
+	["Chute d East End", 
+		 [ "Terres Sauvages de Brisban", "Point de passage d'East End", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-east-end-falls-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-east-end-falls-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-east-end-falls-guild-trek-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-east-end-falls-guild-trek-2.jpg"]]],
+	["Chutes de Gerbécaille", 
+		 [ "Chute de la Canopée", "Point de passage d'Okarinoo", "", "L'emplacement du cercle d'or n'est pas encore connu.", ["http://androuw.e-monsite.com/medias/images/gw2-skalesplash-falls-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skalesplash-falls-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skalesplash-falls-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skalesplash-falls-guild-trek-3.jpg"]]],
+	["Chutes de la Génitrice", 
+		 [ "Détroit des Gorges Glacées", "Point de passage de la Courbe du Yak", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-broodmother-falls-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-broodmother-falls-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-broodmother-falls-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-broodmother-falls-guild-trek-2.jpg"]]],
+	["Cisaillement interdit", 
+		 [ "Saut de Malchor", "Point de passage des Murmures", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-forbidden-shear-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-forbidden-shear-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-forbidden-shear-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-forbidden-shear-guild-trek-3.jpg"]]],
+	["Coeur du flacon du fondateur", 
+		 [ "Champs de Ruines", "Point de passage de la Crécerelle", "", "Notez que la marque à activer est dans une des pièces dans le premier étage.", ["http://androuw.e-monsite.com/medias/images/gw2-founders-flagon-hearth-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-founders-flagon-hearth-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-founders-flagon-hearth-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-founders-flagon-hearth-guild-trek-3.jpg"]]],
+	["Coffre-fort de Kevach", 
+		 [ "Contreforts du Voyageur", "", "[&BMEDAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-kevachs-strongroom-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-kevachs-strongroom-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-kevachs-strongroom-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-kevachs-strongroom-guild-trek-3.jpg"]]],
+	["Coin d Anya", 
+		 [ "Plateau de Diessa", "Point de passage de Nolan", "", "Vous devez faire un petit puzzle jump pour arriver à cet endroit. Si vous ne trouvez pas, aller voir cette <a href=\"https://www.youtube.com/watch?v=FFNbnMoEMiY\" data-lity>vidéo</a>", ["http://androuw.e-monsite.com/medias/images/gw2-anyas-patch-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-anyas-patch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-anyas-patch-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-anyas-patch-guild-trek-3.jpg"]]],
+	["Coin de Castavall", 
+		 [ "Côte de la Marée Sanglante", "Point de passage de Castavall", "", "Du point de passage, ne nagez pas en bas ou en haut. Au lieu de cela, prenez le tunnel qui est parallèle à vous.", ["http://androuw.e-monsite.com/medias/images/gw2-castavall-corner-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-castavall-corner-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-castavall-corner-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-castavall-corner-guild-trek-3.jpg"]]],
+	["Coin de Magièdre", 
+		 [ "Rata Sum", "Point de passage de la Cour métrique", "", "L'emplacement de cercle d'or est actuellement inconnu.", ["http://androuw.e-monsite.com/medias/images/gw2-magihedron-corner-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-magihedron-corner-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-magihedron-corner-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-magihedron-corner-guild-trek-3.jpg"]]],
+	["Col des frères", 
+		 [ "Hoelbrak", "Point de passage de la Panthère des neiges", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-brothers-notch-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-brothers-notch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-brothers-notch-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-brothers-notch-guild-trek-4.jpg"]]],
+	["Col du Coeur criant", 
+		 [ "Montée de Flambecoeur", "Point de passage de l'Apostat", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-heart-speaks-notch-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-heart-speaks-notch-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-heart-speaks-notch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-heart-speaks-notch-guild-trek-3.jpg"]]],
+	["Console de commande principale LIN39", 
+		 [ "Province de Metrica", "", "[&BEcAAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-master-control-lin39-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-master-control-lin39-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-master-control-lin39-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-master-control-lin39-guild-trek-4.jpg"]]],
+	["Contrepoids d Osenfold", 
+		 [ "Contrefort du Voyageur", "Point de passage d'Osenfold", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-osenfold-counterweights-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-osenfold-counterweights-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-osenfold-counterweights-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-osenfold-counterweights-guild-trek-2.jpg"]]],
+	["Côte de Couvedrake", 
+		 [ "Plateau de Diessa", "Point de passage Brèchezeaux", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-drakehatch-shore-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drakehatch-shore-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drakehatch-shore-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drakehatch-shore-guild-trek-3.jpg"]]],
+	["Côte de Togatl", 
+		 [ "Collines de Kesse", "Point de passage de Viathan", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-tagotl-shore-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tagotl-shore-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tagotl-shore-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tagotl-shore-guild-trek-3.jpg"]]],
+	["Cour de Chutes brisées", 
+		 [ "Citadelle Noire", "Point de passage des Ruines de Rin", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-broken-falls-courtyard-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-broken-falls-courtyard-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-broken-falls-courtyard-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-broken-falls-courtyard-guild-trek-3.jpg"]]],
+	["Cour des Chutes de la Biche", 
+		 [ "Plaines d'Ashford", "Point de passage de la Cité d'Ascalon", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-doefalls-court-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-doefalls-court-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-doefalls-court-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-doefalls-court-guild-trek-3.jpg"]]],
+	["Crevasse du Gibier", 
+		 [ "Passage de Lornar", "Point de passage de la Maison de Vangir", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-venison-hollow-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-venison-hollow-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-venison-hollow-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-venison-hollow-guild-trek-2.jpg"]]],
+	["Crique d Isenfell", 
+		 [ "Congères d'Antreneige", "", "[&BLgAAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-isenfell-wash-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-isenfell-wash-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-isenfell-wash-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-isenfell-wash-guild-trek-3.jpg"]]],
+	["Crique de Trouvécaille", 
+		 [ "Montée de Flambecoeur", "Point de passage du Poste de Commandement de Tuyere", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-skalefound-cove-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skalefound-cove-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skalefound-cove-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skalefound-cove-guild-trek-2.jpg"]]],
+	["Débarras d Ulta", 
+		 [ "Terres Sauvages de Brisban", "Point de passage de la Métamagique d'Ulta", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-ulta-scraproom-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ulta-scraproom-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ulta-scraproom-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ulta-scraproom-guild-trek-2.jpg"]]],
+	["Dents de la corruption", 
+		 [ "Détroit des Gorges Glacées", "Point de passage de Drakkar", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-corruptions-teeth-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-corruptions-teeth-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-corruptions-teeth-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-corruptions-teeth-guild-trek-3.jpg"]]],
+	["Désir de Pochtecatl", 
+		 [ "Côte de la marée sanglante", "", "[&BK8BAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-pochtecatls-desire-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-pochtecatls-desire-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-pochtecatls-desire-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-pochtecatls-desire-guild-trek-3.jpg"]]],
+	["Déversoir de Thaumanova", 
+		 [ "Province de Metrica", "Point de passage muridienne", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-thaumanova-spillway-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-thaumanova-spillway-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-thaumanova-spillway-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-thaumanova-spillway-guild-trek-3.jpg"]]],
+	["Distillerie de la Chouette cachée", 
+		 [ "Congères d'Antreneige", "Point de passage du Hibou", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-hidden-owl-distillery-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-hidden-owl-distillery-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-hidden-owl-distillery-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-hidden-owl-distillery-guild-trek-4.jpg"]]],
+	["Dortoir du Hall de Skibo", 
+		 [ "Rata Sum", "Point de passage auxiliaire", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-skibo-hall-dormitory-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skibo-hall-dormitory-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skibo-hall-dormitory-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skibo-hall-dormitory-guild-trek-3.jpg"]]],
+	["Échafaudage autoporteur", 
+		 [ "Citadelle Noire", "Point de passage des Ruines de Rin", "", "Notez que le cercle d'or est placé au-dessus d'une sorte d'échafaudage sur lequel vous pouvez grimper.", ["http://androuw.e-monsite.com/medias/images/gw2-freestand-scaffold-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-freestand-scaffold-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-freestand-scaffold-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-freestand-scaffold-guild-trek-2.jpg"]]],
+	["Emplacement hanté", 
+		 [ "Saut de Malchor", "Point de passage des lumières", "", "Notez que aller à cet emplacement peut être un peu compliqué, regarder la vidéo ci-après pour plus d'infos. Essentiellement, vous devez aller au point de compétence au Nord-Ouest par le temple de Dwayna et faire un certain nombre de sauts de difficultés moyenne. <a href=\"http://youtu.be/3Z7Bda1LYWE\">voir la vidéo</a></span>", ["http://androuw.e-monsite.com/medias/images/gw2-spectrehaunt-socket-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-spectrehaunt-socket-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-spectrehaunt-socket-guild-trek-6.jpg", "http://androuw.e-monsite.com/medias/images/gw2-spectrehaunt-socket-guild-trek-5.jpg"]]],
+	["Emprise agitée", 
+		 [ "Mont Maelström", "Point de passage de l'Ile du Méandre", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-restless-footings-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-restless-footings-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-restless-footings-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-restless-footings-guild-trek-4.jpg"]]],
+	["Ermitage abandonné", 
+		 [ "Les Steppes de la Strie Flamboyante", "Point de passage de la Pierre Gardienne", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-vacant-hermitage-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-vacant-hermitage-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-vacant-hermitage-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-vacant-hermitage-guild-trek-2.jpg"]]],
+	["Escarpement du pêcheur", 
+		 [ "Province de Metrica", "Point de passage de la Vieille Fonderie de Golem", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-fishers-crag-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fishers-crag-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fishers-crag-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fishers-crag-guild-trek-4.jpg"]]],
+	["Etreinte de l hymne", 
+		 [ "Rivage maudit", "", "[&BOQGAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-anthems-hold-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-anthems-hold-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-anthems-hold-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-anthems-hold-guild-trek-4.jpg"]]],
+	["Excavation profanée", 
+		 [ "Collines de Kesse", "Point de passage de Sombreplaie", "", "Le cercle d'or est dans la grotte.", ["http://androuw.e-monsite.com/medias/images/gw2-defiled-delve-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-defiled-delve-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-defiled-delve-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-defiled-delve-guild-trek-3.jpg"]]],
+	["Faille de Pouacregriffe", 
+		 [ "Marais de Fer", "Point de passage du Lac Pourprenage", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-dirtclaw-cleft-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-dirtclaw-cleft-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-dirtclaw-cleft-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-dirtclaw-cleft-guild-trek-4.jpg"]]],
+	["Fière tanière du jaguar", 
+		 [ "Province de Metrica", "Point de passage muridienne", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-jaguar-pride-den-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-jaguar-pride-den-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-jaguar-pride-den-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-jaguar-pride-den-guild-trek-3.jpg"]]],
+	["Folie de Widd", 
+		 [ "Forêt de Caledon", "", "[&BDoBAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-widds-folly-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-widds-folly-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-widds-folly-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-widds-folly-guild-trek-3.jpg"]]],
+	["Fontaine de Verdance", 
+		 [ "Rivage Maudit", "Point de passage de Verdance", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-verdance-font-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-verdance-font-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-verdance-font-guild-trek-3.jpg"]]],
+	["Fontaine des racines cachées", 
+		 [ "Le Bosquet", "Point de passage du quartier populaire supérieur", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-backroot-foundtain-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-backroot-fountain-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-backroot-fountain-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-backroot-fountain-guild-trek.jpg"]]],
+	["Forage du nid de skelk", 
+		 [ "Détroit des Gorges Glacées", "Point de passage du Bourbier de la Mélancolie", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-skelknest-borehole-guild-trek1.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skelknest-borehole-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-skelknest-borehole-guild-trek-2.jpg"]]],
+	["Fosse de Piègetroll", 
+		 [ "Passage de Lornar", "Point de passage du Prieuré de Durmand", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-trolltrap-pit-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-trolltrap-pit-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-trolltrap-pit-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-trolltrap-pit-guild-trek-2.jpg"]]],
+	["Fosse de la guivre des glaces", 
+		 [ "Détroit des Gorges Glacées", "Point de passage de Dimotiki", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-icewurm-trench-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-icewurm-trench-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-icewurm-trench-guild-trek.jpg"]]],
+	["Fouilles de Stigmafrappe", 
+		 [ "Champs de Ruines", "Point de passage de la Mine d'Hellion", "", "Le cercle d'or est dans une pièce cachée au rez-de-chaussée du puzzle jump de la Mine stigmatisé.", ["http://androuw.e-monsite.com/medias/images/gw2-brandstrike-dig-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-brandstrike-dig-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-brandstrike-dig-guild-trek-3.jpg"]]],
+	["Fouilleur de fumier", 
+		 [ "Falaises de HanteDraguerre", "Point de passage de Steelbrachen", "", "Notez que l'entrée de la Mine de Dissun est localisée par la flèche rouge.", ["http://androuw.e-monsite.com/medias/images/gw2-foragers-midden-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-foragers-midden-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-foragers-midden-guild-trek-3.jpg"]]],
+	["Foyer de Kari", 
+		 [ "Collines de Kesse", "Point de passage de Cereboth", "", "Il y a un trou dans le sol dans lequel on peut sauter pour accéder au Point chaud de Kari.", ["http://androuw.e-monsite.com/medias/images/gw2-karis-hot-spot-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-karis-hot-spot-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-karis-hot-spot-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-karis-hot-spot-guild-trek-3.jpg"]]],
+	["Frayère des drakes des récifs", 
+		 [ "Crique de Sud-Soleil", "", "[&BNUGAAA=]", "", ["http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/gw2-reef-drake-den-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-reef-drake-den-guild-trek.jpg"]]],
+	["Fuite de Toxal", 
+		 [ "Terres Sauvages de Brisban", "Point de passage de Mirkrise", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-toxal-spill-guild-trek-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-toxal-spill-guild-trek-8.jpg", "http://androuw.e-monsite.com/medias/images/gw2-toxal-spill-guild-trek-6.jpg", "http://androuw.e-monsite.com/medias/images/gw2-toxal-spill-guild-trek-7.jpg"]]],
+	["Galerie du limon de sang", 
+		 [ "Côte de la Marée Sanglante", "Point de passage Lugubre", "", "L'obtention du cercle d'or est un peu délicate vu que c'est juste à côté du Limon Champion qui est assez dur à tuer. Une fois que vous êtes à l'intérieur de la caverne, vous devez monter et passer à travers un groupe de morts-vivants avant que vous ne puissiez arriver aux limons.", ["http://androuw.e-monsite.com/medias/images/gw2-blood-ooze-gallery1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blood-ooze-gallery-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blood-ooze-gallery-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blood-ooze-gallery-guild-trek-3.jpg"]]],
+	["Geôle de Provatum", 
+		 [ "Montée de Flambecoeur", "Point de passage du Gardien", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-provatum-carcer-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-provatum-carcer-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-provatum-carcer-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-provatum-carcer-guild-trek-2.jpg"]]],
+	["Gouffre de Whitland", 
+		 [ "Mont Maelström", "Point de passage du site du vieux traîneau", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-whitland-sinkhole-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-whitland-sinkhole-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-whitland-sinkhole-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-whitland-sinkhole-guild-trek-4.jpg"]]],
+	["Grenier effondré", 
+		 [ "Marais de Lumillule", "Point de passage de Fort Cadence", "", "Le cercle d'or est placé au deuxième étage depuis le sommet dans le coin Sud-Est du bâtiment.", ["http://androuw.e-monsite.com/medias/images/gw2-shattered-loft-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-shattered-loft-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-shattered-loft-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-shattered-loft-guild-trek-3.jpg"]]],
+	["Griffure de l éclat céleste", 
+		 [ "Hinterlands haratis", "Point de passage de Grey Gritta", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-skyshrine-scratch-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skyshrine-scratch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skyshrine-scratch-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-skyshrine-scratch-guild-trek-3.jpg"]]],
+	["Griffure invisible", 
+		 [ "Fôret de Caledon", "Point de passage de Mabon", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-unseen-scratch-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-unseen-scratch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-unseen-scratch-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-unseen-scratch-guild-trek-3.jpg"]]],
+	["Grotte Oubliée", 
+		 [ "Les Steppes de la Strie Flamboyante", "Point de passage de Terra Carorunda", "", "Le cercle d'or se situe au milieu du jumping :", ["http://www.youtube.com/watch?v=86KpGTIS9_Q&feature=share&list=PLZX6gnjnhlb15POrbjew3xWwGJGgz9Yqc"]]],
+	["Grotte d Eaudefonte", 
+		 [ "Chute de la Canopée", "Point de passage de Banc d'Ecaille", "", "Le cercle d'or est sous l'eau à l'intérieur d'une grotte.", ["http://androuw.e-monsite.com/medias/images/gw2-meltwater-cave-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-meltwater-cave-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-meltwater-cave-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-meltwater-cave-guild-trek-3.jpg"]]],
+	["Grotte de Gorgetoile", 
+		 [ "Les Steppes de la Strie Flamboyante", "Point de passage du Glaive", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-canyonweb-cave-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-canyonweb-cave-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-canyonweb-cave-guild-trek-3.jpg"]]],
+	["Grotte de Lawen", 
+		 [ "Champs de Gendarran", "Point de passage du Premier Refuge", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-lawen-grotto-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lawen-grotto-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lawen-grotto-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lawen-grotto-guild-trek-3.jpg"]]],
+	["Gué kraalétroi", 
+		 [ "Champs de Ruines", "", "[&BE8BAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-narrowkraal-crossing-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-narrowkraal-crossing-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-narrowkraal-crossing-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-narrowkraal-crossing-guild-trek-3.jpg"]]],
+	["Guet de la bagarre de barils", 
+		 [ "Hoelbrak", "Point de passage de la Boussole du Héros", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-kegbrawl-watch-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-kegbrawl-watch-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-kegbrawl-watch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-kegbrawl-watch-guild-trek-3.jpg"]]],
+	["Guet réverbérant", 
+		 [ "Contrefort du Voyageur", "Point de passage d'Écorchenuit", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-reverberants-watch-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-reverberants-watch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-reverberants-watch-guild-trek-3.jpg"]]],
+	["Guivre des sables maraudeuse", 
+		 [ "Crique de Sud-Soleil", "", "[&BNUGAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-sandwurm-prowl-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-sandwurm-prowl-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-sandwurm-prowl-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-sandwurm-prowl-guild-trek-3.jpg"]]],
+	["Hall de Guilde du Destin", 
+		 [ "Vallée de la Reine", "Point de passage de Shaemoor", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-destinys-guildhall-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-destinys-guildhall-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-destinys-guildhall-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-destinys-guildhall-guild-trek-3.jpg"]]],
+	["Halte de Coupegorge", 
+		 [ "Champs de Gendarran", "Point de passage de Brigantine", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-cutthroats-rest-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cutthroats-rest-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cutthroats-rest-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cutthroats-rest-guild-trek-3.jpg"]]],
+	["Halte de Soren Draa", 
+		 [ "Province de Metrica", "Point de passage de Soren Draa", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-soren-draa-rest-shop-guild-trek-21.jpg", "http://androuw.e-monsite.com/medias/images/gw2-soren-draa-rest-shop-guild-trek-41.jpg", "http://androuw.e-monsite.com/medias/images/gw2-soren-draa-rest-shop-guild-trek-31.jpg"]]],
+	["Impasse du Gladiver", 
+		 [ "Rivage Maudit", "Point de passage R&amp;D", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-winterknell-impasse-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-winterknell-impasse-guild-trek-3.jpg"]]],
+	["Jardin de Fortepatte", 
+		 [ "Plateau de Diessa", "Point de passage de Nageling", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-strongpaws-garden-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-strongpaws-garden-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-strongpaws-garden-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-strongpaws-garden-guild-trek-3.jpg"]]],
+	["Laboratoire de la taverne de Turai", 
+		 [ "Promontoire Divin", "Point de passage de Balthazar", "", "Il est localisé dans le sous-sol de la taverne.", ["http://androuw.e-monsite.com/medias/images/gw2-turai-tavern-stillroom-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-turai-tavern-stillroom-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-turai-tavern-stillroom-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-turai-tavern-stillroom-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-turai-tavern-stillroom.jpg"]]],
+	["La sellette de Kaldar", 
+		 [ "Hoelbrak", "", "[&BI0DAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-kaldars-hot-seat-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-kaldars-hot-seat-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-kaldars-hot-seat-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-kaldars-hot-seat-guild-trek-4.jpg"]]],
+	["Le devoir de Morndottir", 
+		 [ "Hoelbrak", "Point de passage du Roche de l'Abris", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-grimdottirs-duty-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-grimdottirs-duty-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-grimdottirs-duty-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-grimdottirs-duty-guild-trek-3.jpg"]]],
+	["Le magasin des ouvriers", 
+		 [ "Falaises de HanteDraguerre", "Point de passage de la Route Grise", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-the-workers-stores-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-the-workers-stores-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-the-workers-stores-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-the-workers-stores-guild-trek-4.jpg"]]],
+	["Les Marches du Talus", 
+		 [ "Chute de la Canopée", "Point de passage de Talus", "", "", ["http://www.lebusmagique.fr/medias/images/gw2-talus-steps-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-talus-steps-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-talus-steps-guild-trek-3.jpg"]]],
+	["Klub des Karkas", 
+		 [ "Crique de Sud-Soleil", "", "[&BNUGAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-the-karka-club-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/gw2-the-karka-club-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-the-karka-club-guild-trek-3.jpg"]]],
+	["L impasse du peuple", 
+		 [ "Détroit des Gorges Glacées", "Point de passage de Groznev", "", "Pour aller à l'emplacement pour activer le marqueur, vous devez monter sur la rampe supérieure.", ["http://androuw.e-monsite.com/medias/images/gw2-the-peoples-deadlock.jpg", "http://androuw.e-monsite.com/medias/images/gw2-the-peoples-deadlock-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-the-peoples-deadlock-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-the-peoples-deadlock-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-the-peoples-deadlock-5.jpg"]]],
+	["Marche vaporeuses", 
+		 [ "Crique de Sud-Soleil", "", "[&BNIGAAA=]", "", ["http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/gw2-steamy-steps-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-steamy-steps-guild-trek-2.jpg"]]],
+	["Mirador de Beetletun", 
+		 [ "La Vallée de la reine", "", "[&BPoAAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-beetlestone-mirador-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-beetlestone-mirador-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-beetlestone-mirador-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-beetlestone-mirador-guild-trek-3.jpg"]]],
+	["Monument à l ancien", 
+		 [ "Crique de Sud-Soleil", "", "[&BNgGAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-monument-to-the-ancient-one-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-monument-to-the-ancient-one-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-monument-to-the-ancient-one-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-monument-to-the-ancient-one-guild-trek-3.jpg"]]],
+	["Motte de Lamenoire", 
+		 [ "Plateau de Diessa", "Point de passage de la Fontaine de Rhand", "", "Atteindre le Cercle d'Or est un peu délicat pour celui ci, vous aurez besoin de marcher le long d'un rebord étroit pour aller au sommet de cette coline.", ["http://androuw.e-monsite.com/medias/images/gw2-blackblade-butte-guild-trek2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blackblade-butte-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blackblade-butte-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blackblade-butte-guild-trek-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blackblade-butte-guild-trek-32.jpg"]]],
+	["Mouillage de Covington", 
+		 [ "Côte de la Marée Sanglante", "Point de passage de la Mouette rieuse", "", "Le cercle d'or est situé tout au fond du bateau de pirate.", ["http://androuw.e-monsite.com/medias/images/gw2-covingtons-stowage-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-covingtons-stowage-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-covingtons-stowage-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-covingtons-stowage-guild-trek-4.jpg"]]],
+	["Mouillage du Capitaine", 
+		 [ "Saut de Malchor", "Point de passage des lumières", "", "On ne connaît pas encore l'emplacement exacte du cercle d'or. Il pourrait être quelque part sur le bateau submergé.", ["http://androuw.e-monsite.com/medias/images/gw2-captains-berth-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-captains-berth-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-captains-berth-guild-trek-3.jpg"]]],
+	["Mur d enceinte de Claypool", 
+		 [ "Vallée de la Reine", "Point de passage de Claypool", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-claypool-bailey-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-claypool-bailey-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-claypool-bailey-guild-trek.jpg"]]],
+	["Nid d Araignée cavernicole", 
+		 [ "Passage de Lornar", "Point de passage de l'Enclave du Pinacle", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-cave-spider-nidus-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cave-spider-nidus-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cave-spider-nidus-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cave-spider-nidus-guild-trek-3.jpg"]]],
+	["Nid du raptor", 
+		 [ "Marais de Fer", "Point de passage de la Ville de l'Etoile de Caninecol", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-raptors-aerie1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-raptors-aerie-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-raptors-aerie-guild-trek-2.jpg"]]],
+	["Objets trouvés de l Autorité du Port", 
+		 [ "Rata Sum", "Point de passage du port", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-port-authority-lost-and-found-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-port-authority-lost-and-found-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-port-authority-lost-and-found-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-port-authority-lost-and-found-guild-trek-3.jpg"]]],
+	["Oeil du Scorpion des mers", 
+		 [ "Rivages Maudits", "Point de passage de la Crête Indiscrête", "", "", ["http://www.lebusmagique.fr/medias/images/gw2-sea-scorpions-eye-guild-trek2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-sea-scorpions-eye-guild-trek-31.jpg", "http://www.lebusmagique.fr/medias/images/gw2-sea-scorpions-eye-guild-trek-5.jpg", "http://www.lebusmagique.fr/medias/images/gw2-sea-scorpions-eye-guild-trek-41.jpg"]]],
+	["Œuvre d Heidi", 
+		 [ "Hinterlands harathis", "", "[&BKcAAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-heidis-showpiece-guild-trek1.jpg", "http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/gw2-heidis-showpiece-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-heidis-showpiece-guild-trek-3.jpg"]]],
+	["Paddock du moa vert", 
+		 [ "Fôret de Caledon", "Point de passage du Refuge de Caledon", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-green-moa-paddock-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-green-moa-paddock-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-green-moa-paddock-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-green-moa-paddock-guild-trek-3.jpg"]]],
+	["Palan charmine", 
+		 [ "Montée de Flambecoeur", "", "[&BBcCAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-orecart-hoist-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-orecart-hoist-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-orecart-hoist-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-orecart-hoist-guild-trek-3.jpg"]]],
+	["Panorama de Phasmatis", 
+		 [ "Plaines d'Ashford", "Point de passage du Chantier de Dockfer", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-phasmatis-prospect-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-phasmatis-prospect-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-phasmatis-prospect-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-phasmatis-prospect-guild-trek-4.jpg"]]],
+	["Parapet des constellations", 
+		 [ "Le Bosquet", "Point de passage quartier populaire supérieur", "", "<span>Notez que le cercle d'or est en réalité à l'extérieur du bâtiment, on accède via une des plates-formes qui s'ouvre à l'extérieur. Du bas du bâtiment, prenez à droite sur la rampe pour avoir accès à une rampe alternative. De cette deuxième rampe, prenez à gauche.</span>", ["http://www.lebusmagique.fr/medias/images/gw2-constellation-parapet1.jpg", "http://www.lebusmagique.fr/medias/images/gw2-constellation-parapet-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-constellation-parapet-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-constellation-parapet-guild-trek-2.jpg"]]],
+	["Pas de Tir de Mina", 
+		 [ "Promontoire Divin", "Point de passage des Communes", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-minas-target-shoot-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-minas-target-shoot-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-minas-target-shoot-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-minas-target-shoot-guild-trek-4.jpg"]]],
+	["Pavillon de Grenth", 
+		 [ "Promontoire Divin", "Point de passage de Grenth", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-grenths-pavillion-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-grenths-pavillion-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-grenths-pavillion-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-grenths-pavillion-guild-trek-3.jpg"]]],
+	["Pavillon du Seigneur", 
+		 [ "Collines de Kesse", "Point de passage du Seigneur", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-overlord-lodge-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-overlord-lodge-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-overlord-lodge-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-overlord-lodge-guild-trek-3.jpg"]]],
+	["Perchoir Tubavapeur", 
+		 [ "Crique de Sud-Soleil", "", "[&BNUGAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-steampipe-perch-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/gw2-steampipe-perch-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-steampipe-perch-guild-trek-2.jpg"]]],
+	["Perchoir de Raptor", 
+		 [ "Champs de Gendarran", "Point de passage d'Aveugleneige.", "[&BMwDAAA=]", "", ["http://androuw.e-monsite.com/medias/images/gw2-raptors-perch1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-raptors-perch-4.jpg", "https://i.imgur.com/ERrtcNM.jpg", "https://i.imgur.com/SK57vkG.jpg"]]],
+	["Perchoir de l Ermite", 
+		 [ "Champs de Ruines", "Point de passage du Campement de Rosko", "", "La zone exacte de l'emplacement de la randonnée de guilde demeure inconnue à ce jour.", ["http://androuw.e-monsite.com/medias/images/gw2-hermits-roost-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-hermits-roost-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-hermits-roost-guild-trek-3.jpg"]]],
+	["Perchoir d œil-de-faucon", 
+		 [ "Chutes de la Canopée", "", "[&BEUCAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-hawkeye-perch-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-hawkeye-perch-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-hawkeye-perch-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-hawkeye-perch-guild-trek-3.jpg"]]],
+	["Pergola d Aubeluit", 
+		 [ "Le Bosquet", "Point de passage de Ronan", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-dawngleam-pergola-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-dawngleam-pergola-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-dawngleam-pergola-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-dawngleam-pergola-guild-trek-3.jpg"]]],
+	["Pic du Béliervédère", 
+		 [ "Falaises de HanteDraguerre", "Point de passage de Travelen", "", "Notez que pour arriver au sommet où est le bélier de Champion, vous devrez monter sur les rochers près de l'emplacement indiqué par les flêches.", ["http://androuw.e-monsite.com/medias/images/gw2-ramview-peak-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ramview-peak-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ramview-peak-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ramview-peak-guild-trek-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ramview-peak-guild-trek-41.jpg"]]],
+	["Place engloutie", 
+		 [ "Détroit de la Dévastation", "Point de passage du Forum Royal", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-drowned-plaza-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drowned-plaza-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drowned-plaza-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drowned-plaza-guild-trek-3.jpg"]]],
+	["Plage nécrolithe", 
+		 [ "Le Bosquet", "", "[&BBIEAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-necrolith-landing-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-necrolith-landing-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-necrolith-landing-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-necrolith-landing-guild-trek-3.jpg"]]],
+	["Planche à dessin de Tekki", 
+		 [ "Terres sauvages de Brisban", "", "[&BGUAAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-tekkis-drawing-board-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-tekkis-drawing-board-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-tekkis-drawing-board-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-tekkis-drawing-board-guild-trek-4.jpg"]]],
+	["Plateau de Krallcamden", 
+		 [ "Plaines d'Ashford", "Point de passage de la Tour de l'Escarpement", "", "Le cercle d'or est localisé au sommet, on peut y accéder via un petit passage, suivez la ligne inférieur de points blanc sur le screen ci dessous.", ["http://androuw.e-monsite.com/medias/images/gw2-cademkrall-overlook-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cademkrall-overlook-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cademkrall-overlook-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cademkrall-overlook-guild-trek-3.jpg"]]],
+	["Plongeur facebourbié", 
+		 [ "Mont Maelström", "", "[&BNECAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-deepmire-diver-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-deepmire-diver-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-deepmire-diver-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-deepmire-diver-guild-trek-3.jpg"]]],
+	["Poche de diablotin de feu", 
+		 [ "Mont Maelström", "Point de passage de Maelstrom", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-flame-imp-pocket-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-flame-imp-pocket-guild-trek-21.jpg", "http://androuw.e-monsite.com/medias/images/gw2-flame-imp-pocket-guild-trek-41.jpg", "http://androuw.e-monsite.com/medias/images/gw2-flame-imp-pocket-guild-trek-31.jpg"]]],
+	["Point de vue de Dockfer", 
+		 [ "Plaines d'Ashford", "Point de passage du Chantier de Dockfer", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-irondock-viewpoint-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-irondock-viewpoint-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-irondock-viewpoint-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-irondock-viewpoint-guild-trek-3.jpg"]]],
+	["Point de vue de Gnashar", 
+		 [ "Terres Sauvages de Brisban", "Point de passage de Wendon", "", "Notez que le cercle d'or est placé en haut de la colline accessible via une série de marches en pierres.", ["http://androuw.e-monsite.com/medias/images/gw2-gnashars-viewpoint-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-gnashars-viewpoint-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-gnashars-viewpoint-guild-trek-3.jpg"]]],
+	["Point de vue de Rurik", 
+		 [ "Promontoire Divin", "Point de passage de Rurikton", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-ruriks-view-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ruriks-view-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ruriks-view-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ruriks-view-guild-trek-4.jpg"]]],
+	["Point de vue d isgarren", 
+		 [ "Collines de Kesse", "", "[&BBEAAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-isgarren-viewpoint-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-isgarren-viewpoint-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-isgarren-viewpoint-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-isgarren-viewpoint-guild-trek-3.jpg"]]],
+	["Pont de Guet-du-feu", 
+		 [ "Marais de Fer", "Point de passage du Campement de Guet-du-feu", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-firewatch-flybridge-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-firewatch-flybridge-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-firewatch-flybridge-guild-trek-3.jpg"]]],
+	["Porche de Fawcett", 
+		 [ "Harathi Hinterlands", "Point de passage d'Arca", "", "Notez que le cercle d'or ne peut être atteint qu'en faisant le Jumping Puzzle <a href=\"https://www.youtube.com/watch?v=FFNbnMoEMiY\">Vengeance de Fawcett</a> entièrement (cliquez sur le nom pour la vidéo faites par la SaDo expédition).", ["http://androuw.e-monsite.com/medias/images/gw2-fawcetts-porch-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fawcetts-porch-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fawcetts-porch-guild-trek-31.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fawcetts-porch-guild-trek-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-fawcetts-porch-guild-trek-41.jpg"]]],
+	["Porte de Droknah", 
+		 [ "Mont Maelström", "Point de passage du site du vieux traîneau", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-droknahs-gate-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-droknahs-gate-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-droknahs-gate-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-droknahs-gate-guild-trek-2.jpg"]]],
+	["Porte de Wikk", 
+		 [ "Chute de la Canopée", "Point de passage du Tutorat de Valance", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-wikks-gate-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-wikks-gate-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-wikks-gate-guild-trek-6.jpg"]]],
+	["Port extérieur du Vizir", 
+		 [ "Détroit de la Dévastation", "Point de passage du Poste Isolé", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-viziers-anteport.jpg", "http://androuw.e-monsite.com/medias/images/gw2-viziers-anteport-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-viziers-anteport-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-viziers-anteport-guild-trek-3.jpg"]]],
+	["Portique de Rata Pten", 
+		 [ "Mont Maelström", "Point de passage Criterion", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-rata-pten-portico-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-rata-pten-portico-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-rata-pten-portico-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-rata-pten-portico-guild-trek.jpg"]]],
+	["Poste de vigie de Décimus", 
+		 [ "Plaines d'Ashford", "Point de passage du Point de Garde de Decimus", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-watchpoint-decimus-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-watchpoint-decimus-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-watchpoint-decimus-guild-trek-7.jpg", "http://androuw.e-monsite.com/medias/images/gw2-watchpoint-decimus-guild-trek-6.jpg"]]],
+	["Préfecture de Lychcroft", 
+		 [ "Collines de Kesse", "Point de passage du Site d'Ombrecoeur", "", "Le cercle d'or est au sommet de la rampe, directement à côté du PNJ de coeur.", ["http://androuw.e-monsite.com/medias/images/gw2-lychcroft-wardenship-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lychcroft-wardenship-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lychcroft-wardenship-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lychcroft-wardenship-guild-trek-3.jpg"]]],
+	["Prison de Taupvaquie", 
+		 [ "Contrefort du Voyageur", "Point de passage d'Halvaunt", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-moleberia-prison-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-moleberia-prison-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-moleberia-prison-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-moleberia-prison-guild-trek-3.jpg"]]],
+	["Promontoire de Portmatt", 
+		 [ "Côte de la Marée Sanglante", "Point de passage des Lamentations", "", "Le cercle d'or tout en haut du puzzle jump du Laboratoire du Professeur Portmatt près du coffre. Vous devez entrer dans l'ordre correct 14.xx.xx-49.xx-0.02xx dans le terminal pour arriver à la fin du puzzle. <a href=\"http://www.youtube.com/watch?v=gSnC10GJBI0\">Vidéo du Laboratoire du Professeur Portmatt</a></span>", ["http://androuw.e-monsite.com/medias/images/gw2-portmatts-promontory-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-portmatts-promontory-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-portmatts-promontory-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-portmatts-promontory-guild-trek-2.jpg"]]],
+	["Quai de Lestepied", 
+		 [ "Détroit de la Dévastation", "Point de passage de Tonnecaboche", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-lightfoot-dock-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lightfoot-dock-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lightfoot-dock-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lightfoot-dock-guild-trek-5.jpg"]]],
+	["Recoin du Scriptorium", 
+		 [ "Citadelle Noire", "Point de passage du Factorium", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-scriptorium-nook-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scriptorium-nook-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scriptorium-nook-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scriptorium-nook-guild-trek-2.jpg"]]],
+	["Recoin du corbeau", 
+		 [ "Hoelbrak", "Point de passage de Corbeau", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-ravens-nook-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ravens-nook-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ravens-nook-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ravens-nook-guild-trek-4.jpg"]]],
+	["Recoin lapidaire de Flakk", 
+		 [ "Rata Sum", "Point de passage de la Comptabilité", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-flakks-lapidary-nook-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-flakks-lapidary-nook-guild-trek-21.jpg", "http://androuw.e-monsite.com/medias/images/gw2-flakks-lapidary-nook-guild-trek-41.jpg", "http://androuw.e-monsite.com/medias/images/gw2-flakks-lapidary-nook-guild-trek-31.jpg"]]],
+	["Refuge d Antreneige", 
+		 [ "Congères d'Antreneige", "Point de passage de la Congère", "", "Il y a une entrée à cette petite pièce chambre si vous sautez en bas des murs", ["http://androuw.e-monsite.com/medias/images/gw2-snowden-safehouse-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-snowden-safehouse-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-snowden-safehouse-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-snowden-safehouse-guild-trek-3.jpg"]]],
+	["Refuge de siamouth", 
+		 [ "Marais de Lumillule", "Point de passage Ondesaline", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-siamoth-refuge-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-siamoth-refuge-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-siamoth-refuge-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-siamoth-refuge-guild-trek-3.jpg"]]],
+	["Refuge du Stentor", 
+		 [ "Détroit de la Dévastation", "Point de passage du Pic de Signal", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-stentor-shelter-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-stentor-shelter-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-stentor-shelter-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-stentor-shelter-guild-trek-3.jpg"]]],
+	["Refuge percebul", 
+		 [ "Les Steppes de la Strie flamboyante", "", "[&BFIDAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-burstbubble-blind-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-burstbubble-blind-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-burstbubble-blind-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-burstbubble-blind-guild-trek-3.jpg"]]],
+	["Repaire de Soufflettin", 
+		 [ "Passage de Lornar", "Point de passage du Gouffre du Démon", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-ettinbreath-lair-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ettinbreath-lair-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ettinbreath-lair-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ettinbreath-lair-guild-trek-3.jpg"]]],
+	["Repaire de l Arctodus", 
+		 [ "Contrefort du Voyageur", "Point de passage la Colonie de Venbrake", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-arctodus-haunt-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-arctodus-haunt-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-arctodus-haunt-guild-trek-3.jpg"]]],
+	["Repère de l Autel du Ruisseau", 
+		 [ "Vallée de la Reine", "Point de passage du Carrefour", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-altar-brook-lair-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-altar-brook-lair-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-altar-brook-lair-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-altar-brook-lair-guild-trek-4.jpg"]]],
+	["Repli stratégique", 
+		 [ "Rivage Maudit", "Point de passage du rocher de l'Epave", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-tactical-retreat-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tactical-retreat-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tactical-retreat-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-tactical-retreat-guild-trek-3.jpg"]]],
+	["Retraite Gelée", 
+		 [ "Chute de la Canopée", "Point de passage Feuilleblanche", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-frozen-antrum-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-frozen-antrum-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-frozen-antrum-guild-trek-5.jpg", "http://androuw.e-monsite.com/medias/images/gw2-frozen-antrum-guild-trek-3.jpg"]]],
+	["Rotonde de Soggorsort", 
+		 [ "Fôret de Caledon", "Point de passage de l'Escalier du Titan", "", "Le cercle d'or est à l'intérieur d'une des maisons Quaggan.", ["http://androuw.e-monsite.com/medias/images/gw2-soggorsort-rotunda-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-soggorsort-rotunda-guild-trek-21.jpg", "http://androuw.e-monsite.com/medias/images/gw2-soggorsort-rotunda-guild-trek-41.jpg", "http://androuw.e-monsite.com/medias/images/gw2-soggorsort-rotunda-guild-trek-31.jpg"]]],
+	["Ruelle du rôdeur de l est", 
+		 [ "Promontoire Divin", "Point de passage de Dwayna", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-east-lurk-alley-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-east-lurk-alley-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-east-lurk-alley-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-east-lurk-alley-guild-trek-4.jpg"]]],
+	["Salon d Esparvent", 
+		 [ "Citadelle Noire", "Point de passage de l'Imperator", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-sparwinds-lounge-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sparwinds-lounge-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sparwinds-lounge-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sparwinds-lounge-guild-trek-2.jpg"]]],
+	["Salon de Wrelk", 
+		 [ "Champs de Gandarran", "", "[&BJQBAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-wrelks-salon-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/gw2-wrelks-salon-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-wrelks-salon-guild-trek-3.jpg"]]],
+	["Sanctuaire hanté par un diablotin", 
+		 [ "Fôret de Caledon", "Point de passage du Marais de Wychmire", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-imphaunt-hallow-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-imphaunt-hallow-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-imphaunt-hallow-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-imphaunt-hallow-guild-trek.jpg"]]],
+	["Sanctuaire piersacrée", 
+		 [ "Plateau de Diessa", "", "[&BMUDAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-holystone-sanctum-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-holystone-sanctum-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-holystone-sanctum-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-holystone-sanctum-guild-trek-2.jpg"]]],
+	["Saut de Drakefaille", 
+		 [ "Champs de Ruines", "Point de passage du Guet de Mordrage", "", "Le cercle d'or est placé sur un rocher un peu haut au-dessus du sol. Tourner à gauche après être entré dans la grotte et vous trouverez une petite crevasse avec un rocher au sommet.", ["http://androuw.e-monsite.com/medias/images/gw2-drakecleft-shelf-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drakecleft-shelf-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drakecleft-shelf-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-drakecleft-shelf-guild-trek-5.jpg"]]],
+	["Saut de Mistriven", 
+		 [ "Passage de Lornar", "Point de passage de Mistriven", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-mistriven-shelf-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-mistriven-shelf-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-mistriven-shelf-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-mistriven-shelf-guild-trek-3.jpg"]]],
+	["Saut de la conceptualisation", 
+		 [ "Rata Sum", "Point de passage de l'incubateur", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-ideation-leap-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ideation-leap-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ideation-leap-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-ideation-leap-guild-trek-3.jpg"]]],
+	["Sentinelle Engloutie / Bassin de la Sentinelle", 
+		 [ "Marais de Fer", "Point de passage du Campement du Guet du Stigmate", "", "Le cercle d'or est placé à l'intérieur d'une caverne sous-marine accessible en allant au point localisé par la flèche rouge.", ["http://androuw.e-monsite.com/medias/images/gw2-sentinel-sink-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sentinel-sink-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-sentinel-sink-guild-trek-3.jpg"]]],
+	["Sépulcre azumière", 
+		 [ "Détroit de la Dévastation", "", "[&BNIEAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-sepulchre-skylight-guild-trek1.jpg", "http://www.lebusmagique.fr/medias/images/", "http://www.lebusmagique.fr/medias/images/gw2-sepulchre-skylight-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-sepulchre-skylight-guild-trek-2.jpg"]]],
+	["Sépulcre ravagé", 
+		 [ "Plateau de Diessa", "Point de passage des Landes Ravagées", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-blasted-sepulchre-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blasted-sepulchre-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blasted-sepulchre-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-blasted-sepulchre-guild-trek-3.jpg"]]],
+	["Seuil d Usharr", 
+		 [ "Marais de Lumillule", "", "[&BMsBAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-usharrs-threshold-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-usharrs-threshold-guild-trek-3.jpg", "http://www.lebusmagique.fr/medias/images/gw2-usharrs-threshold-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-usharrs-threshold-guild-trek-4.jpg"]]],
+	["Sommet de l Epave", 
+		 [ "Citadelle Noire", "Point de passage de l'Épave", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-junkers-apex-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-junkers-apex-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-junkers-apex-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-junkers-apex-guild-trek-3.jpg"]]],
+	["Source de Brûlereinette", 
+		 [ "Marais de Lumillule", "Point de passage de Flamefrog", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-firefrog-springs-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-firefrog-springs-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-firefrog-springs-guild-trek-3.jpg"]]],
+	["Source de Melandru", 
+		 [ "Le Promontoire divin", "", "[&BCoDAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-dwaynas-fount-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-dwaynas-fount-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-dwaynas-fount-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-dwaynas-fount-guild-trek-3.jpg"]]],
+	["Source des lamentations", 
+		 [ "Détroit des georges glacées", "", "[&BIECAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-source-of-lament-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-source-of-lament-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-source-of-lament-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-source-of-lament-guild-trek-3.jpg"]]],
+	["Surprise d Elise", 
+		 [ "Harathi Hinterlands", "Point de passage de Demetra", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-elises-suprise-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-elises-suprise-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-elises-suprise-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-elises-suprise-guild-trek-2.jpg"]]],
+	["Surveillant de Folleflamme", 
+		 [ "Province de Metrica", "Point de passage de Soren Draa", "", "Notez que la marque est au deuxième étage. Il y a des marches en pierre sur les côtés sur lesquelles vous pouver sauter pour atteindre le sommet.", ["http://androuw.e-monsite.com/medias/images/gw2-wildflame-monitor-guild-trek-2.jpg"]]],
+	["Terrasse de Wassa", 
+		 [ "Champs de Gendarran", "Point de passage Premier Refuge", "", "Le cercle d'or est placé en haut sur la tour la plus haute.", ["http://androuw.e-monsite.com/medias/images/gw2-wassas-terrace-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-wassas-terrace-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-wassas-terrace-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-wassas-terrace-guild-trek-4.jpg"]]],
+	["Tour de guet de Mâchefléau", 
+		 [ "Marais de Fer", "Point de passage du Campement de Belpelisse", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-scourgejaw-watchtower-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scourgejaw-watchtower-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scourgejaw-watchtower-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-scourgejaw-watchtower-guild-trek-2.jpg"]]],
+	["Tour de la tribulation", 
+		 [ "Falaises de Hantedraguerre", "", "[&BFYCAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-tower-of-tribulation-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-tower-of-tribulation-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-tower-of-tribulation-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-tower-of-tribulation-guild-trek-3.jpg"]]],
+	["Trou de tirailleur de Creusepierre", 
+		 [ "Champs de Gendarran", "Point de passage de Talajian", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-stonebore-spiderhole-guild-trek1.jpg", "http://androuw.e-monsite.com/medias/images/gw2-stonebore-spiderhole-guild-trek-21.jpg", "http://androuw.e-monsite.com/medias/images/gw2-stonebore-spiderhole-guild-trek-41.jpg"]]],
+	["Tunnel de Bandacier", 
+		 [ "Les Steppes de la Strie Flamboyante", "Point de passage de Tumok", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-steelbands-tunnel-guild-trek2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-steelbands-tunnel-guild-trek-22.jpg", "http://androuw.e-monsite.com/medias/images/gw2-steelbands-tunnel-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-steelbands-tunnel-guild-trek-5.jpg"]]],
+	["Tunnel sous le lac", 
+		 [ "Vallée de la Reine", "Point de passage de la Scierie d'Ojon", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-lakebottom-underpass-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lakebottom-underpass-guild-trek-2.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lakebottom-underpass-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-lakebottom-underpass-guild-trek-3.jpg"]]],
+	["Upsilon Hyperboloïde", 
+		 [ "Saut de Malchor", "", "[&BKgCAAA=]", "", ["http://www.lebusmagique.fr/medias/images/gw2-upsilon-hyperboloid-guild-trek.jpg", "http://www.lebusmagique.fr/medias/images/gw2-upsilon-hyperboloid-guild-trek-2.jpg", "http://www.lebusmagique.fr/medias/images/gw2-upsilon-hyperboloid-guild-trek-4.jpg", "http://www.lebusmagique.fr/medias/images/gw2-upsilon-hyperboloid-guild-trek-3.jpg"]]],
+	["Vallon de Cymbel", 
+		 [ "Champs de Ruines", "Point de passage de la Route de l'ogre", "", "", ["http://androuw.e-monsite.com/medias/images/gw2-cymbels-glen-guild-trek.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cymbels-glen-guild-trek-4.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cymbels-glen-guild-trek-3.jpg", "http://androuw.e-monsite.com/medias/images/gw2-cymbels-glen-guild-trek-2.jpg"]]],
 ]
