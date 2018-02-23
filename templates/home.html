@@ -71,82 +71,92 @@
         fjs.parentNode.insertBefore(js, fjs);
         }(document, 'script', 'facebook-jssdk'));     
     </script>
-    <script type="text/javascript">   
+    <script type="text/javascript">
+		var json_data = [];
+				
+		function display(json){
+			var fdata = [];
+			$.each(json.data,function(i,fb){
+				fdata[i*2] = json.data[i];
+				fdata[i*2+1] = json_data[i];
+			});
+			//fdata = json.data;
+			
+			//$.extend(json, json_1);
+			console.log(fdata);
+			var html = "";
+				//loop through and within data array's retrieve the message variable.
+				$.each(fdata,function(i,fb){
+					if(fb != undefined){
+						html += "<div class=\"fbpubli\">"
+						 /*
+						  *  Image + Titre
+						  */
+						if (fb.full_picture != undefined && fb.message != undefined && fb.message.length<100){
+							html += "<div class=\"fbtitle\">"
+								html += "" + $('<div>').html(fb.message).text() + ""
+							html += "</div>"
+							html += "<div class=\"fbimg\">"
+								html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
+							html += "</div>"    
+						}
+						 /*
+						  *  Image Seule
+						  */
+						else if (fb.full_picture != undefined && fb.message == undefined){
+							html += "<div class=\"fbimg\">"
+								html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
+							html += "</div>"    
+						}
+						 /*
+						  *  Image + Message
+						  */
+						else if (fb.full_picture != undefined && fb.message != undefined){
+							html += "<div class=\"left_col\">"
+								html += "" + $('<div>').html(fb.message).text() + ""
+							html += "</div>"    
+							html += "<div class=\"right_col\">"
+								html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
+							html += "</div>"    
+						}  
+						 /*
+						  *  Message Seule
+						  */
+						else if (fb.full_picture == undefined && fb.message != undefined){
+							html += "<div class=\"fbtxtonly\">"
+								html += "" + $('<div>').html(fb.message).text() + ""
+							html += "</div>"    
+						}
+						
+						html+="<div class=\"cleared\"></div>";
+						html += "<a href=\"http://www.facebook.com/"+fb.id+"\"><div class=\"fbtime\"><p>Lien vers la publication ("+fb.created_time.replace('T', ' à ').replace('+0000', '')+")</p></div></div></a>";
+					}
+				});
+			//html += "</ul>";
+			//A little animation once fetched
+			$('.facebookfeed').animate({opacity:0}, 500, function(){
+					$('.facebookfeed').html(html);
+			});
+			$('.facebookfeed').animate({opacity:1}, 500);
+		}
+		
+		var url = "https://graph.facebook.com/1518786195087459/feed?"+
+				"fields=created_time,full_picture,message,id"+
+				"&access_token=1263375167041344|24794e69870a80a21f31ab53e60c75e4";
+		var url2 = "https://graph.facebook.com/1760159560670927/feed?"+
+				"fields=created_time,full_picture,message,id"+
+				"&access_token=1263375167041344|24794e69870a80a21f31ab53e60c75e4";
+		
+		function get(json){
+			json_data = json.data;
+			console.log(json_data);
+		}
+	
         function fbFetch(){
-            //Set Url of JSON data from the facebook graph api. make sure callback is set with a '?' to overcome the cross domain problems with JSON
-            var url = "https://graph.facebook.com/1518786195087459/feed?"+
-                    "fields=created_time,full_picture,message,id"+
-                    "&access_token=1263375167041344|24794e69870a80a21f31ab53e60c75e4";          
-            //Use jQuery getJSON method to fetch the data from the url and then create our unordered list with the relevant data.
-            $.getJSON(url,function(json){
-                console.log(json);
-                var html = "";
-                    //loop through and within data array's retrieve the message variable.
-                    $.each(json.data,function(i,fb){
-                        html += "<div class=\"fbpubli\">"
-                         /*
-                          *  Image + Titre
-                          */
-                        if (fb.full_picture != undefined && fb.message != undefined && fb.message.length<100){
-                            html += "<div class=\"fbtitle\">"
-                                html += "" + $('<div>').html(fb.message).text() + ""
-                            html += "</div>"
-                            html += "<div class=\"fbimg\">"
-                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
-                            html += "</div>"    
-                        }
-                         /*
-                          *  Image Seule
-                          */
-                        else if (fb.full_picture != undefined && fb.message == undefined){
-                            html += "<div class=\"fbimg\">"
-                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
-                            html += "</div>"    
-                        }
-                         /*
-                          *  Image + Message
-                          */
-                        else if (fb.full_picture != undefined && fb.message != undefined){
-                            html += "<div class=\"left_col\">"
-                                html += "" + $('<div>').html(fb.message).text() + ""
-                            html += "</div>"    
-                            html += "<div class=\"right_col\">"
-                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
-                            html += "</div>"    
-                        }  
-                         /*
-                          *  Message Seule
-                          */
-                        else if (fb.full_picture == undefined && fb.message != undefined){
-                            html += "<div class=\"fbtxtonly\">"
-                                html += "" + $('<div>').html(fb.message).text() + ""
-                            html += "</div>"    
-                        }
-
-                        /*if (fb.full_picture != undefined && content.length>100){
-                            html += "<div class=\"left_col\">"
-                        } else {
-                            html += "<div class=\"fbtxtonly\">"
-                        }
-                            html += "" + $('<div>').html(fb.message).text() + ""
-                         html += "</div>"
-                         if (fb.full_picture != undefined){
-                            html += "<div class=\"right_col\">"
-                                html += "<img class=\"fbimg\"src=\""+fb.full_picture+"\" \>"
-                            html += "</div>"                 
-                         }
-                        */
-                        html+="<div class=\"cleared\"></div>";
-                        html += "<a href=\"http://www.facebook.com/"+fb.id+"\"><div class=\"fbtime\"><p>Lien vers la publication ("+fb.created_time.replace('T', ' à ').replace('+0000', '')+")</p></div></div></a>";
-                    });
-                //html += "</ul>";
-                //A little animation once fetched
-                $('.facebookfeed').animate({opacity:0}, 500, function(){
-                        $('.facebookfeed').html(html);
-                                                                    });
-                $('.facebookfeed').animate({opacity:1}, 500);
-            
-            });
+			console.log("START1");
+            var a = $.getJSON(url, get);
+			a.done();
+			$.getJSON(url2, display);
         };
     </script>
     <h1>Fil d'actualité de la FaF</h1>
