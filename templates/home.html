@@ -150,13 +150,12 @@
 		function get(json){
 			json_data = json.data;
 			console.log(json_data);
+			$.getJSON(url2, display);
 		}
 	
         function fbFetch(){
 			console.log("START1");
             var a = $.getJSON(url, get);
-			a.done();
-			$.getJSON(url2, display);
         };
     </script>
     <h1>Fil d'actualité de la FaF</h1>
